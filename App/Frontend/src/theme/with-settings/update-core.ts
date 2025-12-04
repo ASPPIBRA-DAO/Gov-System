@@ -9,6 +9,10 @@ import { createShadowColor } from '../core/custom-shadows';
 
 // ----------------------------------------------------------------------
 
+/**
+ * Apply runtime settings (direction, font, contrast, colors)
+ * to the existing theme options.
+ */
 export function applySettingsToTheme(
   theme: ThemeOptions,
   settingsState?: SettingsState
@@ -23,61 +27,54 @@ export function applySettingsToTheme(
   const isDefaultContrast = contrast === 'default';
   const isDefaultPrimaryColor = primaryColor === 'default';
 
-  const lightPalette =
-    (theme.colorSchemes?.light?.palette as ColorSystem['palette']) || undefined;
+  const lightPalette = (theme.colorSchemes?.light?.palette ??
+    {}) as ColorSystem['palette'];
 
-  const primaryColorPalette = createPaletteChannel(primaryColorPresets[primaryColor]);
+  const primaryColorPalette = createPaletteChannel(
+    primaryColorPresets[primaryColor]
+  );
 
   const updateColorScheme = (schemeName: ThemeColorScheme) => {
-    const currentScheme = theme.colorSchemes?.[schemeName];
+    const currentScheme = theme.colorSchemes?.[schemeName] ?? {};
 
-    // BASE SAFE OBJECTS
-    const paletteBase = (currentScheme?.palette as object) ?? {};
-    const customShadowsBase = (currentScheme?.customShadows as object) ?? {};
+    const basePalette =
+      (currentScheme.palette && typeof currentScheme.palette === 'object'
+        ? currentScheme.palette
+        : {}) as ColorSystem['palette'];
 
-    // -------------------
-    // PRIMARY COLOR OVERRIDES (safe)
-    // -------------------
-    const primaryOverrides: Record<string, any> = {};
-    if (!isDefaultPrimaryColor) {
-      primaryOverrides.primary = primaryColorPalette;
-    }
+    const updatedPalette: ColorSystem['palette'] = {
+      ...basePalette,
+      ...(!isDefaultPrimaryColor && {
+        primary: primaryColorPalette,
+      }),
 
-    // -------------------
-    // BACKGROUND OVERRIDES FOR LIGHT MODE (safe)
-    // -------------------
-    const backgroundOverrides: Record<string, any> = {};
+      ...(schemeName === 'light' && {
+        background: {
+          ...(lightPalette.background ?? {}),
+          ...(!isDefaultContrast && {
+            default: lightPalette.grey?.[200],
+            defaultChannel: hexToRgbChannel(lightPalette.grey?.[200]),
+          }),
+        },
+      }),
+    };
 
-    if (schemeName === 'light' && lightPalette) {
-      const bg = { ...(lightPalette.background ?? {}) };
+    const baseCustomShadows =
+      currentScheme.customShadows && typeof currentScheme.customShadows === 'object'
+        ? currentScheme.customShadows
+        : {};
 
-      if (!isDefaultContrast && lightPalette.grey) {
-        bg.default = lightPalette.grey[200];
-        bg.defaultChannel = hexToRgbChannel(lightPalette.grey[200]);
-      }
-
-      backgroundOverrides.background = bg;
-    }
-
-    // -------------------
-    // CUSTOM SHADOWS OVERRIDES
-    // -------------------
-    const customShadowOverrides: Record<string, any> = {};
-    if (!isDefaultPrimaryColor) {
-      customShadowOverrides.primary = createShadowColor(primaryColorPalette.mainChannel);
-    }
+    const updatedCustomShadows = {
+      ...baseCustomShadows,
+      ...(!isDefaultPrimaryColor && {
+        primary: createShadowColor(primaryColorPalette.mainChannel),
+      }),
+    };
 
     return {
       ...currentScheme,
-      palette: {
-        ...paletteBase,
-        ...primaryOverrides,
-        ...(Object.keys(backgroundOverrides).length > 0 ? backgroundOverrides : {}),
-      },
-      customShadows: {
-        ...customShadowsBase,
-        ...(Object.keys(customShadowOverrides).length > 0 ? customShadowOverrides : {}),
-      },
+      palette: updatedPalette,
+      customShadows: updatedCustomShadows,
     };
   };
 
