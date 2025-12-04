@@ -7,10 +7,7 @@ import { primaryColorPresets } from './color-presets';
 import { createShadowColor } from '../core/custom-shadows';
 
 // ----------------------------------------------------------------------
-/**
- * Apply runtime settings (direction, font, contrast, colors)
- * to the existing theme options.
- */
+
 export function applySettingsToTheme(
   theme: ThemeOptions,
   settingsState?: SettingsState
@@ -25,81 +22,66 @@ export function applySettingsToTheme(
   const isDefaultContrast = contrast === 'default';
   const isDefaultPrimaryColor = primaryColor === 'default';
 
-  // Work with partial palette shape (options-like)
-  const lightPalette = (theme.colorSchemes?.light?.palette ?? {}) as Partial<
-    ColorSystem['palette']
-  >;
-
+  const lightPalette = (theme.colorSchemes?.light?.palette ?? {}) as Partial<ColorSystem['palette']>;
   const primaryColorPalette = createPaletteChannel(primaryColorPresets[primaryColor]);
 
+  const safeObject = (value: unknown): Record<string, any> =>
+    value && typeof value === 'object' ? (value as Record<string, any>) : {};
+
   const updateColorScheme = (schemeName: ThemeColorScheme) => {
-    const scheme = theme.colorSchemes?.[schemeName] ?? {};
+    const scheme = safeObject(theme.colorSchemes?.[schemeName]);
 
-    const basePalette = (scheme.palette && typeof scheme.palette === 'object'
-      ? (scheme.palette as Partial<ColorSystem['palette']>)
-      : {}) as Partial<ColorSystem['palette']>;
+    const basePalette = safeObject(scheme.palette) as Partial<ColorSystem['palette']>;
+    const baseCustomShadows = safeObject(scheme.customShadows);
 
-    const baseCustomShadows =
-      scheme.customShadows && typeof scheme.customShadows === 'object'
-        ? (scheme.customShadows as Record<string, any>)
-        : {};
-
-    // Start with a shallow copy of base palette (partial/options-like)
     const newPalette: Partial<ColorSystem['palette']> = { ...basePalette };
 
-    // Primary overrides
+    // PRIMARY COLOR
     if (!isDefaultPrimaryColor) {
       newPalette.primary = primaryColorPalette as unknown as ColorSystem['palette']['primary'];
     }
 
-    // LIGHT MODE: construct a background object that satisfies MUI's required fields
+    // ---------------------------------------------
+    // LIGHT BACKGROUND FIX (Cloudflare-safe version)
+    // ---------------------------------------------
     if (schemeName === 'light') {
-      // Extract known values from existing lightPalette
-      const existingBg = (lightPalette.background as Record<string, any>) || {};
-      const existingGrey = (lightPalette.grey || {}) as Record<string, string | undefined>;
+      const existingBg = safeObject(lightPalette.background);
+      const existingGrey = safeObject(lightPalette.grey);
 
-      // Compute sensible fallbacks:
-      const fallbackDefault = existingGrey[200] ?? existingBg.default ?? '#ffffff';
+      const fallbackDefault = existingBg[200] ?? existingBg.default ?? '#ffffff';
       const fallbackPaper = existingBg.paper ?? '#ffffff';
       const fallbackNeutral = existingBg.neutral ?? existingGrey[50] ?? '#f7f7f7';
 
-      // Create a background object that includes the required properties
-      const backgroundObj: Record<string, any> = {
-        // required by TypeBackground (ensure presence)
+      const backgroundObj = {
         default: fallbackDefault,
         paper: fallbackPaper,
         neutral: fallbackNeutral,
-        // channel form required by PaletteBackgroundChannel
         neutralChannel: hexToRgbChannel(fallbackNeutral),
-        // keep any existing keys (e.g., variants) but values from existingBg win
-        ...existingBg,
+        ...safeObject(existingBg),
       };
 
-      // If contrast override requested, set/override default and defaultChannel
       if (!isDefaultContrast) {
         const contrastDefault = existingGrey[200] ?? backgroundObj.default;
         backgroundObj.default = contrastDefault;
-        backgroundObj.defaultChannel = contrastDefault
-          ? hexToRgbChannel(contrastDefault)
-          : backgroundObj.defaultChannel;
+        // O TS não reconhece defaultChannel no tipo oficial de background
+        (backgroundObj as any).defaultChannel = hexToRgbChannel(contrastDefault);
       }
 
-      newPalette.background = backgroundObj as unknown as ColorSystem['palette']['background'];
+      newPalette.background = backgroundObj as ColorSystem['palette']['background'];
     }
 
     // CUSTOM SHADOWS
-    const newCustomShadows: Record<string, any> = { ...baseCustomShadows };
-    if (!isDefaultPrimaryColor) {
-      newCustomShadows.primary = createShadowColor(
-        (primaryColorPalette as any).mainChannel
-      );
-    }
+    const newCustomShadows = {
+      ...baseCustomShadows,
+      ...( !isDefaultPrimaryColor && {
+        primary: createShadowColor((primaryColorPalette as any).mainChannel),
+      }),
+    };
 
-    // Return scheme with partial palette (but background now contains required fields)
     return {
       ...scheme,
       palette: newPalette as ColorSystem['palette'],
-      customShadows: newCustomShadows as any,
+      customShadows: newCustomShadows,
     };
   };
 
