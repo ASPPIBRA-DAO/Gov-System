@@ -1,0 +1,111 @@
+{
+  "name": "@minimal-kit/frontend",
+  "author": "Minimals",
+  "version": "7.5.0",
+  "description": "Vite & TypeScript",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite preview",
+    "build": "tsc && vite build",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:print": "npx eslint --print-config eslint.config.mjs > eslint-show-config.json",
+    "fm:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "fm:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "fix:all": "npm run lint:fix && npm run fm:fix",
+    "clean": "rm -rf node_modules .next out dist build",
+    "re:dev": "yarn clean && yarn install && yarn dev",
+    "re:build": "yarn clean && yarn install && yarn build",
+    "re:build-npm": "npm run clean && npm install && npm run build",
+    "tsc:dev": "yarn dev & yarn tsc:watch",
+    "tsc:watch": "tsc --noEmit --watch",
+    "tsc:print": "npx tsc --showConfig"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^1.7.7",
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "^2.1.2",
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.1.0",
+    "@auth0/auth0-react": "^2.5.0",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/nunito-sans": "^5.2.7",
+    "@fontsource-variable/public-sans": "^5.2.7",
+from typing import Literal
+
+def list_files(
+    path: str,
+) -> dict:
+  """List project files for a given path.
+
+  Args:
+    path: The path of the folder to list all of the files of this folder. This should be a relative path.
+  """
+
+
+def read_file(
+    path: str,
+) -> dict:
+  """Reads from a file.
+
+  Args:
+    path: The path of the file to be read. This should be a relative path.
+  """
+
+
+def write_file(
+    path: str,
+    content: str,
+) -> dict:
+  """Creates or updates a file.
+
+  Args:
+    path: The path of the file to be written. This should be a relative path.
+    content: The content to write to the file. This MUST be a valid python string, including escapes if necessary. Do NOT format in markdown, because this string will be written to file as is. Do NOT include line numbers.
+  """
+
+
+def delete_file(
+    path: str,
+) -> dict:
+  """Deletes a file
+
+  Args:
+    path: The path of the file to be deleted. This should be a relative path.
+  """
+
+
+def run_terminal_command(
+    command: str,
+) -> dict:
+  """Runs a terminal command
+
+  Args:
+    command: The command to run in the terminal
+  """
+
+
+def classic_firebase_hosting_deploy(
+    path: str,
+    appType: Literal['client', 'server'],
+) -> dict:
+  """
+    Deploys a project to Firebase Hosting Classic. This is usually triggered when a user writes a message such as "Deploy my website" or "Publish my site".
+    Call this function whenever the user requests to deploy or publish their app or site.
+    Make sure to determine whether an app is a static app, or requires a server. If the app is a static app and there is not a build folder, make sure to build the app before running this tool.
+    If the app is a server-side app, do NOT build the app.
+  
+
+  Args:
+    path: The relative path from the project's root directory to the folder containing the final build output. This folder contains the static assets (HTML, CSS, JavaScript, images) that are deployed to a web server. Common examples include 'dist', 'build', or '.next'. The specified directory MUST contain a root 'index.html' file, which serves as the application's main entry point.
+    appType: Specifies the primary environment where the application code runs. Use 'client' for front-end frameworks like React, Vue, or Angular that run in the browser. Use 'server' for back-end frameworks like Express, Next.js (with SSR), or Django that run on a server.
+  """
+}
