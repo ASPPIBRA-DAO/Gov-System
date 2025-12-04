@@ -39,7 +39,7 @@ export function applySettingsToTheme(
     const currentScheme = theme.colorSchemes?.[schemeName];
 
     const updatedPalette = {
-      ...currentScheme?.palette,
+      ...(currentScheme?.palette ?? {}), // CORREÇÃO: Adicionado fallback para objeto vazio
       ...(!isDefaultPrimaryColor && {
         primary: primaryColorPalette,
         // secondary: secondaryColorPalette,
@@ -56,7 +56,7 @@ export function applySettingsToTheme(
     };
 
     const updatedCustomShadows = {
-      ...currentScheme?.customShadows,
+      ...(currentScheme?.customShadows ?? {}), // CORREÇÃO: Adicionado fallback para objeto vazio
       ...(!isDefaultPrimaryColor && {
         primary: createShadowColor(primaryColorPalette.mainChannel),
         // secondary: createShadowColor(secondaryColorPalette.mainChannel),
