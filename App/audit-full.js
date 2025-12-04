@@ -4,8 +4,8 @@ const path = require('path');
 // === CONFIGURAÇÕES DE CAMINHOS ===
 // Ajuste estes caminhos se os nomes das suas pastas forem diferentes
 const ROOT_DIR = __dirname;
-const BACKEND_PATH = path.join(ROOT_DIR, 'backend/worker');
-const FRONTEND_PATH = path.join(ROOT_DIR, 'vite-ts');
+const BACKEND_PATH = path.join(ROOT_DIR, 'Backend/worker');
+const FRONTEND_PATH = path.join(ROOT_DIR, 'Frontend');
 const REPORT_FILE = 'RELATORIO_INTEGRACAO.md';
 
 // === CORES PARA O TERMINAL ===
