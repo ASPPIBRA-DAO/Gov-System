@@ -3,7 +3,6 @@ import type { SettingsState } from 'src/components/settings';
 import type { ThemeOptions, ThemeColorScheme } from '../types';
 
 import { setFont, hexToRgbChannel, createPaletteChannel } from 'minimal-shared/utils';
-
 import { primaryColorPresets } from './color-presets';
 import { createShadowColor } from '../core/custom-shadows';
 
@@ -27,54 +26,57 @@ export function applySettingsToTheme(
   const isDefaultContrast = contrast === 'default';
   const isDefaultPrimaryColor = primaryColor === 'default';
 
+  // Safe palette
   const lightPalette = (theme.colorSchemes?.light?.palette ??
     {}) as ColorSystem['palette'];
 
-  const primaryColorPalette = createPaletteChannel(
-    primaryColorPresets[primaryColor]
-  );
+  const primaryColorPalette = createPaletteChannel(primaryColorPresets[primaryColor]);
 
   const updateColorScheme = (schemeName: ThemeColorScheme) => {
-    const currentScheme = theme.colorSchemes?.[schemeName] ?? {};
+    const scheme = theme.colorSchemes?.[schemeName] || {};
 
-    const basePalette =
-      (currentScheme.palette && typeof currentScheme.palette === 'object'
-        ? currentScheme.palette
-        : {}) as ColorSystem['palette'];
+    const palette: ColorSystem['palette'] =
+      typeof scheme.palette === 'object' && scheme.palette !== null
+        ? scheme.palette
+        : ({} as ColorSystem['palette']);
 
-    const updatedPalette: ColorSystem['palette'] = {
-      ...basePalette,
-      ...(!isDefaultPrimaryColor && {
-        primary: primaryColorPalette,
-      }),
-
-      ...(schemeName === 'light' && {
-        background: {
-          ...(lightPalette.background ?? {}),
-          ...(!isDefaultContrast && {
-            default: lightPalette.grey?.[200],
-            defaultChannel: hexToRgbChannel(lightPalette.grey?.[200]),
-          }),
-        },
-      }),
-    };
-
-    const baseCustomShadows =
-      currentScheme.customShadows && typeof currentScheme.customShadows === 'object'
-        ? currentScheme.customShadows
+    const customShadows =
+      typeof scheme.customShadows === 'object' && scheme.customShadows !== null
+        ? scheme.customShadows
         : {};
 
-    const updatedCustomShadows = {
-      ...baseCustomShadows,
-      ...(!isDefaultPrimaryColor && {
-        primary: createShadowColor(primaryColorPalette.mainChannel),
-      }),
+    // Create NEW palette object without spreads
+    const newPalette: ColorSystem['palette'] = {
+      ...palette,
     };
 
+    if (!isDefaultPrimaryColor) {
+      newPalette.primary = primaryColorPalette;
+    }
+
+    if (schemeName === 'light') {
+      const bg = lightPalette.background || {};
+      newPalette.background = { ...bg };
+
+      if (!isDefaultContrast) {
+        newPalette.background.default = lightPalette.grey?.[200];
+        newPalette.background.defaultChannel = hexToRgbChannel(
+          lightPalette.grey?.[200]
+        );
+      }
+    }
+
+    const newCustomShadows = { ...customShadows };
+
+    if (!isDefaultPrimaryColor) {
+      newCustomShadows.primary = createShadowColor(primaryColorPalette.mainChannel);
+    }
+
+    // Return FULLY SAFE object
     return {
-      ...currentScheme,
-      palette: updatedPalette,
-      customShadows: updatedCustomShadows,
+      ...scheme,
+      palette: newPalette,
+      customShadows: newCustomShadows,
     };
   };
 
