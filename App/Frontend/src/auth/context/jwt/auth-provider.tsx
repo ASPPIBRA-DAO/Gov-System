@@ -1,9 +1,9 @@
 import type { AuthState } from '../../types';
 
-import { useMemo, useEffect, useCallback } from 'react';
-// Importação nova: Permite ler os dados do usuário direto do token
 import { jwtDecode } from 'jwt-decode';
+// Importação nova: Permite ler os dados do usuário direto do token
 import { useSetState } from 'minimal-shared/hooks';
+import { useMemo, useEffect, useCallback } from 'react';
 
 import axios from 'src/lib/axios';
 
