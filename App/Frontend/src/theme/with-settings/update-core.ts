@@ -3,6 +3,7 @@ import type { SettingsState } from 'src/components/settings';
 import type { ThemeOptions, ThemeColorScheme } from '../types';
 
 import { setFont, hexToRgbChannel, createPaletteChannel } from 'minimal-shared/utils';
+
 import { primaryColorPresets } from './color-presets';
 import { createShadowColor } from '../core/custom-shadows';
 
