@@ -14,19 +14,19 @@
     "lint:print": "npx eslint --print-config eslint.config.mjs > eslint-show-config.json",
     "fm:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "fm:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "fix:all": "npm run lint:fix && npm run fm:fix",
+    "fix:all": "pnpm run lint:fix && pnpm run fm:fix",
     "clean": "rm -rf node_modules .next out dist build",
-    "re:dev": "yarn clean && yarn install && yarn dev",
-    "re:build": "yarn clean && yarn install && yarn build",
-    "re:build-npm": "npm run clean && npm install && npm run build",
-    "tsc:dev": "yarn dev & yarn tsc:watch",
+    "re:dev": "pnpm run clean && pnpm install && pnpm run dev",
+    "re:build": "pnpm run clean && pnpm install && pnpm run build",
+    "re:build-npm": "pnpm run clean && pnpm install && pnpm run build",
+    "tsc:dev": "pnpm run dev & pnpm run tsc:watch",
     "tsc:watch": "tsc --noEmit --watch",
     "tsc:print": "npx tsc --showConfig"
   },
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "pnpm@9.1.0",
   "dependencies": {
     "@atlaskit/pragmatic-drag-and-drop": "^1.7.7",
     "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "^2.1.2",
@@ -57,6 +57,7 @@
     "@mui/x-tree-view": "^8.12.0",
     "@react-pdf/renderer": "^4.3.1",
     "@supabase/supabase-js": "^2.58.0",
+    "@tiptap/core": "^3.13.0",
     "@tiptap/extension-bubble-menu": "^3.6.2",
     "@tiptap/extension-code-block-lowlight": "^3.6.2",
     "@tiptap/extension-image": "^3.6.2",
@@ -113,6 +114,7 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/autosuggest-highlight": "^3.2.3",
+    "@types/geojson": "^7946.0.16",
     "@types/node": "^24.5.2",
     "@types/nprogress": "^0.2.3",
     "@types/react": "^19.1.15",
