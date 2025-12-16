@@ -22,22 +22,57 @@ O sistema é construído sobre a plataforma de edge da Cloudflare, combinando um
 graph TD
     subgraph "Navegador do Usuário"
         A[React App]
+        W[Wallet Web3]
     end
 
     subgraph "Cloudflare Edge"
         B(Cloudflare Pages)
         C(API Worker)
-        D(Banco de Dados D1)
-        E(Storage R2)
     end
 
-    A -- Requisições HTTP --> C
-    C -- Consultas SQL --> D
-    C -- Upload/Download --> E
+    subgraph "Camada de Identidade (IdP)"
+        C1[Auth Core]
+        C2[MFA / TOTP]
+        C3[Web3 SIWE]
+        C4[Compliance & KYC]
+    end
+
+    subgraph "Persistência"
+        D[(Banco de Dados D1)]
+        E[(Storage R2)]
+        F[(Audit Logs)]
+    end
+
+    %% Fluxo principal
     B -- Serve o App --> A
+    A -- Requisições HTTP --> C
+    C --> C1
+
+    %% Auth & Segurança
+    C1 -- Sessões / Usuários --> D
+    C1 -- Eventos --> F
+
+    %% MFA
+    C1 --> C2
+    C2 -- Validar Código --> D
+    C2 -- Eventos --> F
+
+    %% Web3
+    W -- Assinatura --> C3
+    C3 -- Wallets / Users --> D
+    C3 -- Eventos --> F
+
+    %% Compliance
+    C1 --> C4
+    C4 -- Status KYC / Termos --> D
+    C4 -- Upload Docs --> E
+    C4 -- Eventos --> F
+
 ```
 
 ---
+
+
 
 ## ⚙️ Guia de Setup e Execução
 
