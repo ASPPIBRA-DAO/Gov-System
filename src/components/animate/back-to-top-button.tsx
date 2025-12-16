@@ -1,3 +1,4 @@
+
 import type { FabProps } from '@mui/material/Fab';
 
 import { cloneElement } from 'react';
@@ -25,7 +26,7 @@ export function BackToTopButton({
   const { onBackToTop, isVisible } = useBackToTop(scrollThreshold, isDebounce);
 
   if (renderButton) {
-    return cloneElement(renderButton(isVisible) as React.ReactElement<{ onClick?: () => void }>, {
+    return cloneElement(renderButton(isVisible) as React.ReactElement<{ onClick?: () => void }> , {
       onClick: onBackToTop,
     });
   }
@@ -36,21 +37,23 @@ export function BackToTopButton({
       onClick={onBackToTop}
       sx={[
         (theme) => ({
-          width: 48,
-          height: 48,
+          width: 40,
+          height: 40,
           position: 'fixed',
           transform: 'scale(0)',
-          right: { xs: 24, md: 32 },
+          color: theme.palette.text.primary,
+          left: { xs: 16, md: 24 },
           bottom: { xs: 24, md: 32 },
           zIndex: theme.zIndex.speedDial,
           transition: theme.transitions.create(['transform']),
+          ...theme.mixins.bgBlur({ blur: 8, color: 'rgba(255, 255, 255, 0.2)' }),
           ...(isVisible && { transform: 'scale(1)' }),
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
-      <Iconify width={24} icon="solar:double-alt-arrow-up-bold-duotone" />
+      <Iconify width={20} icon="solar:double-alt-arrow-up-bold-duotone" />
     </Fab>
   );
 }

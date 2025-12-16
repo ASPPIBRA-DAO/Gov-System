@@ -9,8 +9,8 @@ import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import { Image } from '../../components/image';
 import { _socials, _carouselsMembers } from '../../_mock';
+import { Image } from '../../components/image';
 import { Iconify } from '../../components/iconify';
 import { varFade, MotionViewport } from '../../components/animate';
 import { Carousel, useCarousel, CarouselArrowFloatButtons } from '../../components/carousel';

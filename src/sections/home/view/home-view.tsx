@@ -5,14 +5,14 @@ import { BackToTopButton } from 'src/components/animate/back-to-top-button';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
 import { HomeCommunity } from '../home-community';
-import { HomeFAQs } from '../home-faqs';
 import { HomeEcosystem } from '../home-ecosystem';
-import { HomeHero } from '../home-hero';
+import { HomeFAQs } from '../home-faqs';
 import { HomeFinalCTA } from '../home-final-cta';
-import { HomeTeam } from '../home-team';
-import { HomeRoadmap } from '../home-roadmap';
-import { HomeLatestNews } from '../home-latest-news';
+import { HomeHero } from '../home-hero';
 import { HomeIntegrations } from '../home-integrations';
+import { HomeLatestNews } from '../home-latest-news';
+import { HomeRoadmap } from '../home-roadmap';
+import { HomeTeam } from '../home-team';
 
 // ----------------------------------------------------------------------
 
