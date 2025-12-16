@@ -4,15 +4,15 @@ import Stack from '@mui/material/Stack';
 import { BackToTopButton } from 'src/components/animate/back-to-top-button';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
+import { HomeFAQs } from '../home-faqs';
+import { HomeHero } from '../home-hero';
+import { HomeTeam } from '../home-team';
+import { HomeRoadmap } from '../home-roadmap';
+import { HomeFinalCTA } from '../home-final-cta';
 import { HomeCommunity } from '../home-community';
 import { HomeEcosystem } from '../home-ecosystem';
-import { HomeFAQs } from '../home-faqs';
-import { HomeFinalCTA } from '../home-final-cta';
-import { HomeHero } from '../home-hero';
-import { HomeIntegrations } from '../home-integrations';
 import { HomeLatestNews } from '../home-latest-news';
-import { HomeRoadmap } from '../home-roadmap';
-import { HomeTeam } from '../home-team';
+import { HomeIntegrations } from '../home-integrations';
 
 // ----------------------------------------------------------------------
 

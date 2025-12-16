@@ -5,17 +5,14 @@ import Link from '@mui/material/Link';
 // ✅ MUI v7: O Grid padrão agora usa a sintaxe 'size'
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
-import { styled, keyframes } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { styled, keyframes } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
-
-import { _socials } from 'src/_mock';
 
 import { Logo } from 'src/components/logo';
 import { Iconify } from 'src/components/iconify';
@@ -61,7 +58,7 @@ const CUSTOM_SOCIALS = [
   { value: 'instagram', icon: 'ri:instagram-fill' },
   { value: 'github', icon: 'ri:github-fill' },
   { value: 'telegram', icon: 'ri:telegram-fill' },
-];
+] as const;
 
 // ----------------------------------------------------------------------
 
