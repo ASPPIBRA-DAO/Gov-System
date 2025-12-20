@@ -6,20 +6,20 @@ import { CONFIG } from 'src/global-config';
 
 // ----------------------------------------------------------------------
 
-// Prioriza a variável do .env para facilitar o deploy desacoplado
+// Prioriza a variável do .env para garantir a conexão com https://api.asppibra.com
 const HOST_API = import.meta.env.VITE_API_URL || CONFIG.serverUrl;
-const APP_ID = import.meta.env.VITE_APP_ID || 'gov_system_main';
+const APP_ID = import.meta.env.VITE_APP_ID || 'asppibra_governance_system';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
   headers: {
     'Content-Type': 'application/json',
-    // Header customizado para auditoria multi-SaaS no backend
+    // Header essencial para o Audit Log Forensic System no Cloudflare
     'X-App-ID': APP_ID,
   },
 });
 
-// Interceptor de Requisição: Injeta o Token JWT em cada chamada
+// Interceptor de Requisição: Injeta o Token JWT em cada chamada para o IdP
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('accessToken');
@@ -31,17 +31,18 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Interceptor de Resposta: Tratamento de erros institucional
+// Interceptor de Resposta: Tratamento de erros institucional e expiração de sessão
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Caso o backend retorne 401, a sessão expirou no Edge
+    // Caso o backend retorne 401, a sessão expirou no Edge Runtime
     if (error?.response?.status === 401) {
       localStorage.removeItem('accessToken');
     }
 
     const message =
       error?.response?.data?.error || error?.message || 'Erro de comunicação com a API Central';
+    
     console.error('API Error:', message);
     return Promise.reject(new Error(message));
   }
@@ -63,18 +64,18 @@ export const fetcher = async <T = unknown>(
 
 // ----------------------------------------------------------------------
 
-// Sincronizado com a estrutura do CENTRAL-SYSTEM-API + Compatibilidade com Kit Minimals
+// Sincronizado com CENTRAL-SYSTEM-API (Hono + Cloudflare Worker)
 export const endpoints = {
   chat: '/api/platform/chat',
   kanban: '/api/platform/kanban',
   calendar: '/api/platform/calendar',
   auth: {
     me: '/api/core/auth/me',
-    signIn: '/api/core/auth/sign-in',
-    signUp: '/api/core/auth/register',
+    signIn: '/api/core/auth/login',    // ✅ Corrigido para /login (Resolve Erro 405)
+    signUp: '/api/core/auth/register', // ✅ Sincronizado com sessionRouter
     forgotPassword: '/api/core/auth/password/forgot',
   },
-  // --- Restauração das chaves necessárias para o Blog, Mail e Product ---
+  // --- Módulos de Plataforma ---
   mail: {
     list: '/api/platform/mail/list',
     details: '/api/platform/mail/details',
@@ -91,7 +92,7 @@ export const endpoints = {
     details: '/api/platform/product/details',
     search: '/api/platform/product/search',
   },
-  // --- Seus novos módulos de Governança ---
+  // --- Módulos de Governança e RWA ASPPIBRA ---
   agro: {
     inventory: '/api/products/agro',
   },
