@@ -1,11 +1,10 @@
 import type { AuthState } from '../../types';
 
 import { jwtDecode } from 'jwt-decode';
-// Importação nova: Permite ler os dados do usuário direto do token
 import { useSetState } from 'minimal-shared/hooks';
 import { useMemo, useEffect, useCallback } from 'react';
 
-import axios from 'src/lib/axios';
+import axios, { endpoints } from 'src/lib/axios';
 
 import { JWT_STORAGE_KEY } from './constant';
 import { AuthContext } from '../auth-context';
@@ -17,7 +16,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-// Define o formato dos dados que vêm dentro do Token JWT gerado pelo Worker
 type JWTPayload = {
   userId: string;
   email: string;
@@ -29,34 +27,29 @@ export function AuthProvider({ children }: Props) {
   const { state, setState } = useSetState<AuthState>({ user: null, loading: true });
 
   /**
-   * 1. VERIFICAÇÃO DE SESSÃO (Ao carregar a página/F5)
-   * Lógica: Se existe um token válido no navegador, decodificamos ele 
-   * para pegar o email e ID, sem precisar chamar o backend novamente.
+   * 1. VERIFICAÇÃO DE SESSÃO (Persistência)
+   * Agora busca os dados atualizados do banco via endpoint /me
    */
   const checkUserSession = useCallback(async () => {
     try {
-      const accessToken = sessionStorage.getItem(JWT_STORAGE_KEY);
+      const accessToken = localStorage.getItem(JWT_STORAGE_KEY);
 
       if (accessToken && isValidToken(accessToken)) {
         setSession(accessToken);
 
-        // Decodifica o token (Client-side decoding)
-        const decoded = jwtDecode<JWTPayload>(accessToken);
+        // Chamada ao backend para validar o token e pegar dados novos (AAL1)
+        const response = await axios.get(endpoints.auth.me);
+        const { user } = response.data;
 
-        const user = {
-          id: decoded.userId,
-          email: decoded.email,
-          role: decoded.role || 'admin', // Fallback temporário para testes
-          displayName: decoded.email.split('@')[0],
-          accessToken,
-        };
-
-        setState({ user, loading: false });
+        setState({ 
+          user: { ...user, accessToken }, 
+          loading: false 
+        });
       } else {
         setState({ user: null, loading: false });
       }
     } catch (error) {
-      console.error('Sessão inválida:', error);
+      console.error('Sessão expirada:', error);
       setSession(null);
       setState({ user: null, loading: false });
     }
@@ -64,64 +57,61 @@ export function AuthProvider({ children }: Props) {
 
   useEffect(() => {
     checkUserSession();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // ----------------------------------------------------------------------
+  }, [checkUserSession]);
 
   /**
-   * 2. LOGIN
-   * Conecta com: App/backend/worker/src/routes/auth.ts (POST /login)
+   * 2. LOGIN (Sign-In)
    */
   const login = useCallback(async (email: string, password: string) => {
-    try {
-      const response = await axios.post('/auth/login', {
-        email,
-        password,
-      });
+    const response = await axios.post(endpoints.auth.signIn, { email, password });
 
-      const { accessToken, user } = response.data;
+    const { accessToken, user } = response.data;
 
-      if (!accessToken) throw new Error('Token não recebido');
+    if (!accessToken) throw new Error('Falha na emissão da credencial.');
 
+    setSession(accessToken);
+
+    setState({
+      user: {
+        ...user,
+        accessToken,
+        displayName: `${user.firstName} ${user.lastName}`,
+      },
+    });
+  }, [setState]);
+
+  /**
+   * 3. REGISTRO (Sign-Up)
+   * Implementada a lógica de split de nome para compatibilidade com D1
+   */
+  const register = useCallback(async (email: string, password: string, name: string) => {
+    // Separa "Nome Sobrenome" em firstName e lastName
+    const [firstName, ...lastNameParts] = name.trim().split(' ');
+    const lastName = lastNameParts.join(' ');
+
+    const response = await axios.post(endpoints.auth.signUp, {
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+
+    const { accessToken, user } = response.data;
+
+    if (accessToken) {
       setSession(accessToken);
-
       setState({
         user: {
           ...user,
           accessToken,
-          role: 'admin',
-          displayName: user.email.split('@')[0],
+          displayName: `${user.firstName} ${user.lastName}`,
         },
       });
-    } catch (error) {
-      console.error('Erro de Login:', error);
-      throw error; // Repassa o erro para a tela exibir o alerta vermelho
-    } 
+    }
   }, [setState]);
 
   /**
-   * 3. REGISTRO
-   * Conecta com: App/backend/worker/src/routes/users.ts (POST /register)
-   */
-  const register = useCallback(async (email: string, password: string, firstName: string, lastName: string) => {
-    try {
-      await axios.post('/users/register', {
-        email,
-        password,
-        // firstName e lastName podem ser enviados se adicionarmos no banco depois
-      });
-      
-      // Opcional: Poderíamos chamar login(email, password) aqui para logar automático
-    } catch (error) {
-      console.error('Erro de Registro:', error);
-      throw error;
-    }
-  }, []);
-
-  /**
    * 4. LOGOUT
-   * Limpa tudo e manda o usuário para fora
    */
   const logout = useCallback(async () => {
     setSession(null);
@@ -135,12 +125,11 @@ export function AuthProvider({ children }: Props) {
 
   const memoizedValue = useMemo(
     () => ({
-      user: state.user ? { ...state.user, role: state.user?.role ?? 'admin' } : null,
+      user: state.user,
       checkUserSession,
       loading: status === 'loading',
       authenticated: status === 'authenticated',
       unauthenticated: status === 'unauthenticated',
-      // Agora expomos as funções reais para o resto do app usar
       login,
       register,
       logout,
