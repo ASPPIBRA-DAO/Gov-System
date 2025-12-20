@@ -19,7 +19,6 @@ import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { _mock } from 'src/_mock';
-import { CONFIG } from 'src/global-config';
 
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
@@ -28,9 +27,17 @@ import { HeroBackground } from './components/hero-background';
 
 // ----------------------------------------------------------------------
 
-const smKey: Breakpoint = 'sm';
 const mdKey: Breakpoint = 'md';
 const lgKey: Breakpoint = 'lg';
+
+const PLATFORMS = [
+  { name: 'Cloudflare Edge', icon: 'logos:cloudflare' },
+  { name: 'Ethereum', icon: 'logos:ethereum' },
+  { name: 'IPFS', icon: 'simple-icons:ipfs' },
+  { name: 'SQLite (D1)', icon: 'logos:sqlite' },
+  { name: 'React 19', icon: 'logos:react' },
+  { name: 'Framer Motion', icon: 'logos:framer' },
+];
 
 const motionProps: MotionProps = {
   variants: varFade('inUp', { distance: 24 }),
@@ -38,68 +45,59 @@ const motionProps: MotionProps = {
 
 export function HomeHero({ sx, ...other }: BoxProps) {
   const scrollProgress = useScrollPercent();
-
   const mdUp = useMediaQuery((theme) => theme.breakpoints.up(mdKey));
-
-  const distance = mdUp ? scrollProgress.percent : 0;
-
-  const y1 = useTransformY(scrollProgress.scrollY, distance * -7);
-  const y2 = useTransformY(scrollProgress.scrollY, distance * -6);
-  const y3 = useTransformY(scrollProgress.scrollY, distance * -5);
-  const y4 = useTransformY(scrollProgress.scrollY, distance * -4);
-  const y5 = useTransformY(scrollProgress.scrollY, distance * -3);
 
   const opacity: MotionValue<number> = useTransform(
     scrollProgress.scrollY,
-    [0, 1],
-    [1, mdUp ? Number((1 - scrollProgress.percent / 100).toFixed(1)) : 1]
+    [0, 400],
+    [1, 0]
   );
 
   const renderHeading = () => (
     <m.div {...motionProps}>
+      <Typography
+        variant="overline"
+        sx={{ 
+          color: 'primary.main', 
+          fontWeight: 'bold', 
+          letterSpacing: 3, 
+          mb: 2, 
+          display: 'block',
+          textTransform: 'uppercase'
+        }}
+      >
+        Liderando a Próxima Fronteira Digital
+      </Typography>
       <Box
         component="h1"
         sx={[
           (theme) => ({
             my: 0,
             mx: 'auto',
-            maxWidth: 680,
-            display: 'flex',
-            flexWrap: 'wrap',
-            typography: 'h2',
-            justifyContent: 'center',
+            maxWidth: 960,
+            textAlign: 'center',
+            display: 'inline-block',
+            typography: 'h1',
+            fontWeight: 900,
+            fontSize: { xs: '2.2rem', md: '4.8rem' },
+            lineHeight: { xs: 1.2, md: 1.1 },
             fontFamily: theme.typography.fontSecondaryFamily,
-            [theme.breakpoints.up(lgKey)]: {
-              fontSize: theme.typography.pxToRem(72),
-              lineHeight: '90px',
-            },
           }),
         ]}
       >
-        <Box component="span" sx={{ width: 1, opacity: 0.24 }}>
-          Boost your building
-        </Box>
-        process with
+        Transformando Negócios em <br />
         <Box
           component={m.span}
           animate={{ backgroundPosition: '200% center' }}
-          transition={{
-            duration: 20,
-            ease: 'linear',
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-          sx={[
-            (theme) => ({
-              ...theme.mixins.textGradient(
-                `300deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.warning.main} 25%, ${theme.vars.palette.primary.main} 50%, ${theme.vars.palette.warning.main} 75%, ${theme.vars.palette.primary.main} 100%`
-              ),
-              backgroundSize: '400%',
-              ml: { xs: 0.75, md: 1, xl: 1.5 },
-            }),
-          ]}
+          transition={{ duration: 12, ease: 'linear', repeat: Infinity }}
+          sx={(theme) => ({
+            ...theme.mixins.textGradient(
+              `300deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.info.main} 50%, ${theme.vars.palette.primary.main} 100%`
+            ),
+            backgroundSize: '200%',
+          })}
         >
-          Minimal
+          Ativos Digitais
         </Box>
       </Box>
     </m.div>
@@ -108,106 +106,46 @@ export function HomeHero({ sx, ...other }: BoxProps) {
   const renderText = () => (
     <m.div {...motionProps}>
       <Typography
-        variant="body2"
-        sx={[
-          (theme) => ({
-            mx: 'auto',
-            [theme.breakpoints.up(smKey)]: { whiteSpace: 'pre' },
-            [theme.breakpoints.up(lgKey)]: { fontSize: 20, lineHeight: '36px' },
-          }),
-        ]}
+        sx={{
+          mx: 'auto',
+          maxWidth: 800,
+          color: 'text.secondary',
+          fontSize: { xs: 17, md: 22 },
+          lineHeight: 1.6,
+          mt: 3,
+        }}
       >
-        {`The starting point for your next project is based on MUI. \nEasy customization helps you build apps faster and better.`}
+        A Ponte Definitiva Entre o <strong>Mundo Real</strong> e o <strong>Mundo Digital</strong>. 
+        Um ecossistema que conecta segurança jurídica, blockchain e IA para transformar ativos em valores exponenciais.
       </Typography>
     </m.div>
   );
 
-  const renderRatings = () => (
-    <m.div {...motionProps}>
-      <Box
-        sx={{
-          gap: 1.5,
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          typography: 'subtitle2',
-          justifyContent: 'center',
-        }}
-      >
-        <AvatarGroup
-          sx={{
-            [`& .${avatarClasses.root}`]: {
-              width: 32,
-              height: 32,
-            },
-          }}
-        >
-          {Array.from({ length: 3 }, (_, index) => (
-            <Avatar
-              key={_mock.fullName(index + 1)}
-              alt={_mock.fullName(index + 1)}
-              src={_mock.image.avatar(index + 1)}
-            />
-          ))}
-        </AvatarGroup>
-        160+ Happy customers
-      </Box>
-    </m.div>
-  );
-
   const renderButtons = () => (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: { xs: 1.5, sm: 2 },
-      }}
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="center"
+      spacing={2}
+      sx={{ mt: 6 }}
     >
       <m.div {...motionProps}>
-        <Stack spacing={2.5} sx={{ alignItems: 'center' }}>
-          <Button
-            component={RouterLink}
-            href={paths.dashboard.root}
-            color="inherit"
-            size="large"
-            variant="contained"
-            startIcon={<Iconify width={24} icon="custom:flash-outline" />}
-            sx={{ height: 52 }}
-          >
-            <span>
-              Live preview
-              <Box
-                component="small"
-                sx={[
-                  (theme) => ({
-                    mt: '-4px',
-                    opacity: 0.64,
-                    display: 'flex',
-                    lineHeight: '18px',
-                    fontSize: theme.typography.pxToRem(10),
-                    fontWeight: theme.typography.fontWeightMedium,
-                  }),
-                ]}
-              >
-                v{CONFIG.appVersion}
-              </Box>
-            </span>
-          </Button>
-
-          <Link
-            color="inherit"
-            variant="body2"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={paths.freeUI}
-            underline="always"
-            sx={{ gap: 0.75, alignItems: 'center', display: 'inline-flex' }}
-          >
-            <Iconify width={16} icon="eva:external-link-fill" />
-            Try free version
-          </Link>
-        </Stack>
+        <Button
+          component={RouterLink}
+          href={paths.dashboard.root}
+          color="primary"
+          size="large"
+          variant="contained"
+          startIcon={<Iconify width={24} icon={"solar:bolt-bold" as any} />}
+          sx={{ 
+            height: 60, 
+            px: 4, 
+            fontSize: 18, 
+            borderRadius: 1.5,
+            boxShadow: (theme) => theme.customShadows.primary 
+          }}
+        >
+          Iniciar Governança
+        </Button>
       </m.div>
 
       <m.div {...motionProps}>
@@ -215,45 +153,61 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           color="inherit"
           size="large"
           variant="outlined"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={paths.figmaUrl}
-          startIcon={<Iconify width={24} icon="solar:figma-outline" />}
-          sx={{ height: 52, borderColor: 'currentColor' }}
+          startIcon={<Iconify width={24} icon={"solar:wallet-2-bold-duotone" as any} />}
+          sx={{ 
+            height: 60, 
+            px: 4, 
+            fontSize: 18, 
+            borderRadius: 1.5,
+            backdropFilter: 'blur(8px)',
+            borderColor: 'text.primary'
+          }}
         >
-          Figma preview
+          Conectar Carteira
         </Button>
       </m.div>
-    </Box>
+    </Stack>
   );
 
-  const renderIcons = () => (
-    <Stack spacing={3} sx={{ textAlign: 'center' }}>
-      <m.div {...motionProps}>
-        <Typography variant="overline" sx={{ opacity: 0.4 }}>
-          Available For
-        </Typography>
-      </m.div>
-
-      <Box sx={{ gap: 2.5, display: 'flex' }}>
-        {['js', 'ts', 'nextjs', 'vite', 'figma'].map((platform) => (
-          <m.div {...motionProps} key={platform}>
-            <Box
-              component="img"
-              alt={platform}
-              src={`${CONFIG.assetsDir}/assets/icons/platforms/ic-${platform}.svg`}
-              sx={[
-                (theme) => ({
-                  width: 24,
-                  height: 24,
-                  ...theme.applyStyles('dark', {
-                    ...(platform === 'nextjs' && { filter: 'invert(1)' }),
-                  }),
-                }),
-              ]}
-            />
-          </m.div>
-        ))}
+  const renderTechMarquee = () => (
+    <Stack spacing={4} sx={{ mt: 12, textAlign: 'center', width: 1 }}>
+      <Typography variant="overline" sx={{ opacity: 0.5, letterSpacing: 2 }}>
+        Infraestrutura de Classe Mundial
+      </Typography>
+      
+      <Box
+        sx={{
+          overflow: 'hidden',
+          display: 'flex',
+          userSelect: 'none',
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        }}
+      >
+        <m.div
+          animate={{ x: [0, -1200] }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          style={{ display: 'flex', gap: '80px', paddingRight: '80px' }}
+        >
+          {[...PLATFORMS, ...PLATFORMS, ...PLATFORMS].map((platform, index) => (
+            <Stack 
+              key={index} 
+              direction="row" 
+              alignItems="center" 
+              spacing={1.5} 
+              sx={{ 
+                opacity: 0.6, 
+                filter: 'grayscale(1)', 
+                transition: 'all 0.3s',
+                '&:hover': { filter: 'grayscale(0)', opacity: 1, transform: 'scale(1.1)' } 
+              }}
+            >
+               <Iconify icon={platform.icon as any} width={34} />
+               <Typography variant="subtitle2" sx={{ fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                 {platform.name}
+               </Typography>
+            </Stack>
+          ))}
+        </m.div>
       </Box>
     </Stack>
   );
@@ -264,14 +218,13 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       component="section"
       sx={[
         (theme) => ({
-          overflow: 'hidden',
           position: 'relative',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden',
+          background: `radial-gradient(circle at 50% -10%, ${theme.vars.palette.primary.lighter} 0%, transparent 60%)`,
           [theme.breakpoints.up(mdKey)]: {
-            minHeight: 760,
-            height: '100vh',
-            maxHeight: 1440,
-            display: 'block',
-            willChange: 'opacity',
             mt: 'calc(var(--layout-header-desktop-height) * -1)',
           },
         }),
@@ -279,54 +232,28 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       ]}
       {...other}
     >
-      <Box
-        component={m.div}
-        style={{ opacity }}
-        sx={[
-          (theme) => ({
-            width: 1,
-            display: 'flex',
-            position: 'relative',
-            flexDirection: 'column',
-            transition: theme.transitions.create(['opacity']),
-            [theme.breakpoints.up(mdKey)]: {
-              height: 1,
-              position: 'fixed',
-              maxHeight: 'inherit',
-            },
-          }),
-        ]}
-      >
-        <Container
-          component={MotionContainer}
-          sx={[
-            (theme) => ({
-              py: 3,
-              gap: 5,
-              zIndex: 9,
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
-              [theme.breakpoints.up(mdKey)]: {
-                flex: '1 1 auto',
-                justifyContent: 'center',
-                py: 'var(--layout-header-desktop-height)',
-              },
-            }),
-          ]}
-        >
-          <Stack spacing={3} sx={{ textAlign: 'center' }}>
-            <m.div style={{ y: y1 }}>{renderHeading()}</m.div>
-            <m.div style={{ y: y2 }}>{renderText()}</m.div>
-          </Stack>
+      <Box component={m.div} style={{ opacity }} sx={{ width: 1, position: 'relative', zIndex: 10 }}>
+        <Container component={MotionContainer} sx={{ py: 15, textAlign: 'center' }}>
+          {renderHeading()}
+          {renderText()}
+          {renderButtons()}
+          
+          <m.div {...motionProps} style={{ marginTop: '48px' }}>
+             <Link 
+               color="inherit" 
+               variant="body2" 
+               href="#" 
+               sx={{ opacity: 0.6, display: 'inline-flex', alignItems: 'center', gap: 1, textDecoration: 'underline' }}
+             >
+               <Iconify icon={"eva:file-text-outline" as any} width={20} /> Ver Whitepaper Técnico
+             </Link>
+          </m.div>
 
-          <m.div style={{ y: y3 }}>{renderRatings()}</m.div>
-          <m.div style={{ y: y4 }}>{renderButtons()}</m.div>
-          <m.div style={{ y: y5 }}>{renderIcons()}</m.div>
+          {renderTechMarquee()}
         </Container>
-
-        <HeroBackground />
       </Box>
+
+      <HeroBackground />
     </Box>
   );
 }
@@ -334,37 +261,20 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 // ----------------------------------------------------------------------
 
 function useTransformY(value: MotionValue<number>, distance: number) {
-  const physics: SpringOptions = {
-    mass: 0.1,
-    damping: 20,
-    stiffness: 300,
-    restDelta: 0.001,
-  };
-
+  const physics: SpringOptions = { mass: 0.1, damping: 20, stiffness: 300, restDelta: 0.001 };
   return useSpring(useTransform(value, [0, 1], [0, distance]), physics);
 }
 
 function useScrollPercent() {
   const elementRef = useRef<HTMLDivElement>(null);
-
   const { scrollY } = useScroll();
-
   const [percent, setPercent] = useState(0);
 
   useMotionValueEvent(scrollY, 'change', (scrollHeight) => {
     let heroHeight = 0;
-
-    if (elementRef.current) {
-      heroHeight = elementRef.current.offsetHeight;
-    }
-
+    if (elementRef.current) heroHeight = elementRef.current.offsetHeight;
     const scrollPercent = Math.floor((scrollHeight / heroHeight) * 100);
-
-    if (scrollPercent >= 100) {
-      setPercent(100);
-    } else {
-      setPercent(Math.floor(scrollPercent));
-    }
+    setPercent(scrollPercent >= 100 ? 100 : Math.floor(scrollPercent));
   });
 
   return { elementRef, percent, scrollY };
