@@ -1,5 +1,7 @@
 import type { AxiosRequestConfig } from 'axios';
+
 import axios from 'axios';
+
 import { CONFIG } from 'src/global-config';
 
 // ----------------------------------------------------------------------
@@ -13,7 +15,7 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
     // Header customizado para auditoria multi-SaaS no backend
-    'X-App-ID': APP_ID, 
+    'X-App-ID': APP_ID,
   },
 });
 
@@ -36,10 +38,10 @@ axiosInstance.interceptors.response.use(
     // Caso o backend retorne 401, a sessão expirou no Edge
     if (error?.response?.status === 401) {
       localStorage.removeItem('accessToken');
-      // Opcional: window.location.href = '/auth/jwt/sign-in';
     }
-    
-    const message = error?.response?.data?.error || error?.message || 'Erro de comunicação com a API Central';
+
+    const message =
+      error?.response?.data?.error || error?.message || 'Erro de comunicação com a API Central';
     console.error('API Error:', message);
     return Promise.reject(new Error(message));
   }
@@ -52,32 +54,48 @@ export default axiosInstance;
 export const fetcher = async <T = unknown>(
   args: string | [string, AxiosRequestConfig]
 ): Promise<T> => {
-  try {
-    const [url, config] = Array.isArray(args) ? args : [args, {}];
-    const res = await axiosInstance.get<T>(url, config);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
+  const [url, config] = Array.isArray(args) ? args : [args, {}];
+
+  const res = await axiosInstance.get<T>(url, config);
+
+  return res.data;
 };
 
 // ----------------------------------------------------------------------
 
-// Sincronizado com a estrutura de diretórios do CENTRAL-SYSTEM-API
+// Sincronizado com a estrutura do CENTRAL-SYSTEM-API + Compatibilidade com Kit Minimals
 export const endpoints = {
   chat: '/api/platform/chat',
   kanban: '/api/platform/kanban',
   calendar: '/api/platform/calendar',
   auth: {
-    me: '/api/core/auth/me',           // Rota /me que recupera a sessão
-    signIn: '/api/core/auth/sign-in', // Endpoint de Login implementado
-    signUp: '/api/core/auth/sign-up', // Endpoint de Registro implementado
-    forgotPassword: '/api/core/auth/password/forgot', // Nova rota de reset
+    me: '/api/core/auth/me',
+    signIn: '/api/core/auth/sign-in',
+    signUp: '/api/core/auth/register',
+    forgotPassword: '/api/core/auth/password/forgot',
   },
+  // --- Restauração das chaves necessárias para o Blog, Mail e Product ---
+  mail: {
+    list: '/api/platform/mail/list',
+    details: '/api/platform/mail/details',
+    labels: '/api/platform/mail/labels',
+  },
+  post: {
+    list: '/api/platform/post/list',
+    details: '/api/platform/post/details',
+    latest: '/api/platform/post/latest',
+    search: '/api/platform/post/search',
+  },
+  product: {
+    list: '/api/platform/product/list',
+    details: '/api/platform/product/details',
+    search: '/api/platform/product/search',
+  },
+  // --- Seus novos módulos de Governança ---
   agro: {
-    inventory: '/api/products/agro',   // Módulo de inventário rural detectado na auditoria
+    inventory: '/api/products/agro',
   },
   rwa: {
-    assets: '/api/products/rwa',      // Módulo de ativos reais tokenizados
-  }
+    assets: '/api/products/rwa',
+  },
 } as const;
