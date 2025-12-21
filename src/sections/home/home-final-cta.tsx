@@ -23,7 +23,7 @@ export function HomeFinalCTA({ sx, ...other }: BoxProps) {
   return (
     <Box
       component="section"
-      sx={[{ position: 'relative' }, ...(Array.isArray(sx) ? sx : [sx])]}
+      sx={[{ position: 'relative', mb: { xs: 10, md: 15 } }, ...(Array.isArray(sx) ? sx : [sx])]}
       {...other}
     >
       <MotionViewport>
@@ -136,7 +136,7 @@ const renderDescription = () => (
             '&:hover': { borderColor: 'currentColor' },
           }}
         >
-          Get free version
+          Get 
         </Button>
       </m.div>
     </Box>
