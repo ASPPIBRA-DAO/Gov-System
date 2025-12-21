@@ -23,10 +23,11 @@ import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
 
+// Métricas focadas em Valuation e AUM (Assets Under Management)
 const METRICS = [
-  { label: 'Produtores em Paraty', value: '+500', icon: 'solar:users-group-rounded-bold-duotone' },
-  { label: 'Hectares Protegidos', value: '+10k', icon: 'solar:map-arrow-square-bold-duotone' },
-  { label: 'Ativos Geridos', value: 'R$ 42M', icon: 'solar:wad-of-money-bold-duotone' },
+  { label: 'Membros da Rede', value: '+500', icon: 'solar:users-group-rounded-bold-duotone' },
+  { label: 'Área sob Gestão', value: '+10k', icon: 'solar:map-arrow-square-bold-duotone' },
+  { label: 'Ativos Geridos (AUM)', value: 'R$ 42M', icon: 'solar:wad-of-money-bold-duotone' },
 ];
 
 const SOCIAL_CHANNELS = [
@@ -69,10 +70,10 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
 
   const renderDescription = () => (
     <SectionTitle
-      caption="Community"
-      title="Unidos pela terra,"
-      txtGradient="ASPPIBRA-DAO"
-      description="Nossa comunidade conecta o produtor rural de Paraty à economia digital global. Juntos, garantimos segurança jurídica, protegemos o território e escalamos ativos agroecológicos."
+      caption="Market Traction"
+      title="Potencial de Mercado &"
+      txtGradient="Tração Institucional"
+      description="Consolidamos métricas sólidas que refletem nossa capacidade de escala. A ASPPIBRA-DAO provê a infraestrutura necessária para gerir ativos de alto valor com transparência, segurança jurídica e liquidez global."
       sx={{ textAlign: { xs: 'center', md: 'left' } }}
     />
   );
@@ -111,9 +112,9 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
       >
         <Stack spacing={4}>
           <Stack spacing={2}>
-            <Typography variant="h4">Ecossistema Global</Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              De Paraty para o mundo. Nossa governança descentralizada permite que investidores e produtores colaborem em um ambiente 100% transparente e auditável.
+            <Typography variant="h4">Sinergia em Rede</Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+              Nossa governança descentralizada integra empresas, cooperativas e organizações a um mercado de liquidez global, superando barreiras tecnológicas para escala imediata e gestão auditável.
             </Typography>
           </Stack>
 
@@ -124,7 +125,7 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
               ))}
             </AvatarGroup>
             <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-              +500 membros ativos
+              +500 parceiros institucionais
             </Typography>
           </Stack>
 
@@ -143,9 +144,8 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
           </Stack>
         </Stack>
 
-        {/* Elemento Decorativo: Mapa Mundi de Fundo Sutil */}
         <Iconify
-          icon={"solar:earth-bold-duotone" as any}
+          icon={"solar:chart-square-bold-duotone" as any}
           sx={{
             position: 'absolute',
             bottom: -40,
@@ -180,7 +180,7 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
 
         <Container sx={{ position: 'relative', zIndex: 9 }}>
           <Grid container spacing={{ xs: 8, md: 10 }} alignItems="center">
-            {/* Esquerda: Conteúdo e Métricas */}
+            {/* Esquerda: Tração e Métricas Financeiras */}
             <Grid size={{ xs: 12, md: 6 }}>
               {renderDescription()}
               {renderStats()}
@@ -191,23 +191,24 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
                     variant="contained"
                     color="primary"
                     size="large"
-                    sx={{ height: 52, px: 4, borderRadius: 1.2 }}
+                    startIcon={<Iconify icon={"solar:shield-user-bold-duotone" as any} width={24} />}
+                    sx={{ height: 56, px: 4, borderRadius: 1.2, boxShadow: theme.customShadows.primary }}
                   >
-                    Filiar-se agora
+                    Filiar-se à Rede
                   </Button>
                   <Link
                     href="#"
                     color="inherit"
                     variant="subtitle2"
-                    sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, opacity: 0.7 }}
+                    sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, opacity: 0.7, fontWeight: 700 }}
                   >
-                    Ver governança on-chain <Iconify icon={"solar:external-link-outline" as any} width={18} />
+                    Ver dados on-chain <Iconify icon={"solar:external-link-outline" as any} width={18} />
                   </Link>
                 </Stack>
               </m.div>
             </Grid>
 
-            {/* Direita: Social Hub Card */}
+            {/* Direita: Card de Expansão de Rede */}
             <Grid size={{ xs: 12, md: 6 }}>
               {renderSocialHub()}
             </Grid>
