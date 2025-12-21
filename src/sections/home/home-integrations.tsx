@@ -45,21 +45,29 @@ const renderLines = () => (
 export function HomeIntegrations({ sx, ...other }: BoxProps) {
   const renderDescription = () => (
     <SectionTitle
-      caption="Integrations"
-      title="Robust integration"
-      txtGradient="framework"
+      caption="Infrastructure"
+      title="Conectividade Global &"
+      txtGradient="Infraestrutura de Ponta"
       description={
         <>
-          <Box component="span" sx={{ mb: 1, display: 'block' }}>
-            A comprehensive suite of integrations offers diverse functionalities.
+          <Box component="span" sx={{ mb: 2, display: 'block', lineHeight: 1.7 }}>
+            Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da 
+            computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua 
+            Credencial CAD estejam sempre disponíveis e auditáveis.
           </Box>
 
           <Box
             component="span"
-            sx={{ fontStyle: 'italic', color: 'text.disabled', typography: 'caption' }}
+            sx={{ 
+              fontWeight: 600, 
+              color: 'text.secondary', 
+              typography: 'caption',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1
+            }}
           >
-            * Only includes authentication methods.
-            <br />* Database not included.
+            * Criptografia de nível governamental e imutabilidade on-chain garantida.
           </Box>
         </>
       }
@@ -71,7 +79,7 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
     <Box
       component={m.img}
       variants={{ ...varScale('in'), initial: { scale: 0.8, opacity: 0 } }}
-      alt="Integration"
+      alt="ASPPIBRA Infrastructure"
       src={`${CONFIG.assetsDir}/assets/illustrations/illustration-integration.webp`}
       sx={{ width: 720, objectFit: 'cover', aspectRatio: '1/1' }}
     />
@@ -80,14 +88,21 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
   return (
     <Box
       component="section"
-      sx={[{ pt: 10, position: 'relative' }, ...(Array.isArray(sx) ? sx : [sx])]}
+      sx={[
+        { 
+          pt: 10, 
+          pb: { xs: 10, md: 15 },
+          position: 'relative' 
+        }, 
+        ...(Array.isArray(sx) ? sx : [sx])
+      ]}
       {...other}
     >
       <MotionViewport>
         {renderLines()}
 
-        <Container>
-          <Grid container spacing={{ xs: 5, md: 8 }}>
+        <Container sx={{ position: 'relative', zIndex: 9 }}>
+          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
             <Grid size={{ xs: 12, md: 6, lg: 5 }}>{renderDescription()}</Grid>
 
             <Grid sx={{ textAlign: { xs: 'center', md: 'right' } }} size={{ xs: 12, md: 6, lg: 7 }}>
