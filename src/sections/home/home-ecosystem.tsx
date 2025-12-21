@@ -23,27 +23,27 @@ import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 const ECOSYSTEM_ITEMS = [
   {
-    title: 'RWA & Tokenização',
-    description: 'Transformação de propriedades físicas e ativos reais em ativos digitais líquidos e fracionados.',
-    icon: 'solar:globus-bold-duotone',
+    title: 'Ativos Juridicamente Aptos (REURB)',
+    description: 'Transformamos posses informais em instrumentos jurídicos seguros e documentados, prontos para a tokenização global.',
+    icon: 'solar:square-academic-cap-bold-duotone',
     color: 'primary',
   },
   {
-    title: 'Agroecologia',
-    description: 'Conectando a produção rural sustentável de Paraty ao crédito e financiamento Web3.',
-    icon: 'solar:leaf-bold-duotone',
+    title: 'Aceleração Agro-Digital',
+    description: 'Conectando cooperativas e produtores rurais a sistemas alternativos de crédito e modelos de inovação sustentável.',
+    icon: 'solar:rocket-bold-duotone',
     color: 'success',
   },
   {
-    title: 'Legal-Tech',
-    description: 'Segurança jurídica e compliance integrados para garantir a validade de ativos digitais.',
-    icon: 'solar:shield-check-bold-duotone',
+    title: 'Escala e Liquidez DeFi',
+    description: 'Superamos gargalos comerciais e logísticos ao vincular a produção real diretamente à liquidez descentralizada.',
+    icon: 'solar:chart-2-bold-duotone',
     color: 'info',
   },
   {
-    title: 'Governança DAO',
-    description: 'Gestão transparente e descentralizada para proprietários através da ASPPIBRA-DAO.',
-    icon: 'solar:users-group-rounded-bold-duotone',
+    title: 'Governança e Participação',
+    description: 'O Token de Governança é o motor da DAO. Garanta poder de decisão sobre a incubação de novos projetos da rede.',
+    icon: 'solar:token-bold-duotone',
     color: 'warning',
   },
 ];
@@ -82,13 +82,13 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
 
   const renderDescription = () => (
     <SectionTitle
-      caption="Ecosystem"
-      title="A Ponte entre o"
-      txtGradient="Mundo Real e Digital"
+      caption="Accelerator & Scale"
+      title="Infraestrutura para"
+      txtGradient="Escala de Ativos Reais"
       description={
-        <Box component="span" sx={{ display: 'block' }}>
-          Somos um ecossistema que conecta segurança jurídica, blockchain e IA para transformar 
-          propriedades e projetos reais em ativos digitais de alto valor.
+        <Box component="span" sx={{ display: 'block', lineHeight: 1.8 }}>
+          A ASPPIBRA-DAO opera como uma aceleradora institucional que integra ativos tradicionais ao mercado global de RWAs. 
+          Provemos a segurança jurídica e a tecnologia Web3 necessárias para legalizar e escalar a economia real.
         </Box>
       }
       sx={{ textAlign: { xs: 'center', md: 'left' } }}
@@ -112,17 +112,36 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
                   bgcolor: 'background.paper',
                   boxShadow: theme.customShadows.z24,
                   transform: 'translateY(-4px)',
+                  '& .icon-container': {
+                    bgcolor: alpha(theme.palette[item.color as 'primary'].main, 0.15),
+                    transform: 'scale(1.1)',
+                  }
                 },
               }}
             >
-              <Iconify 
-                icon={item.icon as any} 
-                width={44} 
-                sx={{ color: `${item.color}.main` }} 
-              />
+              <Box
+                className="icon-container"
+                sx={{
+                  width: 64,
+                  height: 64,
+                  display: 'flex',
+                  borderRadius: 1.5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: theme.transitions.create(['all']),
+                  bgcolor: alpha(theme.palette[item.color as 'primary'].main, 0.1),
+                }}
+              >
+                <Iconify 
+                  icon={item.icon as any} 
+                  width={36} 
+                  sx={{ color: `${item.color}.main` }} 
+                />
+              </Box>
+              
               <Stack spacing={1}>
                 <Typography variant="h6" sx={{ fontWeight: 800 }}>{item.title}</Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                   {item.description}
                 </Typography>
               </Stack>
@@ -159,14 +178,13 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
                 <Button
                   component={RouterLink}
                   href={paths.dashboard.root}
-                  color="inherit"
+                  color="primary"
                   size="large"
-                  variant="outlined"
-                  // SINTAXE CORRIGIDA: as any dentro das chaves
+                  variant="contained"
                   endIcon={<Iconify icon={"solar:alt-arrow-right-outline" as any} />}
-                  sx={{ mt: 5, px: 3, height: 52, borderRadius: 1.2 }}
+                  sx={{ mt: 5, px: 4, height: 56, borderRadius: 1.2, boxShadow: theme.customShadows.primary }}
                 >
-                  Explorar a plataforma
+                  Conheça os Ativos
                 </Button>
               </m.div>
             </Grid>
