@@ -11,14 +11,10 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import AvatarGroup from '@mui/material/AvatarGroup';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Avatar, { avatarClasses } from '@mui/material/Avatar';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
-
-import { _mock } from 'src/_mock';
 
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
@@ -28,15 +24,17 @@ import { HeroBackground } from './components/hero-background';
 // ----------------------------------------------------------------------
 
 const mdKey: Breakpoint = 'md';
-const lgKey: Breakpoint = 'lg';
 
+// Marquee de Tecnologia atualizado para o padrão mundial [cite: 1, 24-31]
 const PLATFORMS = [
   { name: 'Cloudflare Edge', icon: 'logos:cloudflare' },
+  { name: 'Bitcoin', icon: 'logos:bitcoin' },
   { name: 'Ethereum', icon: 'logos:ethereum' },
+  { name: 'Binance Smart Chain', icon: 'logos:binance' },
   { name: 'IPFS', icon: 'simple-icons:ipfs' },
   { name: 'SQLite (D1)', icon: 'logos:sqlite' },
   { name: 'React 19', icon: 'logos:react' },
-  { name: 'Framer Motion', icon: 'logos:framer' },
+  { name: 'Typescript', icon: 'logos:typescript-icon' },
 ];
 
 const motionProps: MotionProps = {
@@ -55,6 +53,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
   const renderHeading = () => (
     <m.div {...motionProps}>
+      {/* Badge de Confiança Institucional [cite: 1, 28] */}
       <Typography
         variant="overline"
         sx={{ 
@@ -66,8 +65,10 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           textTransform: 'uppercase'
         }}
       >
-        Liderando a Próxima Fronteira Digital
+        +10 instituições e cooperativas rurais integradas
       </Typography>
+      
+      {/* Headline (H1) Aprovada [cite: 1, 19] */}
       <Box
         component="h1"
         sx={[
@@ -79,13 +80,13 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             display: 'inline-block',
             typography: 'h1',
             fontWeight: 900,
-            fontSize: { xs: '2.2rem', md: '4.8rem' },
+            fontSize: { xs: '2.2rem', md: '4.2rem' }, // Ajustado para fluidez de leitura
             lineHeight: { xs: 1.2, md: 1.1 },
             fontFamily: theme.typography.fontSecondaryFamily,
           }),
         ]}
       >
-        Transformando Negócios em <br />
+        Governança Global Descentralizada sobre <br />
         <Box
           component={m.span}
           animate={{ backgroundPosition: '200% center' }}
@@ -97,7 +98,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             backgroundSize: '200%',
           })}
         >
-          Ativos Digitais
+          Ativos do Mundo Real
         </Box>
       </Box>
     </m.div>
@@ -105,18 +106,19 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
   const renderText = () => (
     <m.div {...motionProps}>
+      {/* Sub-headline com narrativa RWA e ASPPIBRA-DAO [cite: 1, 20-22, 205] */}
       <Typography
         sx={{
           mx: 'auto',
-          maxWidth: 800,
+          maxWidth: 900, // Levemente maior para acomodar o texto detalhado
           color: 'text.secondary',
-          fontSize: { xs: 17, md: 22 },
+          fontSize: { xs: 17, md: 20 },
           lineHeight: 1.6,
           mt: 3,
         }}
       >
-        A Ponte Definitiva Entre o <strong>Mundo Real</strong> e o <strong>Mundo Digital</strong>. 
-        Um ecossistema que conecta segurança jurídica, blockchain e IA para transformar ativos em valores exponenciais.
+        A ponte definitiva entre o <strong>Mundo Real</strong> e o <strong>Mundo Digital</strong>. 
+        A ASPPIBRA-DAO integra segurança jurídica, blockchain e IA para transformar propriedades físicas em ativos de valor exponencial administrados de forma descentralizada com total conformidade legal.
       </Typography>
     </m.div>
   );
@@ -128,14 +130,15 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       spacing={2}
       sx={{ mt: 6 }}
     >
+      {/* Botão Primário: Saiba Mais [cite: 2, 37] */}
       <m.div {...motionProps}>
         <Button
           component={RouterLink}
-          href={paths.dashboard.root}
+          href={paths.dashboard.root} // Link para visão detalhada da DAO
           color="primary"
           size="large"
           variant="contained"
-          startIcon={<Iconify width={24} icon={"solar:bolt-bold" as any} />}
+          startIcon={<Iconify width={24} icon={"solar:info-circle-bold-duotone" as any} />}
           sx={{ 
             height: 60, 
             px: 4, 
@@ -144,16 +147,17 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             boxShadow: (theme) => theme.customShadows.primary 
           }}
         >
-          Iniciar Governança
+          Saiba Mais
         </Button>
       </m.div>
 
+      {/* Botão Secundário: Gatilho de Exclusividade (CAD) [cite: 11, 291] */}
       <m.div {...motionProps}>
         <Button
           color="inherit"
           size="large"
           variant="outlined"
-          startIcon={<Iconify width={24} icon={"solar:wallet-2-bold-duotone" as any} />}
+          startIcon={<Iconify width={24} icon={"solar:shield-user-bold-duotone" as any} />}
           sx={{ 
             height: 60, 
             px: 4, 
@@ -163,14 +167,14 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             borderColor: 'text.primary'
           }}
         >
-          Conectar Carteira
+          Garanta sua CAD
         </Button>
       </m.div>
     </Stack>
   );
 
   const renderTechMarquee = () => (
-    <Stack spacing={4} sx={{ mt: 12, textAlign: 'center', width: 1 }}>
+    <Stack spacing={4} sx={{ mt: 10, textAlign: 'center', width: 1 }}>
       <Typography variant="overline" sx={{ opacity: 0.5, letterSpacing: 2 }}>
         Infraestrutura de Classe Mundial
       </Typography>
@@ -184,8 +188,8 @@ export function HomeHero({ sx, ...other }: BoxProps) {
         }}
       >
         <m.div
-          animate={{ x: [0, -1200] }}
-          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          animate={{ x: [0, -1600] }} // Ajustado para a nova lista de tecnologias
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           style={{ display: 'flex', gap: '80px', paddingRight: '80px' }}
         >
           {[...PLATFORMS, ...PLATFORMS, ...PLATFORMS].map((platform, index) => (
@@ -245,7 +249,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
                href="#" 
                sx={{ opacity: 0.6, display: 'inline-flex', alignItems: 'center', gap: 1, textDecoration: 'underline' }}
              >
-               <Iconify icon={"eva:file-text-outline" as any} width={20} /> Ver Whitepaper Técnico
+               <Iconify icon={"eva:file-text-outline" as any} width={20} /> Whitepaper
              </Link>
           </m.div>
 
@@ -259,11 +263,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 }
 
 // ----------------------------------------------------------------------
-
-function useTransformY(value: MotionValue<number>, distance: number) {
-  const physics: SpringOptions = { mass: 0.1, damping: 20, stiffness: 300, restDelta: 0.001 };
-  return useSpring(useTransform(value, [0, 1], [0, distance]), physics);
-}
 
 function useScrollPercent() {
   const elementRef = useRef<HTMLDivElement>(null);
