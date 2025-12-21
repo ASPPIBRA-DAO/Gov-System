@@ -25,18 +25,6 @@ import { HeroBackground } from './components/hero-background';
 
 const mdKey: Breakpoint = 'md';
 
-// Marquee de Tecnologia atualizado para o padrão mundial [cite: 1, 24-31]
-const PLATFORMS = [
-  { name: 'Cloudflare Edge', icon: 'logos:cloudflare' },
-  { name: 'Bitcoin', icon: 'logos:bitcoin' },
-  { name: 'Ethereum', icon: 'logos:ethereum' },
-  { name: 'Binance Smart Chain', icon: 'logos:binance' },
-  { name: 'IPFS', icon: 'simple-icons:ipfs' },
-  { name: 'SQLite (D1)', icon: 'logos:sqlite' },
-  { name: 'React 19', icon: 'logos:react' },
-  { name: 'Typescript', icon: 'logos:typescript-icon' },
-];
-
 const motionProps: MotionProps = {
   variants: varFade('inUp', { distance: 24 }),
 };
@@ -52,22 +40,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
   );
 
   const renderHeading = () => (
-    <m.div {...motionProps}>
-      {/* Badge de Confiança Institucional [cite: 1, 28] */}
-      <Typography
-        variant="overline"
-        sx={{ 
-          color: 'primary.main', 
-          fontWeight: 'bold', 
-          letterSpacing: 3, 
-          mb: 2, 
-          display: 'block',
-          textTransform: 'uppercase'
-        }}
-      >
-        +10 instituições e cooperativas rurais integradas
-      </Typography>
-      
+    <m.div {...motionProps}>            
       {/* Headline (H1) Aprovada [cite: 1, 19] */}
       <Box
         component="h1"
@@ -173,49 +146,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
     </Stack>
   );
 
-  const renderTechMarquee = () => (
-    <Stack spacing={4} sx={{ mt: 10, textAlign: 'center', width: 1 }}>
-      <Typography variant="overline" sx={{ opacity: 0.5, letterSpacing: 2 }}>
-        Infraestrutura de Classe Mundial
-      </Typography>
-      
-      <Box
-        sx={{
-          overflow: 'hidden',
-          display: 'flex',
-          userSelect: 'none',
-          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-        }}
-      >
-        <m.div
-          animate={{ x: [0, -1600] }} // Ajustado para a nova lista de tecnologias
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          style={{ display: 'flex', gap: '80px', paddingRight: '80px' }}
-        >
-          {[...PLATFORMS, ...PLATFORMS, ...PLATFORMS].map((platform, index) => (
-            <Stack 
-              key={index} 
-              direction="row" 
-              alignItems="center" 
-              spacing={1.5} 
-              sx={{ 
-                opacity: 0.6, 
-                filter: 'grayscale(1)', 
-                transition: 'all 0.3s',
-                '&:hover': { filter: 'grayscale(0)', opacity: 1, transform: 'scale(1.1)' } 
-              }}
-            >
-               <Iconify icon={platform.icon as any} width={34} />
-               <Typography variant="subtitle2" sx={{ fontWeight: 'bold', whiteSpace: 'nowrap' }}>
-                 {platform.name}
-               </Typography>
-            </Stack>
-          ))}
-        </m.div>
-      </Box>
-    </Stack>
-  );
-
   return (
     <Box
       ref={scrollProgress.elementRef}
@@ -253,7 +183,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
              </Link>
           </m.div>
 
-          {renderTechMarquee()}
         </Container>
       </Box>
 

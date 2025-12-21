@@ -6,8 +6,26 @@ import type { PaletteColorKey } from 'src/theme/core';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { alpha, useTheme } from '@mui/material/styles';
 
+import { Iconify } from 'src/components/iconify';
 import { varFade } from 'src/components/animate';
+
+// ----------------------------------------------------------------------
+
+// 1. Dados de Infraestrutura e Protocolos de Classe Mundial
+const PLATFORMS = [
+  { name: 'Cloudflare Edge', icon: 'logos:cloudflare' },
+  { name: 'Bitcoin Network', icon: 'logos:bitcoin' },
+  { name: 'Ethereum', icon: 'logos:ethereum' },
+  { name: 'Binance Smart Chain', icon: 'logos:binance' },
+  { name: 'IPFS Storage', icon: 'simple-icons:ipfs' },
+  { name: 'SQLite D1', icon: 'logos:sqlite' },
+  { name: 'React 19', icon: 'logos:react' },
+  { name: 'Typescript', icon: 'logos:typescript-icon' },
+];
 
 // ----------------------------------------------------------------------
 
@@ -185,9 +203,10 @@ export function PlusIcon() {
 
 // ----------------------------------------------------------------------
 
-const TEXT = 'Minimal Design System';
-
+// ATUALIZADO: Função Texts com correção de posicionamento e tamanhos maiores
 export function Texts({ sx, ...other }: BoxProps & MotionProps) {
+  const theme = useTheme();
+
   return (
     <Box
       component={m.div}
@@ -196,43 +215,69 @@ export function Texts({ sx, ...other }: BoxProps & MotionProps) {
         {
           left: 0,
           width: 1,
-          bottom: 0,
-          height: 200,
+          bottom: 16, // CORREÇÃO: Reduzido de 60 para 16 para evitar sobreposição com botões
           position: 'absolute',
+          zIndex: 9,
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
-      <Box
-        component="svg"
-        sx={[
-          (theme) => ({
-            width: 1,
-            height: 1,
-            '& text': {
-              fill: 'none',
-              fontSize: 200,
-              fontWeight: 800,
-              strokeDasharray: 4,
-              textTransform: 'uppercase',
-              stroke: 'var(--hero-text-stroke-color)',
-              strokeWidth: 'var(--hero-text-stroke-width)',
-              fontFamily: theme.typography.fontSecondaryFamily,
-            },
-          }),
-        ]}
-      >
-        <m.text
-          x="0"
-          y="12px"
-          dominantBaseline="hanging"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 64, ease: 'linear', repeat: Infinity }}
+      <Stack spacing={4} sx={{ textAlign: 'center', width: 1 }}>
+        <Typography 
+          variant="overline" 
+          sx={{ 
+            opacity: 0.5, 
+            letterSpacing: 3, 
+            fontWeight: 800,
+            fontSize: '0.875rem', 
+            color: 'text.primary' 
+          }}
         >
-          {Array(2).fill(TEXT).join(' ')}
-        </m.text>
-      </Box>
+          Protocolos & Infraestrutura de Classe Mundial
+        </Typography>
+
+        <Box
+          sx={{
+            overflow: 'hidden',
+            display: 'flex',
+            userSelect: 'none',
+            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          }}
+        >
+          <m.div
+            animate={{ x: [0, -1600] }}
+            transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+            style={{ display: 'flex', gap: '120px', paddingRight: '120px' }}
+          >
+            {[...PLATFORMS, ...PLATFORMS, ...PLATFORMS].map((platform, index) => (
+              <Stack
+                key={index}
+                direction="row"
+                alignItems="center"
+                spacing={3}
+                sx={{
+                  opacity: 0.5,
+                  filter: 'grayscale(1)',
+                  transition: theme.transitions.create(['all']),
+                  '&:hover': { 
+                    filter: 'grayscale(0)', 
+                    opacity: 1, 
+                    transform: 'scale(1.05)',
+                    color: 'primary.main'
+                  },
+                }}
+              >
+                <Iconify icon={platform.icon as any} width={48} />
+                <Typography variant="h5" sx={{ fontWeight: 800, whiteSpace: 'nowrap' }}>
+                  {platform.name}
+                </Typography>
+              </Stack>
+            ))}
+          </m.div>
+        </Box>
+      </Stack>
     </Box>
   );
 }
