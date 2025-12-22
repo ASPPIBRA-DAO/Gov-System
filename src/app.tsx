@@ -1,6 +1,7 @@
 import 'src/global.css';
 
 import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async'; // ✅ Adicionado
 
 import { usePathname } from 'src/routes/hooks';
 
@@ -16,6 +17,7 @@ import { SettingsDrawer, defaultSettings, SettingsProvider } from 'src/component
 
 import { CheckoutProvider } from 'src/sections/checkout/context';
 
+// Importação do AuthProvider conforme o método definido no CONFIG
 import { AuthProvider as JwtAuthProvider } from 'src/auth/context/jwt';
 import { AuthProvider as Auth0AuthProvider } from 'src/auth/context/auth0';
 import { AuthProvider as AmplifyAuthProvider } from 'src/auth/context/amplify';
@@ -41,27 +43,29 @@ export default function App({ children }: AppProps) {
   useScrollToTop();
 
   return (
-    <I18nProvider>
-      <AuthProvider>
-        <SettingsProvider defaultSettings={defaultSettings}>
-          <LocalizationProvider>
-            <ThemeProvider
-              modeStorageKey={themeConfig.modeStorageKey}
-              defaultMode={themeConfig.defaultMode}
-            >
-              <MotionLazy>
-                <CheckoutProvider>
-                  <Snackbar />
-                  <ProgressBar />
-                  <SettingsDrawer defaultSettings={defaultSettings} />
-                  {children}
-                </CheckoutProvider>
-              </MotionLazy>
-            </ThemeProvider>
-          </LocalizationProvider>
-        </SettingsProvider>
-      </AuthProvider>
-    </I18nProvider>
+    <HelmetProvider> {/* ✅ Ocupa o topo para gerenciar metadados globalmente */}
+      <I18nProvider>
+        <AuthProvider>
+          <SettingsProvider defaultSettings={defaultSettings}>
+            <LocalizationProvider>
+              <ThemeProvider
+                modeStorageKey={themeConfig.modeStorageKey}
+                defaultMode={themeConfig.defaultMode}
+              >
+                <MotionLazy>
+                  <CheckoutProvider>
+                    <Snackbar />
+                    <ProgressBar />
+                    <SettingsDrawer defaultSettings={defaultSettings} />
+                    {children}
+                  </CheckoutProvider>
+                </MotionLazy>
+              </ThemeProvider>
+            </LocalizationProvider>
+          </SettingsProvider>
+        </AuthProvider>
+      </I18nProvider>
+    </HelmetProvider>
   );
 }
 
