@@ -1,0 +1,24 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# ✅ Security & Performance: Allow Assets
+Allow: /logo/
+Allow: /assets/
+Allow: /favicon.ico
+Allow: /site.webmanifest
+
+# ⛔ Security: Block Internal Logic & Cloudflare Configs
+Disallow: /api/
+Disallow: /monitoring/
+Disallow: /wrangler.toml
+Disallow: /wrangler.jsonc
+Disallow: /package.json
+Disallow: /pnpm-lock.yaml
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: *.ts
+Disallow: *.map
+
+# Global Sitemap
+Sitemap: https://asppibra.com/sitemap.xml
