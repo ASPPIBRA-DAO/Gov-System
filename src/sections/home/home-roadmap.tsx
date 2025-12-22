@@ -94,6 +94,7 @@ export function HomeRoadmap({ sx, ...other }: BoxProps) {
   return (
     <Box
       component="section"
+      id="home-roadmap"
       sx={[
         { 
           py: { xs: 10, md: 20 }, 

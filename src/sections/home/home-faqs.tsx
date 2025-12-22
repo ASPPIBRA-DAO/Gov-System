@@ -228,7 +228,7 @@ export function HomeFAQs({ sx, ...other }: BoxProps) {
   );
 
   return (
-    <Box component="section" sx={sx} {...other}>
+    <Box component="section" id="home-faqs" sx={sx} {...other}>
       <MotionViewport sx={{ py: 10, position: 'relative' }}>
         {topLines()}
 
