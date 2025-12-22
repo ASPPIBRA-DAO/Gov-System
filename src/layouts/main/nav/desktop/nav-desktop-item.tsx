@@ -14,10 +14,10 @@ import { createNavItem, navItemStyles, navSectionClasses } from 'src/components/
 export function NavItem({
   title,
   path,
-  /********/
+  /**********/
   open,
   active,
-  /********/
+  /**********/
   subItem,
   hasChild,
   className,
@@ -27,6 +27,17 @@ export function NavItem({
   const navItem = createNavItem({ path, hasChild, externalLink });
 
   const ownerState: StyledState = { open, active, variant: !subItem ? 'rootItem' : 'subItem' };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (path.startsWith('/#')) {
+      event.preventDefault();
+      const elementId = path.substring(2);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <ItemRoot
@@ -38,6 +49,7 @@ export function NavItem({
         [navSectionClasses.state.open]: open,
         [navSectionClasses.state.active]: active,
       })}
+      onClick={handleClick}
       {...other}
     >
       <ItemTitle {...ownerState}> {title}</ItemTitle>

@@ -15,10 +15,10 @@ export function NavItem({
   path,
   icon,
   title,
-  /********/
+  /**********/
   open,
   active,
-  /********/
+  /**********/
   hasChild,
   className,
   externalLink,
@@ -33,6 +33,17 @@ export function NavItem({
 
   const ownerState: StyledState = { open, active };
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (path.startsWith('/#')) {
+      event.preventDefault();
+      const elementId = path.substring(2);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <ItemRoot
       aria-label={title}
@@ -42,6 +53,7 @@ export function NavItem({
         [navSectionClasses.state.open]: open,
         [navSectionClasses.state.active]: active,
       })}
+      onClick={handleClick}
       {...other}
     >
       <ItemIcon {...ownerState}> {navItem.renderIcon}</ItemIcon>
