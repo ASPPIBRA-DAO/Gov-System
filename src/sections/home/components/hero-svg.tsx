@@ -224,18 +224,6 @@ export function Texts({ sx, ...other }: BoxProps & MotionProps) {
       {...other}
     >
       <Stack spacing={4} sx={{ textAlign: 'center', width: 1 }}>
-        <Typography 
-          variant="overline" 
-          sx={{ 
-            opacity: 0.5, 
-            letterSpacing: 3, 
-            fontWeight: 800,
-            fontSize: '0.875rem', 
-            color: 'text.primary' 
-          }}
-        >
-          Protocolos & Infraestrutura de Classe Mundial
-        </Typography>
 
         <Box
           sx={{

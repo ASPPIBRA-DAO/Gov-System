@@ -1,4 +1,3 @@
-
 import type { BoxProps } from '@mui/material/Box';
 import type { Breakpoint } from '@mui/material/styles';
 import type { MotionProps, MotionValue, SpringOptions } from 'framer-motion';
@@ -170,16 +169,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           {renderText()}
           {renderButtons()}
           
-          <m.div {...motionProps} style={{ marginTop: '48px' }}>
-             <Link 
-               color="inherit" 
-               variant="body2" 
-               href="#" 
-               sx={{ opacity: 0.6, display: 'inline-flex', alignItems: 'center', gap: 1, textDecoration: 'underline' }}
-             >
-               <Iconify icon={"eva:file-text-outline" as any} width={20} /> Whitepaper
-             </Link>
-          </m.div>
 
         </Container>
       </Box>

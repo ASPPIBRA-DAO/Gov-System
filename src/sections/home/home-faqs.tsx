@@ -80,7 +80,7 @@ const FAQs = [
     question: 'Which platforms will the template support?',
     answer: (
       <Typography>
-        {`The components in MUI are designed to work in the latest, stable releases of all major browsers, including Chrome, Firefox, Safari, and Edge. We don\'t support Internet Explorer 11. `}
+        {`The components in MUI are designed to work in the latest, stable releases of all major browsers, including Chrome, Firefox, Safari, and Edge. We don't support Internet Explorer 11. `}
         Learn more about the
         <Link
           href="https://mui.com/material-ui/getting-started/supported-platforms/"
@@ -135,7 +135,7 @@ export function HomeFAQs({ sx, ...other }: BoxProps) {
   const renderDescription = () => (
     <SectionTitle
       caption="FAQs"
-      title="We\'ve got the"
+      title="We've got the"
       txtGradient="answers"
       sx={{ textAlign: 'center' }}
     />
