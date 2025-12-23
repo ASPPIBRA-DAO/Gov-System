@@ -1,6 +1,4 @@
 
-import Stack from '@mui/material/Stack';
-
 import { BackToTopButton } from 'src/components/animate/back-to-top-button';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
@@ -32,39 +30,37 @@ export function HomeView() {
 
       <HomeHero />
 
-      <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
-        
-        <SectionWrapper id="home-ecosystem">
-          <HomeEcosystem />
-        </SectionWrapper>
+      <SectionWrapper id="home-ecosystem">
+        <HomeEcosystem />
+      </SectionWrapper>
 
-        <SectionWrapper filled>
-          <HomeIntegrations />
-        </SectionWrapper>
+      <SectionWrapper filled>
+        <HomeIntegrations />
+      </SectionWrapper>
 
-        <SectionWrapper id="home-community">
-          <HomeCommunity />
-        </SectionWrapper>
+      <SectionWrapper id="home-community">
+        <HomeCommunity />
+      </SectionWrapper>
 
-        <SectionWrapper id="home-team" filled>
-          <HomeTeam />
-        </SectionWrapper>
+      <SectionWrapper id="home-team" filled>
+        <HomeTeam />
+      </SectionWrapper>
 
-        <SectionWrapper>
-          <HomeLatestNews />
-        </SectionWrapper>
+      <SectionWrapper>
+        <HomeLatestNews />
+      </SectionWrapper>
 
-        <SectionWrapper id="home-roadmap" filled>
-          <HomeRoadmap />
-        </SectionWrapper>
+      <SectionWrapper id="home-roadmap" filled>
+        <HomeRoadmap />
+      </SectionWrapper>
 
-        <SectionWrapper id="home-faqs">
-          <HomeFAQs />
-        </SectionWrapper>
+      <SectionWrapper id="home-faqs">
+        <HomeFAQs />
+      </SectionWrapper>
 
+      <SectionWrapper>
         <HomeFinalCTA />
-        
-      </Stack>
+      </SectionWrapper>
     </>
   );
 }

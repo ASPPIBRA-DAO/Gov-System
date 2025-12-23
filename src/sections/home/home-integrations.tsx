@@ -87,11 +87,8 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      component="section"
       sx={[
         { 
-          pt: 10, 
-          pb: { xs: 10, md: 15 },
           position: 'relative' 
         }, 
         ...(Array.isArray(sx) ? sx : [sx])

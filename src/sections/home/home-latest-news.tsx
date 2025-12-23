@@ -90,11 +90,8 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      component="section"
       sx={[
         { 
-          pt: { xs: 10, md: 15 }, 
-          pb: { xs: 10, md: 20 },
           position: 'relative',
         }, 
         ...(Array.isArray(sx) ? sx : [sx])

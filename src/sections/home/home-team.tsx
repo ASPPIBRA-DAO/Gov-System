@@ -31,12 +31,10 @@ export function HomeTeam({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      component="section"
-      id="home-team"
       sx={[{ overflow: 'hidden' }, ...(Array.isArray(sx) ? sx : [sx])]}
       {...other}
     >
-      <Container component={MotionViewport} sx={{ textAlign: 'center', py: { xs: 10, md: 15 } }}>
+      <Container component={MotionViewport} sx={{ textAlign: 'center' }}>
         <m.div variants={varFade('inDown')}>
           <Typography variant="overline" sx={{ color: 'text.disabled' }}>
             Dream team

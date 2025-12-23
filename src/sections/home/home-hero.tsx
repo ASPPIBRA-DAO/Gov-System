@@ -1,3 +1,4 @@
+
 import type { BoxProps } from '@mui/material/Box';
 import type { Breakpoint } from '@mui/material/styles';
 import type { MotionProps, MotionValue, SpringOptions } from 'framer-motion';
@@ -164,7 +165,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       {...other}
     >
       <Box component={m.div} style={{ opacity }} sx={{ width: 1, position: 'relative', zIndex: 10 }}>
-        <Container component={MotionContainer} sx={{ py: 15, textAlign: 'center' }}>
+        <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
           {renderHeading()}
           {renderText()}
           {renderButtons()}

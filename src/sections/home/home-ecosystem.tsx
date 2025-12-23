@@ -1,3 +1,4 @@
+
 import type { BoxProps } from '@mui/material/Box';
 
 import { m } from 'framer-motion';
@@ -154,12 +155,9 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      component="section"
       id="home-ecosystem"
       sx={[
         { 
-          pt: { xs: 10, md: 20 }, 
-          pb: { xs: 10, md: 15 },
           position: 'relative',
         }, 
         ...(Array.isArray(sx) ? sx : [sx])

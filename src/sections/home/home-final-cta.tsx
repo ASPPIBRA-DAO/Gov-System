@@ -22,7 +22,6 @@ import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 export function HomeFinalCTA({ sx, ...other }: BoxProps) {
   return (
     <Box
-      component="section"
       sx={[{ position: 'relative', mb: { xs: 10, md: 15 } }, ...(Array.isArray(sx) ? sx : [sx])]}
       {...other}
     >

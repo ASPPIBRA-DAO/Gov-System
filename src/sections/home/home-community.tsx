@@ -104,7 +104,6 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
           p: 5,
           borderRadius: 3,
           position: 'relative',
-          bgcolor: 'background.neutral',
           border: `1px solid ${alpha(theme.palette.divider, 0.08)}`,
           boxShadow: theme.customShadows.z24,
           overflow: 'hidden',
@@ -162,14 +161,9 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      component="section"
-      id="home-community"
       sx={[
         { 
-          pt: { xs: 10, md: 15 }, 
-          pb: { xs: 10, md: 20 },
           position: 'relative',
-          bgcolor: 'background.default',
           overflow: 'hidden'
         }, 
         ...(Array.isArray(sx) ? sx : [sx])
