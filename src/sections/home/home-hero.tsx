@@ -41,7 +41,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
   const renderHeading = () => (
     <m.div {...motionProps}>            
-      {/* Headline (H1) Aprovada [cite: 1, 19] */}
       <Box
         component="h1"
         sx={[
@@ -53,7 +52,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             display: 'inline-block',
             typography: 'h1',
             fontWeight: 900,
-            fontSize: { xs: '2.2rem', md: '4.2rem' }, // Ajustado para fluidez de leitura
+            fontSize: { xs: '2.2rem', md: '4.2rem' },
             lineHeight: { xs: 1.2, md: 1.1 },
             fontFamily: theme.typography.fontSecondaryFamily,
           }),
@@ -79,11 +78,10 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
   const renderText = () => (
     <m.div {...motionProps}>
-      {/* Sub-headline com narrativa RWA e ASPPIBRA-DAO [cite: 1, 20-22, 205] */}
       <Typography
         sx={{
           mx: 'auto',
-          maxWidth: 900, // Levemente maior para acomodar o texto detalhado
+          maxWidth: 900,
           color: 'text.secondary',
           fontSize: { xs: 17, md: 20 },
           lineHeight: 1.6,
@@ -103,15 +101,15 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       spacing={2}
       sx={{ mt: 6 }}
     >
-      {/* Botão Primário: Saiba Mais [cite: 2, 37] */}
+      {/* Alterado: 'Saiba Mais' agora é 'Whitepaper' */}
       <m.div {...motionProps}>
         <Button
           component={RouterLink}
-          href={paths.dashboard.root} // Link para visão detalhada da DAO
+          href="/docs/whitepaper.pdf" 
           color="primary"
           size="large"
           variant="contained"
-          startIcon={<Iconify width={24} icon={"solar:info-circle-bold-duotone" as any} />}
+          startIcon={<Iconify width={24} icon="solar:file-bold-duotone" />}
           sx={{ 
             height: 60, 
             px: 4, 
@@ -120,11 +118,10 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             boxShadow: (theme) => theme.customShadows.primary 
           }}
         >
-          Saiba Mais
+          Whitepaper
         </Button>
       </m.div>
 
-      {/* Botão Secundário: Gatilho de Exclusividade (CAD) [cite: 11, 291] */}
       <m.div {...motionProps}>
         <Button
           color="inherit"
