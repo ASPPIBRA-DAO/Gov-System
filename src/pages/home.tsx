@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import { useBoolean } from 'minimal-shared/hooks';
 
 import { HomeView } from 'src/sections/home/view';
+import HomeCountdownDialog from 'src/sections/home/home-countdown-dialog';
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +17,8 @@ const metadata = {
 };
 
 export default function Page() {
+  const dialog = useBoolean(true); // Abre automaticamente ao carregar
+
   return (
     <>
       <Helmet>
@@ -43,6 +47,12 @@ export default function Page() {
       </Helmet>
 
       <HomeView />
+
+      <HomeCountdownDialog 
+        open={dialog.value} 
+        onClose={dialog.onFalse} 
+        targetDate={new Date('2026-01-01T00:00:00')} 
+      />
     </>
   );
 }
