@@ -1,20 +1,21 @@
 
-import { useCallback, useEffect, useState } from 'react';
-
-import { m } from 'framer-motion';
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogContent,
-  IconButton,
-  Stack,
-  Typography,
-} from '@mui/material';
 import type { DialogProps } from '@mui/material';
 
-import { varHover, varTap } from 'src/components/animate';
+import { m } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+
+import {
+  Box,
+  Stack,
+  Button,
+  Dialog,
+  IconButton,
+  Typography,
+  DialogContent,
+} from '@mui/material';
+
 import { Iconify } from 'src/components/iconify';
+import { varTap, varHover } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -57,7 +58,7 @@ export default function HomeCountdownDialog({ targetDate, open, onClose, ...othe
         sx: {
           maxWidth: 480,
           borderRadius: 2,
-          bgcolor: '#141A21', // Grey[900] do seu relatório
+          bgcolor: '#141A21',
           color: 'common.white',
           position: 'relative',
         },
@@ -99,8 +100,7 @@ export default function HomeCountdownDialog({ targetDate, open, onClose, ...othe
             py: 1.5,
             fontSize: '1.1rem',
             fontWeight: 'bold',
-            // Gradiente usando as cores Primary e Secondary do seu sistema
-            background: 'linear-gradient(90deg, #00A76F 0%, #8E33FF 100%)', 
+            background: 'linear-gradient(90deg, #00A76F 0%, #8E33FF 100%)',
             '&:hover': { opacity: 0.9 },
           }}
         >
