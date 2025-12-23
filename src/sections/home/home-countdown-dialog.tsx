@@ -1,20 +1,20 @@
 
-import { useState, useEffect, useCallback } from 'react';
-import { 
-  Box, 
-  Stack, 
-  Dialog, 
-  Button, 
-  Typography, 
-  IconButton, 
-  DialogContent,
-  DialogProps
-} from '@mui/material';
-import { m } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
 
-// Componentes e Hooks do seu Projeto
-import { Iconify } from 'src/components/iconify';
+import { m } from 'framer-motion';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  IconButton,
+  Stack,
+  Typography,
+} from '@mui/material';
+import type { DialogProps } from '@mui/material';
+
 import { varHover, varTap } from 'src/components/animate';
+import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
