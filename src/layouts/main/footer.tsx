@@ -1,10 +1,13 @@
 import type { Breakpoint } from '@mui/material/styles';
 
+import { useCallback } from 'react';
+import { useSnackbar } from 'notistack';
+
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-// ✅ MUI v7: O Grid padrão agora usa a sintaxe 'size'
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -53,18 +56,18 @@ const LINKS = [
 ];
 
 const CUSTOM_SOCIALS = [
-  { value: 'twitter', icon: 'ri:twitter-x-fill' },
-  { value: 'linkedin', icon: 'ri:linkedin-fill' },
-  { value: 'instagram', icon: 'ri:instagram-fill' },
-  { value: 'github', icon: 'ri:github-fill' },
-  { value: 'telegram', icon: 'ri:telegram-fill' },
-] as const;
-
-// ----------------------------------------------------------------------
+  { name: 'Twitter', href: 'https://x.com/ASPPIBRA_ORG', icon: 'ri:twitter-x-fill' },
+  { name: 'Instagram', href: 'https://www.instagram.com/asppibra/', icon: 'ri:instagram-fill' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/asppibra-dao/', icon: 'ri:linkedin-fill' },
+  { name: 'GitHub', href: 'https://github.com/ASPPIBRA-DAO', icon: 'ri:github-fill' },
+  { name: 'Crunchbase', href: 'https://www.crunchbase.com/organization/sandro', icon: 'simple-icons:crunchbase' },
+  { name: 'Telegram (Português)', href: 'https://t.me/Mundo_Digital_BR', icon: 'ri:telegram-fill' },
+  { name: 'Telegram (English)', href: 'https://t.me/Mundo_Digital_EUA', icon: 'ri:telegram-fill' },
+];
 
 const FooterRoot = styled('footer')(({ theme }) => ({
   position: 'relative',
-  backgroundColor: '#000000', // Fundo preto sólido conforme design
+  backgroundColor: '#000000',
   color: '#FFFFFF',
   paddingTop: theme.spacing(8),
   paddingBottom: theme.spacing(3),
@@ -77,13 +80,23 @@ export function Footer({
   layoutQuery = 'md',
   ...other
 }: FooterProps & { layoutQuery?: Breakpoint }) {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const contractAddress = "0x0697AB2B003FD2Cbaea2dF1ef9b404E45bE59d4C";
+
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(contractAddress);
+    enqueueSnackbar('Endereço do contrato copiado!');
+  }, [enqueueSnackbar]);
+
+  const truncate = (str: string) => `${str.substring(0, 6)}...${str.substring(str.length - 4)}`;
+
   return (
     <FooterRoot sx={sx} {...other}>
       <Container>
         <Grid container spacing={5} sx={{ mb: 8 }}>
-          
-          {/* COLUNA 1: IDENTIDADE */}
-          <Grid size={{ xs: 12, [layoutQuery]: 4 }}>
+
+          <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, letterSpacing: 0.5 }}>
               <Box component="span" sx={{ color: 'common.white' }}>
                 ASPPIBRA-
@@ -116,23 +129,27 @@ export function Footer({
               inovação através de tecnologia Web3 e Inteligência Artificial.
             </Typography>
 
-            <Box sx={{ display: 'flex', gap: 1 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
               {CUSTOM_SOCIALS.map((social) => (
-                <IconButton 
-                  key={social.value} 
-                  sx={{ 
-                    color: 'grey.500', 
-                    '&:hover': { color: 'common.white', bgcolor: 'rgba(255,255,255,0.08)' } 
-                  }}
-                >
-                  <Iconify icon={social.icon as any} width={20} />
-                </IconButton>
+                <Tooltip key={social.name} title={social.name}>
+                  <IconButton
+                    component={Link}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      color: 'grey.500',
+                      '&:hover': { color: 'common.white', bgcolor: 'rgba(255,255,255,0.08)' },
+                    }}
+                  >
+                    <Iconify icon={social.icon as any} width={20} />
+                  </IconButton>
+                </Tooltip>
               ))}
             </Box>
           </Grid>
 
-          {/* COLUNA 2: LINKS */}
-          <Grid size={{ xs: 12, [layoutQuery]: 4 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box
               sx={{
                 display: 'grid',
@@ -154,10 +171,10 @@ export function Footer({
                       color="inherit"
                       variant="body2"
                       underline="none"
-                      sx={{ 
-                        color: 'grey.500', 
+                      sx={{
+                        color: 'grey.500',
                         transition: 'color 0.2s',
-                        '&:hover': { color: 'common.white' } 
+                        '&:hover': { color: 'common.white' },
                       }}
                     >
                       {link.name}
@@ -168,24 +185,25 @@ export function Footer({
             </Box>
           </Grid>
 
-          {/* COLUNA 3: CONTRATO */}
-          <Grid size={{ xs: 12, [layoutQuery]: 4 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <Box>
                 <Typography variant="subtitle2" sx={{ color: 'grey.400', fontWeight: 'bold', mb: 2, letterSpacing: 0.5, fontSize: '0.75rem' }}>
-                  TOKEN CONTRACT (ERC-20)
+                  TOKEN CONTRACT (BEP-20)
                 </Typography>
                 <TextField
                   fullWidth
                   variant="outlined"
-                  value="0x71C...8976F"
+                  value={truncate(contractAddress)}
                   InputProps={{
                     readOnly: true,
                     endAdornment: (
                       <InputAdornment position="end">
-                        <IconButton edge="end" sx={{ color: 'grey.500' }}>
-                          <Iconify icon="solar:copy-bold" width={20} />
-                        </IconButton>
+                        <Tooltip title="Copiar endereço">
+                          <IconButton edge="end" sx={{ color: 'grey.500' }} onClick={handleCopy}>
+                            <Iconify icon="solar:copy-bold" width={20} />
+                          </IconButton>
+                        </Tooltip>
                       </InputAdornment>
                     ),
                     sx: {
@@ -208,12 +226,12 @@ export function Footer({
                   Precisa de suporte?
                 </Typography>
                 <Link
-                  href="mailto:help@asppibra.dao"
+                  href="mailto:suporte@asppibra.com.br"
                   variant="body1"
                   underline="none"
                   sx={{ color: 'grey.300', '&:hover': { color: 'common.white' } }}
                 >
-                  help@asppibra.dao
+                  suporte@asppibra.com.br
                 </Link>
               </Box>
             </Box>
@@ -222,7 +240,6 @@ export function Footer({
 
         <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', mb: 3 }} />
 
-        {/* BOTTOM BAR */}
         <Box
           sx={{
             display: 'flex',
@@ -249,8 +266,6 @@ export function Footer({
     </FooterRoot>
   );
 }
-
-// ----------------------------------------------------------------------
 
 export function HomeFooter({ sx, ...other }: FooterProps) {
   return (
