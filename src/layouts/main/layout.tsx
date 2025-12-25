@@ -72,17 +72,17 @@ export function MainLayout({
           <Logo />
         </>
       ),
+      centerArea: (
+        <NavDesktop
+          data={navData}
+          sx={(theme) => ({
+            display: 'none',
+            [theme.breakpoints.up(layoutQuery)]: { display: 'flex' },
+          })}
+        />
+      ),
       rightArea: (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 1.5 } }}>
-          {/** @slot Nav desktop */}
-          <NavDesktop
-            data={navData}
-            sx={(theme) => ({
-              display: 'none',
-              [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
-            })}
-          />
-
           {/** @slot Language popover */}
           <LanguagePopover data={allLangs} />
         </Box>
