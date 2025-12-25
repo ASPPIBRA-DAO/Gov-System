@@ -135,15 +135,17 @@ const HeaderRoot = styled(AppBar, {
 const HeaderContainer = styled(Container, {
   shouldForwardProp: (prop: string) => !['layoutQuery', 'sx'].includes(prop),
 })<Pick<HeaderSectionProps, 'layoutQuery'>>(({ layoutQuery = 'md', theme }) => ({
+  position: 'relative',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'space-between',
   color: 'var(--color)',
   height: 'var(--layout-header-mobile-height)',
   [theme.breakpoints.up(layoutQuery)]: { height: 'var(--layout-header-desktop-height)' },
 }));
 
 const HeaderCenterArea = styled('div')(() => ({
-  display: 'flex',
-  flex: '1 1 auto',
-  justifyContent: 'center',
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
 }));

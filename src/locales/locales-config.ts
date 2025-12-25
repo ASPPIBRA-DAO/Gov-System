@@ -9,6 +9,7 @@ import {
   viVN as viVNCore,
   zhCN as zhCNCore,
   arSA as arSACore,
+  ptBR as ptBRCore,
 } from '@mui/material/locale';
 // MUI Date Pickers Locales
 import {
@@ -16,6 +17,7 @@ import {
   frFR as frFRDate,
   viVN as viVNDate,
   zhCN as zhCNDate,
+  ptBR as ptBRDate,
 } from '@mui/x-date-pickers/locales';
 // MUI Data Grid Locales
 import {
@@ -24,12 +26,13 @@ import {
   viVN as viVNDataGrid,
   zhCN as zhCNDataGrid,
   arSD as arSDDataGrid,
+  ptBR as ptBRDataGrid,
 } from '@mui/x-data-grid/locales';
 
 // ----------------------------------------------------------------------
 
 // Supported languages
-export const supportedLngs = ['en', 'fr', 'vi', 'cn', 'ar'] as const;
+export const supportedLngs = ['en', 'fr', 'vi', 'cn', 'ar', 'pt'] as const;
 export type LangCode = (typeof supportedLngs)[number];
 
 // Fallback and default namespace
@@ -63,7 +66,7 @@ export const allLangs: LangOption[] = [
   {
     value: 'en',
     label: 'English',
-    countryCode: 'GB',
+    countryCode: 'US',
     adapterLocale: 'en',
     numberFormat: { code: 'en-US', currency: 'USD' },
     systemValue: {
@@ -72,7 +75,7 @@ export const allLangs: LangOption[] = [
   },
   {
     value: 'fr',
-    label: 'French',
+    label: 'Français',
     countryCode: 'FR',
     adapterLocale: 'fr',
     numberFormat: { code: 'fr-Fr', currency: 'EUR' },
@@ -82,7 +85,7 @@ export const allLangs: LangOption[] = [
   },
   {
     value: 'vi',
-    label: 'Vietnamese',
+    label: 'Tiếng Việt',
     countryCode: 'VN',
     adapterLocale: 'vi',
     numberFormat: { code: 'vi-VN', currency: 'VND' },
@@ -92,7 +95,7 @@ export const allLangs: LangOption[] = [
   },
   {
     value: 'cn',
-    label: 'Chinese',
+    label: '中文',
     countryCode: 'CN',
     adapterLocale: 'zh-cn',
     numberFormat: { code: 'zh-CN', currency: 'CNY' },
@@ -102,12 +105,22 @@ export const allLangs: LangOption[] = [
   },
   {
     value: 'ar',
-    label: 'Arabic',
+    label: 'العربية',
     countryCode: 'SA',
     adapterLocale: 'ar-sa',
     numberFormat: { code: 'ar-SA', currency: 'SAR' },
     systemValue: {
       components: { ...arSACore.components, ...arSDDataGrid.components },
+    },
+  },
+  {
+    value: 'pt',
+    label: 'Português',
+    countryCode: 'BR',
+    adapterLocale: 'pt',
+    numberFormat: { code: 'pt-BR', currency: 'BRL' },
+    systemValue: {
+      components: { ...ptBRCore.components, ...ptBRDate.components, ...ptBRDataGrid.components },
     },
   },
 ];
