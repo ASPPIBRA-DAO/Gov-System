@@ -1,19 +1,17 @@
 import type { BoxProps } from '@mui/material/Box';
 import type { Breakpoint } from '@mui/material/styles';
-import type { MotionProps, MotionValue, SpringOptions } from 'framer-motion';
+import type { MotionProps, MotionValue } from 'framer-motion';
 
 import { useRef, useState } from 'react';
-import { m, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
+import { m, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { Iconify } from 'src/components/iconify';
@@ -40,23 +38,21 @@ export function HomeHero({ sx, ...other }: BoxProps) {
   );
 
   const renderHeading = () => (
-    <m.div {...motionProps}>            
+    <m.div {...motionProps}>
       <Box
         component="h1"
-        sx={[
-          (theme) => ({
-            my: 0,
-            mx: 'auto',
-            maxWidth: 960,
-            textAlign: 'center',
-            display: 'inline-block',
-            typography: 'h1',
-            fontWeight: 900,
-            fontSize: { xs: '2.2rem', md: '4.2rem' },
-            lineHeight: { xs: 1.2, md: 1.1 },
-            fontFamily: theme.typography.fontSecondaryFamily,
-          }),
-        ]}
+        sx={(theme) => ({
+          my: 0,
+          mx: 'auto',
+          maxWidth: 960,
+          textAlign: 'center',
+          display: 'inline-block',
+          typography: 'h1',
+          fontWeight: 900,
+          fontSize: { xs: '2.2rem', md: '4.2rem' },
+          lineHeight: { xs: 1.2, md: 1.1 },
+          fontFamily: theme.typography.fontSecondaryFamily,
+        })}
       >
         Governança Global Descentralizada sobre <br />
         <Box
@@ -88,8 +84,9 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           mt: 3,
         }}
       >
-        A ponte definitiva entre o <strong>Mundo Real</strong> e o <strong>Mundo Digital</strong>. 
-        A ASPPIBRA-DAO integra segurança jurídica, blockchain e IA para transformar propriedades físicas em ativos de valor exponencial administrados de forma descentralizada com total conformidade legal.
+        A ponte definitiva entre o <strong>Mundo Físico</strong> e o <strong>Ecossistema Digital</strong>. 
+        A ASPPIBRA-DAO integra conformidade jurídica, Blockchain e IA para converter propriedades físicas em ativos de 
+        <strong> alta eficiência operacional e liquidez</strong>, administrados de forma descentralizada com total segurança institucional.
       </Typography>
     </m.div>
   );
@@ -101,21 +98,20 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       spacing={2}
       sx={{ mt: 6 }}
     >
-      {/* Alterado: 'Saiba Mais' agora é 'Whitepaper' */}
       <m.div {...motionProps}>
         <Button
           component={RouterLink}
-          href="/docs/whitepaper.pdf" 
+          href="/docs/whitepaper.pdf"
           color="primary"
           size="large"
           variant="contained"
           startIcon={<Iconify width={24} icon="solar:file-bold-duotone" />}
-          sx={{ 
-            height: 60, 
-            px: 4, 
-            fontSize: 18, 
+          sx={{
+            height: 60,
+            px: 4,
+            fontSize: 18,
             borderRadius: 1.5,
-            boxShadow: (theme) => theme.customShadows.primary 
+            boxShadow: (theme) => theme.customShadows.primary
           }}
         >
           Whitepaper
@@ -127,17 +123,17 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           color="inherit"
           size="large"
           variant="outlined"
-          startIcon={<Iconify width={24} icon={"solar:shield-user-bold-duotone" as any} />}
-          sx={{ 
-            height: 60, 
-            px: 4, 
-            fontSize: 18, 
+          startIcon={<Iconify width={24} icon={'solar:shield-user-bold-duotone' as any} />}
+          sx={{
+            height: 60,
+            px: 4,
+            fontSize: 18,
             borderRadius: 1.5,
             backdropFilter: 'blur(8px)',
             borderColor: 'text.primary'
           }}
         >
-          Garanta sua CAD
+          Ecossistema
         </Button>
       </m.div>
     </Stack>
@@ -153,7 +149,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          overflow: 'hidden',
+          overflow: 'hidden', // Ajuste para remover barra de rolagem horizontal
           background: `radial-gradient(circle at 50% -10%, ${theme.vars.palette.primary.lighter} 0%, transparent 60%)`,
           [theme.breakpoints.up(mdKey)]: {
             mt: 'calc(var(--layout-header-desktop-height) * -1)',
@@ -168,8 +164,6 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           {renderHeading()}
           {renderText()}
           {renderButtons()}
-          
-
         </Container>
       </Box>
 

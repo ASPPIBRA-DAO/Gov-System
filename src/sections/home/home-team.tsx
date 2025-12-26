@@ -57,7 +57,7 @@ export function HomeTeam({ sx, ...other }: BoxProps) {
         <Box sx={{ position: 'relative' }}>
           <CarouselArrowFloatButtons {...carousel.arrows} options={carousel.options} />
 
-          <Carousel carousel={carousel} sx={{ px: 0.5 }}>
+          <Carousel carousel={carousel}>
             {_carouselsMembers.map((member) => (
               <Box
                 key={member.id}

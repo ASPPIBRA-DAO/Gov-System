@@ -1,3 +1,4 @@
+
 import type { BoxProps } from '@mui/material/Box';
 
 import { m } from 'framer-motion';
@@ -81,17 +82,18 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
       variants={{ ...varScale('in'), initial: { scale: 0.8, opacity: 0 } }}
       alt="ASPPIBRA Infrastructure"
       src={`${CONFIG.assetsDir}/assets/illustrations/illustration-integration.webp`}
-      sx={{ width: 720, objectFit: 'cover', aspectRatio: '1/1' }}
+      sx={{ maxWidth: '100%', height: 'auto' }}
     />
   );
 
   return (
     <Box
       sx={[
-        { 
-          position: 'relative' 
-        }, 
-        ...(Array.isArray(sx) ? sx : [sx])
+        {
+          position: 'relative',
+          overflow: 'hidden', // Previne o vazamento dos elementos de fundo
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >

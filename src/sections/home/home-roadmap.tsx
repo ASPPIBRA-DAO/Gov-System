@@ -96,6 +96,7 @@ export function HomeRoadmap({ sx, ...other }: BoxProps) {
       sx={[
         { 
           position: 'relative',
+          overflow: 'hidden', // Previne o vazamento dos elementos da timeline
         }, 
         ...(Array.isArray(sx) ? sx : [sx])
       ]}
