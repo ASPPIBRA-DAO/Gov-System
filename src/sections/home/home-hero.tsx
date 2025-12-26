@@ -14,6 +14,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { RouterLink } from 'src/routes/components';
 
+import { useTranslate } from 'src/locales'; // Importação do Hook de tradução
+
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
 
@@ -28,6 +30,7 @@ const motionProps: MotionProps = {
 };
 
 export function HomeHero({ sx, ...other }: BoxProps) {
+  const { t } = useTranslate(); // Inicialização da tradução
   const scrollProgress = useScrollPercent();
   const mdUp = useMediaQuery((theme) => theme.breakpoints.up(mdKey));
 
@@ -54,7 +57,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           fontFamily: theme.typography.fontSecondaryFamily,
         })}
       >
-        Governança Global Descentralizada sobre <br />
+        {t('hero.title')} <br />
         <Box
           component={m.span}
           animate={{ backgroundPosition: '200% center' }}
@@ -66,7 +69,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             backgroundSize: '200%',
           })}
         >
-          Ativos do Mundo Real
+          {t('hero.title_highlight')}
         </Box>
       </Box>
     </m.div>
@@ -82,11 +85,11 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           fontSize: { xs: 17, md: 20 },
           lineHeight: 1.6,
           mt: 3,
+          '& strong': { color: 'text.primary', fontWeight: 700 }
         }}
       >
-        A ponte definitiva entre o <strong>Mundo Físico</strong> e o <strong>Ecossistema Digital</strong>. 
-        A ASPPIBRA-DAO integra conformidade jurídica, Blockchain e IA para converter propriedades físicas em ativos de 
-        <strong> alta eficiência operacional e liquidez</strong>, administrados de forma descentralizada com total segurança institucional.
+        {/* Usamos o texto traduzido aprovado para evitar riscos jurídicos */}
+        {t('hero.description')}
       </Typography>
     </m.div>
   );
@@ -114,7 +117,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             boxShadow: (theme) => theme.customShadows.primary
           }}
         >
-          Whitepaper
+          {t('hero.buttons.whitepaper')}
         </Button>
       </m.div>
 
@@ -123,7 +126,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           color="inherit"
           size="large"
           variant="outlined"
-          startIcon={<Iconify width={24} icon={'solar:shield-user-bold-duotone' as any} />}
+          startIcon={<Iconify width={24} icon={"solar:shield-user-bold-duotone" as any} />}
           sx={{
             height: 60,
             px: 4,
@@ -133,7 +136,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             borderColor: 'text.primary'
           }}
         >
-          Ecossistema
+          {t('hero.buttons.access')}
         </Button>
       </m.div>
     </Stack>
@@ -149,7 +152,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          overflow: 'hidden', // Ajuste para remover barra de rolagem horizontal
+          overflow: 'hidden', // Proteção contra scroll horizontal das animações
           background: `radial-gradient(circle at 50% -10%, ${theme.vars.palette.primary.lighter} 0%, transparent 60%)`,
           [theme.breakpoints.up(mdKey)]: {
             mt: 'calc(var(--layout-header-desktop-height) * -1)',
