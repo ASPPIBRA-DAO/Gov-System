@@ -1,6 +1,12 @@
 {
-  "demo": {
-    "lang": "Chinese",
-    "description": "您的下一个项目的起点基于 MUI。简单的定制可帮助您更快、更好地构建应用程序。"
+  "hero": {
+    "title": "去中心化全球治理",
+    "title_highlight": "现实世界资产 (RWA)",
+    "subtitle": "物理世界与数字世界生态系统之间的决定性桥梁。",
+    "description": "ASPPIBRA-DAO 集成了法律合规、区块链和人工智能，将实物资产转化为具有高运营效率和流动性的资产，通过去中心化治理和全面的机构安全进行管理。",
+    "buttons": {
+      "access": "生态系统",
+      "whitepaper": "白皮书"
+    }
   }
 }

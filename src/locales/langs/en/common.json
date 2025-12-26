@@ -1,6 +1,12 @@
 {
-  "demo": {
-    "lang": "English",
-    "description": "The starting point for your next project is based on MUI. Easy customization helps you build apps faster and better."
+  "hero": {
+    "title": "Decentralized Global Governance of",
+    "title_highlight": "Real World Assets (RWA)",
+    "subtitle": "The definitive bridge between the Physical World and the Mundo Digital Ecosystem.",
+    "description": "ASPPIBRA-DAO integrates legal compliance, Blockchain, and AI to transform physical properties into high-efficiency, liquid assets, managed through decentralized governance with full institutional security.",
+    "buttons": {
+      "access": "Ecosystem",
+      "whitepaper": "Whitepaper"
+    }
   }
 }
