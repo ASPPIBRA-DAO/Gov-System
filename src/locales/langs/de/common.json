@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Dezentralisierte globale Verwaltung von",
+    "title_highlight": "Real-World-Assets (RWA)",
+    "subtitle": "Die endgültige Brücke zwischen der physischen Welt und dem Mundo Digital Ökosystem.",
+    "description": "ASPPIBRA-DAO integriert rechtliche Konformität, Blockchain und KI, um physische Immobilien in hochgradig effiziente, liquide Vermögenswerte umzuwandeln, die durch dezentralisierte Verwaltung mit voller institutioneller Sicherheit verwaltet werden.",
+    "buttons": {
+      "access": "Ökosystem",
+      "whitepaper": "Whitepaper"
+    }
+  },
+  "ecosystem": {
+    "caption": "Hochrangige Infrastruktur",
+    "title": "Infrastruktur-Engineering für die",
+    "title_highlight": "globale Skalierung von Real-World-Assets (RWA)",
+    "description": "ASPPIBRA-DAO fungiert als hochleistungsfähiger institutioneller Beschleuniger, der strategisch wertvolle Vermögenswerte in das globale RWA-Ökosystem integriert. Wir bieten die rechtliche Architektur und technologische Robustheit, die erforderlich sind, um die reale Wirtschaft unter dezentralisierter Verwahrung zu verfeinern, zu validieren und zu skalieren.",
+    "cta": "Vermögenswerte erkunden",
+    "items": {
+      "reurb": {
+        "title": "Souveräne Vermögens- und Nachlassverwaltung",
+        "description": "Schaffung absoluter rechtlicher Legitimität für hochwertige Grundvermögen, um sie auf institutionelle Standards für eine souveräne Integration in die globalen digitalen Kapitalmärkte zu heben."
+      },
+      "agro": {
+        "title": "Strategische agroindustrielle Beschleunigung",
+        "description": "Verbindung von Elite-Produktionsketten mit fortschrittlichen On-Chain-Kreditsystemen und nachhaltigen Governance-Modellen, um den inneren Wert von Großerträgen zu optimieren."
+      },
+      "defi": {
+        "title": "Systemische Skalierungs- und Liquiditätsprotokolle",
+        "description": "Erweiterung der Kapitaleffizienz durch direkte Verknüpfung von realen Vermögenswerten mit dezentralen globalen Liquiditätsströmen, wodurch logistische Reibungen beseitigt und die finanzielle Leistungsfähigkeit maximiert werden."
+      },
+      "governance": {
+        "title": "Souveräne Verwaltung und Kuratel",
+        "description": "Der Governance-Token gewährt strategische Kuratormacht über das Netzwerk. Beteiligen Sie sich an hochrangigen Governance-Entscheidungen und leiten Sie die Inkubation von institutionellen Vermögenswerten der nächsten Generation."
+      }
+    }
+  }
+}

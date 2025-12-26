@@ -8,5 +8,30 @@
       "access": "Ecosistema",
       "whitepaper": "Whitepaper"
     }
+  },
+  "ecosystem": {
+    "caption": "Infraestructura de Alto Nivel",
+    "title": "Ingeniería de Infraestructura para",
+    "title_highlight": "Escala Global de Activos Reales (RWA)",
+    "description": "ASPPIBRA-DAO actúa como una aceleradora institucional de alto rendimiento, integrando activos de valor estratégico al ecosistema global de RWA. Proveemos la arquitectura jurídica y la robustez tecnológica necesarias para sofisticar, validar y escalar la economía real bajo custodia descentralizada.",
+    "cta": "Conozca los Activos",
+    "items": {
+      "reurb": {
+        "title": "Soberanía y Gobernanza Patrimonial",
+        "description": "Consolidamos la legitimidad jurídica de activos inmobiliarios complejos, elevándolos al estándar institucional para su integración soberana en el mercado global de capitales digitales."
+      },
+      "agro": {
+        "title": "Aceleración Estratégica Agroindustrial",
+        "description": "Conectamos cadenas productivas de élite a sistemas avanzados de crédito on-chain y modelos de gobernanza sostenible, optimizando el valor intrínseco de producciones de alta escala."
+      },
+      "defi": {
+        "title": "Protocolos de Liquidez y Escala Sistémica",
+        "description": "Expandimos la eficiencia del capital vinculando activos reales directamente a flujos de liquidez global descentralizada, eliminando fricciones logísticas y maximizando el rendimiento financiero."
+      },
+      "governance": {
+        "title": "Curaduría y Gobernanza Soberana",
+        "description": "El Token de Gobernanza otorga el poder de curaduría estratégica sobre la red. Participe en decisiones de alta gobernanza y dirija la incubación de activos institucionales de próxima generación."
+      }
+    }
   }
 }

@@ -8,5 +8,30 @@
       "access": "Ecosystem",
       "whitepaper": "Whitepaper"
     }
+  },
+  "ecosystem": {
+    "caption": "High-Level Infrastructure",
+    "title": "Infrastructure Engineering for",
+    "title_highlight": "Global Real World Asset Scaling (RWA)",
+    "description": "ASPPIBRA-DAO operates as a high-performance institutional accelerator, integrating strategic value assets into the global RWA ecosystem. We provide the legal architecture and technological robustness required to sophisticate, validate, and scale the real economy under decentralized custody.",
+    "cta": "Explore Assets",
+    "items": {
+      "reurb": {
+        "title": "Sovereign Asset & Estate Governance",
+        "description": "Establishing absolute legal legitimacy for high-value landed assets, upgrading them to institutional standards for sovereign integration into global digital capital markets."
+      },
+      "agro": {
+        "title": "Strategic Agro-Industrial Acceleration",
+        "description": "Connecting elite production chains to advanced on-chain credit systems and sustainable governance models, optimizing the intrinsic value of high-scale yields."
+      },
+      "defi": {
+        "title": "Systemic Scale & Liquidity Protocols",
+        "description": "Expanding capital efficiency by linking real-world assets directly to decentralized global liquidity flows, eliminating logistical friction and maximizing financial performance."
+      },
+      "governance": {
+        "title": "Sovereign Governance & Curatorship",
+        "description": "The Governance Token grants strategic curatorship power over the network. Engage in high-level governance decisions and direct the incubation of next-generation institutional assets."
+      }
+    }
   }
 }

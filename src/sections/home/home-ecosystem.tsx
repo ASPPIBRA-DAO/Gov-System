@@ -1,6 +1,6 @@
-
 import type { BoxProps } from '@mui/material/Box';
 
+import { useMemo } from 'react'; // Adicionado para performance
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -14,40 +14,13 @@ import { alpha, useTheme } from '@mui/material/styles';
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
+import { useTranslate } from 'src/locales';
+
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
 
 import { SectionTitle } from './components/section-title';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
-
-// ----------------------------------------------------------------------
-
-const ECOSYSTEM_ITEMS = [
-  {
-    title: 'Ativos Juridicamente Aptos (REURB)',
-    description: 'Transformamos posses informais em instrumentos jurídicos seguros e documentados, prontos para a tokenização global.',
-    icon: 'solar:square-academic-cap-bold-duotone',
-    color: 'primary',
-  },
-  {
-    title: 'Aceleração Agro-Digital',
-    description: 'Conectando cooperativas e produtores rurais a sistemas alternativos de crédito e modelos de inovação sustentável.',
-    icon: 'solar:rocket-bold-duotone',
-    color: 'success',
-  },
-  {
-    title: 'Escala e Liquidez DeFi',
-    description: 'Superamos gargalos comerciais e logísticos ao vincular a produção real diretamente à liquidez descentralizada.',
-    icon: 'solar:chart-2-bold-duotone',
-    color: 'info',
-  },
-  {
-    title: 'Governança e Participação',
-    description: 'O Token de Governança é o motor da DAO. Garanta poder de decisão sobre a incubação de novos projetos da rede.',
-    icon: 'solar:token-bold-duotone',
-    color: 'warning',
-  },
-];
 
 // ----------------------------------------------------------------------
 
@@ -80,16 +53,48 @@ const renderLines = () => (
 
 export function HomeEcosystem({ sx, ...other }: BoxProps) {
   const theme = useTheme();
+  const { t } = useTranslate();
+
+  // Otimizado com useMemo para performance e consistência com i18n
+  const ECOSYSTEM_ITEMS = useMemo(() => [
+    {
+      id: 'reurb',
+      title: t('ecosystem.items.reurb.title'),
+      description: t('ecosystem.items.reurb.description'),
+      icon: 'solar:square-academic-cap-bold-duotone',
+      color: 'primary',
+    },
+    {
+      id: 'agro',
+      title: t('ecosystem.items.agro.title'),
+      description: t('ecosystem.items.agro.description'),
+      icon: 'solar:rocket-bold-duotone',
+      color: 'success',
+    },
+    {
+      id: 'defi',
+      title: t('ecosystem.items.defi.title'),
+      description: t('ecosystem.items.defi.description'),
+      icon: 'solar:chart-2-bold-duotone',
+      color: 'info',
+    },
+    {
+      id: 'governance',
+      title: t('ecosystem.items.governance.title'),
+      description: t('ecosystem.items.governance.description'),
+      icon: 'solar:token-bold-duotone',
+      color: 'warning',
+    },
+  ], [t]);
 
   const renderDescription = () => (
     <SectionTitle
-      caption="Accelerator & Scale"
-      title="Infraestrutura para"
-      txtGradient="Escala de Ativos Reais"
+      caption={t('ecosystem.caption')}
+      title={t('ecosystem.title')}
+      txtGradient={t('ecosystem.title_highlight')}
       description={
         <Box component="span" sx={{ display: 'block', lineHeight: 1.8 }}>
-          A ASPPIBRA-DAO opera como uma aceleradora institucional que integra ativos tradicionais ao mercado global de RWAs. 
-          Provemos a segurança jurídica e a tecnologia Web3 necessárias para legalizar e escalar a economia real.
+          {t('ecosystem.description')}
         </Box>
       }
       sx={{ textAlign: { xs: 'center', md: 'left' } }}
@@ -99,7 +104,7 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
   const renderGrid = () => (
     <Grid container spacing={3}>
       {ECOSYSTEM_ITEMS.map((item) => (
-        <Grid key={item.title} size={{ xs: 12, sm: 6 }}>
+        <Grid key={item.id} size={{ xs: 12, sm: 6 }}>
           <m.div variants={varFade('inUp')}>
             <Stack
               spacing={2.5}
@@ -116,7 +121,7 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
                   '& .icon-container': {
                     bgcolor: alpha(theme.palette[item.color as 'primary'].main, 0.15),
                     transform: 'scale(1.1)',
-                  }
+                  },
                 },
               }}
             >
@@ -133,15 +138,17 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
                   bgcolor: alpha(theme.palette[item.color as 'primary'].main, 0.1),
                 }}
               >
-                <Iconify 
-                  icon={item.icon as any} 
-                  width={36} 
-                  sx={{ color: `${item.color}.main` }} 
+                <Iconify
+                  icon={item.icon as any}
+                  width={36}
+                  sx={{ color: `${item.color}.main` }}
                 />
               </Box>
-              
+
               <Stack spacing={1}>
-                <Typography variant="h6" sx={{ fontWeight: 800 }}>{item.title}</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                  {item.title}
+                </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                   {item.description}
                 </Typography>
@@ -156,11 +163,14 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
   return (
     <Box
       id="home-ecosystem"
+      component="section"
       sx={[
-        { 
+        {
           position: 'relative',
-        }, 
-        ...(Array.isArray(sx) ? sx : [sx])
+          overflow: 'hidden', // Segurança contra vazamento lateral de elementos flutuantes
+          py: { xs: 10, md: 15 }, // Respiro visual para tom institucional
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
@@ -172,7 +182,7 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
             {/* Lado Esquerdo: Texto e Título */}
             <Grid size={{ xs: 12, md: 6, lg: 5 }}>
               {renderDescription()}
-              
+
               <m.div variants={varFade('inUp')}>
                 <Button
                   component={RouterLink}
@@ -180,18 +190,22 @@ export function HomeEcosystem({ sx, ...other }: BoxProps) {
                   color="primary"
                   size="large"
                   variant="contained"
-                  endIcon={<Iconify icon={"solar:alt-arrow-right-outline" as any} />}
-                  sx={{ mt: 5, px: 4, height: 56, borderRadius: 1.2, boxShadow: theme.customShadows.primary }}
+                  endIcon={<Iconify icon={'solar:alt-arrow-right-outline' as any} />}
+                  sx={{
+                    mt: 5,
+                    px: 4,
+                    height: 56,
+                    borderRadius: 1.2,
+                    boxShadow: theme.customShadows.primary,
+                  }}
                 >
-                  Conheça os Ativos
+                  {t('ecosystem.cta')}
                 </Button>
               </m.div>
             </Grid>
 
             {/* Lado Direito: Grid de Cards */}
-            <Grid size={{ xs: 12, md: 6, lg: 7 }}>
-              {renderGrid()}
-            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 7 }}>{renderGrid()}</Grid>
           </Grid>
         </Container>
       </MotionViewport>
