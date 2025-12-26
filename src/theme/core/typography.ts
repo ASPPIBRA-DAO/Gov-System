@@ -1,3 +1,4 @@
+
 import type { Breakpoint, TypographyVariantsOptions } from '@mui/material/styles';
 
 import { pxToRem, setFont } from 'minimal-shared/utils';
@@ -8,49 +9,39 @@ import { themeConfig } from '../theme-config';
 
 // ----------------------------------------------------------------------
 
-/**
- * TypeScript extension for MUI theme augmentation.
- * @to {@link file://./../extend-theme-types.d.ts}
- */
-
-export type TypographyVariantsExtend = {
-  fontWeightSemiBold: React.CSSProperties['fontWeight'];
-  fontWeightExtraBold: React.CSSProperties['fontWeight'];
-  fontSecondaryFamily: React.CSSProperties['fontFamily'];
-};
-
-/**
- * Generates responsive font styles for given breakpoints
- * @param sizes - Object mapping breakpoints to font sizes in pixels
- * @returns CSS media query styles for responsive font sizes
- */
-type FontSizesInput = Partial<Record<Breakpoint, number>>;
-type FontSizesResult = Record<string, { fontSize: React.CSSProperties['fontSize'] }>;
-
-function responsiveFontSizes(sizes: FontSizesInput): FontSizesResult {
-  const {
-    breakpoints: { keys, up },
-  } = createTheme();
-
-  return keys.reduce((styles, breakpoint) => {
-    const size = sizes[breakpoint];
-
-    if (size !== undefined && size >= 0) {
-      styles[up(breakpoint)] = {
-        fontSize: pxToRem(size),
-      };
-    }
-
-    return styles;
-  }, {} as FontSizesResult);
+// 1. EXTENSÃO DE TIPOS (Module Augmentation)
+// Isso resolve os erros de "Property does not exist on type TypographyVariants"
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    fontWeightSemiBold: React.CSSProperties['fontWeight'];
+    fontWeightExtraBold: React.CSSProperties['fontWeight'];
+    fontSecondaryFamily: React.CSSProperties['fontFamily'];
+  }
+  interface TypographyVariantsOptions {
+    fontWeightSemiBold?: React.CSSProperties['fontWeight'];
+    fontWeightExtraBold?: React.CSSProperties['fontWeight'];
+    fontSecondaryFamily?: React.CSSProperties['fontFamily'];
+  }
 }
 
 // ----------------------------------------------------------------------
 
+function responsiveFontSizes(sizes: Partial<Record<Breakpoint, number>>) {
+  const { breakpoints: { keys, up } } = createTheme();
+
+  return keys.reduce((styles, breakpoint) => {
+    const size = sizes[breakpoint];
+    if (size !== undefined && size >= 0) {
+      styles[up(breakpoint)] = { fontSize: pxToRem(size) };
+    }
+    return styles;
+  }, {} as any);
+}
+
 const primaryFont = setFont(themeConfig.fontFamily.primary);
 const secondaryFont = setFont(themeConfig.fontFamily.secondary);
 
-const baseTypography: TypographyVariantsOptions = {
+const baseTypography = {
   fontFamily: primaryFont,
   fontSecondaryFamily: secondaryFont,
   fontWeightLight: 300,
@@ -61,15 +52,6 @@ const baseTypography: TypographyVariantsOptions = {
   fontWeightExtraBold: 800,
 };
 
-/* **********************************************************************
- * 📦 Final
- * **********************************************************************/
-/**
- * Line height is set as a unitless ratio: 22 / 14 ≈ 1.57
- * - 22px is the desired visual line height
- * - 14px is the font size
- * This keeps the line height scalable and responsive.
- */
 export const typography: TypographyVariantsOptions = {
   ...baseTypography,
   h1: {
@@ -111,6 +93,20 @@ export const typography: TypographyVariantsOptions = {
     fontSize: pxToRem(17),
     ...responsiveFontSizes({ sm: 18 }),
   },
+  body1: {
+    lineHeight: 1.8,
+    fontSize: pxToRem(16),
+    textAlign: 'justify',
+    textJustify: 'inter-word',
+    hyphens: 'auto',
+  },
+  body2: {
+    lineHeight: 1.7,
+    fontSize: pxToRem(14),
+    textAlign: 'justify',
+    textJustify: 'inter-word',
+    hyphens: 'auto',
+  },
   subtitle1: {
     fontWeight: baseTypography.fontWeightSemiBold,
     lineHeight: 1.5,
@@ -118,14 +114,6 @@ export const typography: TypographyVariantsOptions = {
   },
   subtitle2: {
     fontWeight: baseTypography.fontWeightSemiBold,
-    lineHeight: 22 / 14,
-    fontSize: pxToRem(14),
-  },
-  body1: {
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
-  },
-  body2: {
     lineHeight: 22 / 14,
     fontSize: pxToRem(14),
   },
