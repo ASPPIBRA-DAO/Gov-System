@@ -14,6 +14,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Accordion, { accordionClasses } from '@mui/material/Accordion';
 
+import { RouterLink } from 'src/routes/components';
+
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
 
@@ -216,9 +218,10 @@ export function HomeFAQs({ sx, ...other }: BoxProps) {
 
       <m.div variants={varFade('in')}>
         <Button
+          component={RouterLink}
+          href="/contact-us"
           color="inherit"
           variant="contained"
-          href="mailto:support@minimals.cc?subject=[Feedback] from Customer"
           startIcon={<Iconify icon="solar:letter-bold" />}
         >
           Contact us
