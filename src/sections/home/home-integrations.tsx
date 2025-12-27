@@ -1,19 +1,16 @@
 
 import type { BoxProps } from '@mui/material/Box';
 
-import { m } from 'framer-motion';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 
-import { CONFIG } from 'src/global-config';
-
-import { varScale, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { SectionTitle } from './components/section-title';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
+import { IntegrationsDiagram } from './components/integrations-diagram';
 
 // ----------------------------------------------------------------------
 
@@ -52,20 +49,20 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
       description={
         <>
           <Box component="span" sx={{ mb: 2, display: 'block', lineHeight: 1.7 }}>
-            Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da 
-            computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua 
+            Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da
+            computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua
             Credencial CAD estejam sempre disponíveis e auditáveis.
           </Box>
 
           <Box
             component="span"
-            sx={{ 
-              fontWeight: 600, 
-              color: 'text.secondary', 
+            sx={{
+              fontWeight: 600,
+              color: 'text.secondary',
               typography: 'caption',
               display: 'flex',
               alignItems: 'center',
-              gap: 1
+              gap: 1,
             }}
           >
             * Criptografia de nível governamental e imutabilidade on-chain garantida.
@@ -76,22 +73,14 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
     />
   );
 
-  const renderImage = () => (
-    <Box
-      component={m.img}
-      variants={{ ...varScale('in'), initial: { scale: 0.8, opacity: 0 } }}
-      alt="ASPPIBRA Infrastructure"
-      src={`${CONFIG.assetsDir}/assets/illustrations/illustration-integration.webp`}
-      sx={{ maxWidth: '100%', height: 'auto' }}
-    />
-  );
+  const renderImage = () => <IntegrationsDiagram />;
 
   return (
     <Box
       sx={[
         {
           position: 'relative',
-          overflow: 'hidden', // Previne o vazamento dos elementos de fundo
+          overflow: 'hidden',
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
@@ -102,9 +91,11 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
 
         <Container sx={{ position: 'relative', zIndex: 9 }}>
           <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
-            <Grid size={{ xs: 12, md: 6, lg: 5 }}>{renderDescription()}</Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 5 }}>
+              {renderDescription()}
+            </Grid>
 
-            <Grid sx={{ textAlign: { xs: 'center', md: 'right' } }} size={{ xs: 12, md: 6, lg: 7 }}>
+            <Grid size={{ xs: 12, md: 6, lg: 7 }} sx={{ textAlign: { xs: 'center', md: 'right' } }}>
               {renderImage()}
             </Grid>
           </Grid>
