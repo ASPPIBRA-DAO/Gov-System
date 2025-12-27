@@ -35,11 +35,11 @@
     }
   },
   "infrastructure": {
-    "caption": "Interoperabilidade Global",
-    "title": "Arquitetura Técnica &",
-    "title_highlight": "Conectividade de Alta Performance",
-    "description": "Nossa infraestrutura funde a segurança criptográfica de última geração com a agilidade da computação de borda (Edge Computing). Garantimos que a custódia soberana de ativos RWA e a integridade da Credencial CAD estejam permanentemente disponíveis, auditáveis e resilientes.",
-    "footer": "* Criptografia de padrão governamental e imutabilidade on-chain assegurada."
+    "caption": "Infraestrutura",
+    "title": "Conectividade Global &",
+    "title_highlight": "Infraestrutura de Ponta",
+    "description": "Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua Credencial CAD estejam sempre disponíveis e auditáveis.",
+    "footnote": "* Criptografia de nível governamental e imutabilidade on-chain garantida."
   },
   "traction": {
     "caption": "Tração Institucional",

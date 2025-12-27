@@ -1,10 +1,11 @@
-
 import type { BoxProps } from '@mui/material/Box';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
+
+import { useTranslate } from 'src/locales';
 
 import { MotionViewport } from 'src/components/animate';
 
@@ -41,17 +42,17 @@ const renderLines = () => (
 );
 
 export function HomeIntegrations({ sx, ...other }: BoxProps) {
+  const { t } = useTranslate();
+
   const renderDescription = () => (
     <SectionTitle
-      caption="Infrastructure"
-      title="Conectividade Global &"
-      txtGradient="Infraestrutura de Ponta"
+      caption={t('infrastructure.caption')}
+      title={t('infrastructure.title')}
+      txtGradient={t('infrastructure.title_highlight')}
       description={
         <>
           <Box component="span" sx={{ mb: 2, display: 'block', lineHeight: 1.7 }}>
-            Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da
-            computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua
-            Credencial CAD estejam sempre disponíveis e auditáveis.
+            {t('infrastructure.description')}
           </Box>
 
           <Box
@@ -65,7 +66,7 @@ export function HomeIntegrations({ sx, ...other }: BoxProps) {
               gap: 1,
             }}
           >
-            * Criptografia de nível governamental e imutabilidade on-chain garantida.
+            {t('infrastructure.footnote')}
           </Box>
         </>
       }

@@ -35,11 +35,11 @@
     }
   },
   "infrastructure": {
-    "caption": "Global Interoperability",
-    "title": "Technical Architecture &",
-    "title_highlight": "High-Performance Connectivity",
-    "description": "Our infrastructure merges next-generation cryptographic security with the agility of Edge Computing. We ensure that sovereign RWA asset custody and CAD Credential integrity remain permanently available, auditable, and resilient.",
-    "footer": "* Government-grade encryption and guaranteed on-chain immutability."
+    "caption": "Infrastructure",
+    "title": "Global Connectivity &",
+    "title_highlight": "Cutting-Edge Infrastructure",
+    "description": "Our infrastructure combines the most secure layers of Web3 with the performance of Edge Computing. We ensure that RWA asset management and your CAD Credential are always available and auditable.",
+    "footnote": "* Government-grade encryption and guaranteed on-chain immutability."
   },
   "traction": {
     "caption": "Institutional Traction",
