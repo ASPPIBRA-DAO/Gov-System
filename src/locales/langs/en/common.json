@@ -33,5 +33,12 @@
         "description": "The Governance Token grants strategic curatorship power over the network. Engage in high-level governance decisions and direct the incubation of next-generation institutional assets."
       }
     }
+  },
+  "infrastructure": {
+    "caption": "Global Interoperability",
+    "title": "Technical Architecture &",
+    "title_highlight": "High-Performance Connectivity",
+    "description": "Our infrastructure merges next-generation cryptographic security with the agility of Edge Computing. We ensure that sovereign RWA asset custody and CAD Credential integrity remain permanently available, auditable, and resilient.",
+    "footer": "* Government-grade encryption and guaranteed on-chain immutability."
   }
 }

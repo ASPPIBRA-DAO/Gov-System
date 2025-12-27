@@ -33,5 +33,12 @@
         "description": "Le Token de Gouvernance confère le pouvoir de curatorat stratégique sur le réseau. Participez aux décisions de haute gouvernance et dirigez l'incubation d'actifs institutionnels de nouvelle génération."
       }
     }
+  },
+  "infrastructure": {
+    "caption": "Interopérabilité Globale",
+    "title": "Architecture Technique &",
+    "title_highlight": "Connectivité Haute Performance",
+    "description": "Notre infrastructure fusionne la sécurité cryptographique de nouvelle génération avec l'agilité de l'informatique de bord (Edge Computing). Nous garantissons que la garde souveraine des actifs RWA et l'intégrité de la lettre de créance CAD restent en permanence disponibles, auditables et résilientes.",
+    "footer": "* Cryptage de niveau gouvernemental et immutabilité on-chain garantie."
   }
 }
