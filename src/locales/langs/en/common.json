@@ -62,5 +62,29 @@
       "join": "Access Governance",
       "data": "On-chain Data"
     }
+  },
+  "contact": {
+    "hero": {
+      "title_1": "Where to",
+      "title_2": "find us?",
+      "locations": {
+        "bali": "Bali, Indonesia",
+        "london": "London, United Kingdom",
+        "prague": "Prague, Czechia",
+        "moscow": "Moscow, Russia"
+      }
+    },
+    "form": {
+      "title": "Institutional Connectivity",
+      "subtitle": "We are available for strategic dialogues and governance inquiries.",
+      "fields": {
+        "name": "Full Name",
+        "email": "Institutional Email",
+        "subject": "Subject / Nature of Inquiry",
+        "message": "Enter your message here...",
+        "submit": "Submit Inquiry",
+        "address": "Address"
+      }
+    }
   }
 }

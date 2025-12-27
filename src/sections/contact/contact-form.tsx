@@ -1,5 +1,7 @@
 import type { BoxProps } from '@mui/material/Box';
 
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,11 +10,13 @@ import Typography from '@mui/material/Typography';
 // ----------------------------------------------------------------------
 
 export function ContactForm({ sx, ...other }: BoxProps) {
+  const { t } = useTranslation();
+
   return (
     <Box sx={sx} {...other}>
       <Typography variant="h3">
-        Feel free to contact us. <br />
-        We&apos;ll be glad to hear from you buddy.
+        {t('contact.form.title')} <br />
+        {t('contact.form.subtitle')}
       </Typography>
       <Box
         sx={{
@@ -22,14 +26,14 @@ export function ContactForm({ sx, ...other }: BoxProps) {
           flexDirection: 'column',
         }}
       >
-        <TextField fullWidth label="Name" />
-        <TextField fullWidth label="Email" />
-        <TextField fullWidth label="Subject" />
-        <TextField fullWidth label="Enter your message here." multiline rows={4} />
+        <TextField fullWidth label={t('contact.form.fields.name')} />
+        <TextField fullWidth label={t('contact.form.fields.email')} />
+        <TextField fullWidth label={t('contact.form.fields.subject')} />
+        <TextField fullWidth label={t('contact.form.fields.message')} multiline rows={4} />
       </Box>
 
       <Button size="large" variant="contained">
-        Submit
+        {t('contact.form.fields.submit')}
       </Button>
     </Box>
   );

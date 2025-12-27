@@ -1,6 +1,7 @@
 import type { BoxProps } from '@mui/material/Box';
 
 import { m } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { varAlpha } from 'minimal-shared/utils';
 
 import Box from '@mui/material/Box';
@@ -14,6 +15,27 @@ import { varFade, AnimateText, MotionContainer, animateTextClasses } from 'src/c
 // ----------------------------------------------------------------------
 
 export function ContactHero({ sx, ...other }: BoxProps) {
+  const { t } = useTranslation();
+
+  const CONTACTS = [
+    {
+      label: 'bali',
+      country: t('contact.hero.locations.bali'),
+    },
+    {
+      label: 'london',
+      country: t('contact.hero.locations.london'),
+    },
+    {
+      label: 'prague',
+      country: t('contact.hero.locations.prague'),
+    },
+    {
+      label: 'moscow',
+      country: t('contact.hero.locations.moscow'),
+    },
+  ];
+
   return (
     <Box
       component="section"
@@ -45,7 +67,7 @@ export function ContactHero({ sx, ...other }: BoxProps) {
           <AnimateText
             component="h1"
             variant="h1"
-            textContent={['Where', 'to find us?']}
+            textContent={[t('contact.hero.title_1'), t('contact.hero.title_2')]}
             variants={varFade('inUp', { distance: 24 })}
             sx={{
               color: 'common.white',
@@ -76,7 +98,7 @@ export function ContactHero({ sx, ...other }: BoxProps) {
 
                 <m.div variants={varFade('inUp', { distance: 24 })}>
                   <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                    {contact.address}
+                    {t(`contact.hero.addresses.${contact.label}`)}
                   </Typography>
                 </m.div>
               </li>
@@ -87,28 +109,3 @@ export function ContactHero({ sx, ...other }: BoxProps) {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
-
-const CONTACTS = [
-  {
-    country: 'Bali',
-    address: '508 Bridle Avenue Newnan, GA 30263',
-    phoneNumber: '(239) 555-0108',
-  },
-  {
-    country: 'London',
-    address: '508 Bridle Avenue Newnan, GA 30263',
-    phoneNumber: '(319) 555-0115',
-  },
-  {
-    country: 'Prague',
-    address: '508 Bridle Avenue Newnan, GA 30263',
-    phoneNumber: '(252) 555-0126',
-  },
-  {
-    country: 'Moscow',
-    address: '508 Bridle',
-    phoneNumber: '(307) 555-0133',
-  },
-];

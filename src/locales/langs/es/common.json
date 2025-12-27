@@ -62,5 +62,38 @@
       "join": "Acceder a Gobernanza",
       "data": "Datos On-chain"
     }
+  },
+  "contact": {
+    "hero": {
+      "title_1": "¿Onde nos",
+      "title_2": "encontrar?",
+      "locations": {
+        "bali": "Bali, Indonesia",
+        "london": "Londres, Reino Unido",
+        "prague": "Praga, Chequia",
+        "moscow": "Moscú, Rusia"
+      },
+      "addresses": {
+        "bali": "Dirección en Bali",
+        "london": "Dirección en Londres",
+        "prague": "Dirección en Praga",
+        "moscow": "Dirección en Moscú"
+      }
+    },
+    "form": {
+      "title": "Conectividad Institucional",
+      "subtitle": "Estamos a su disposición para diálogos estratégicos y gobernanza.",
+      "fields": {
+        "name": "Nombre Completo",
+        "email": "Correo Electrónico Institucional",
+        "subject": "Asunto / Naturaleza de la Consulta",
+        "message": "Su mensaje...",
+        "submit": "Enviar Mensaje",
+        "address": "Dirección"
+      }
+    },
+    "map": {
+      "title": "Nuestra Dirección"
+    }
   }
 }

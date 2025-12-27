@@ -62,5 +62,38 @@
       "join": "进入治理系统",
       "data": "链上数据"
     }
+  },
+  "contact": {
+    "hero": {
+      "title_1": "我们在哪里",
+      "title_2": "联系？",
+      "locations": {
+        "bali": "巴厘岛，印度尼西亚",
+        "london": "伦敦，英国",
+        "prague": "布拉格，捷克",
+        "moscow": "莫斯科，俄罗斯"
+      },
+      "addresses": {
+        "bali": "巴厘岛地址",
+        "london": "伦敦地址",
+        "prague": "布拉格地址",
+        "moscow": "莫斯科地址"
+      }
+    },
+    "form": {
+      "title": "机构互联",
+      "subtitle": "我们随时欢迎战略对话与治理咨询。",
+      "fields": {
+        "name": "全名",
+        "email": "机构电子邮件",
+        "subject": "主题 / 咨询性质",
+        "message": "在此输入您的消息...",
+        "submit": "提交咨询",
+        "address": "地址"
+      }
+    },
+    "map": {
+      "title": "我们的地址"
+    }
   }
 }

@@ -1,5 +1,7 @@
 import type { Theme, SxProps } from '@mui/material/styles';
 
+import { useTranslation } from 'react-i18next';
+
 import Typography from '@mui/material/Typography';
 import { useColorScheme } from '@mui/material/styles';
 
@@ -18,6 +20,7 @@ import {
 type ContactMapProps = {
   sx?: SxProps<Theme>;
   contacts: {
+    label: string;
     latlng: number[];
     address: string;
     phoneNumber: string;
@@ -25,7 +28,10 @@ type ContactMapProps = {
 };
 
 export function ContactMap({ contacts, sx }: ContactMapProps) {
+  const { t } = useTranslation();
+
   const { colorScheme } = useColorScheme();
+
   const lightMode = colorScheme === 'light';
 
   const { selectedItem, onOpenPopup, onClosePopup } =
@@ -55,11 +61,11 @@ export function ContactMap({ contacts, sx }: ContactMapProps) {
           onClose={onClosePopup}
         >
           <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
-            Address
+            {t('contact.map.title')}
           </Typography>
 
           <Typography component="div" variant="caption">
-            {selectedItem.address}
+            {t(`contact.hero.addresses.${selectedItem.label}`)}
           </Typography>
 
           <Typography

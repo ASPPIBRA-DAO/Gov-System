@@ -33,5 +33,67 @@
         "description": "Der Governance-Token gewährt strategische Kuratormacht über das Netzwerk. Beteiligen Sie sich an hochrangigen Governance-Entscheidungen und leiten Sie die Inkubation von institutionellen Vermögenswerten der nächsten Generation."
       }
     }
+  },
+  "infrastructure": {
+    "caption": "Infrastruktur",
+    "title": "Globale Konnektivität &",
+    "title_highlight": "Spitzeninfrastruktur",
+    "description": "Unsere Infrastruktur kombiniert die sichersten Schichten von Web3 mit der Leistung von Edge Computing. Wir stellen sicher, dass die RWA-Vermögensverwaltung und Ihr CAD-Kreditbrief stets verfügbar und überprüfbar sind.",
+    "footnote": "* Verschlüsselung auf Regierungsebene und garantierte On-Chain-Unveränderlichkeit."
+  },
+  "traction": {
+    "caption": "Institutionelle Traktion",
+    "title": "Marktpotenzial &",
+    "title_highlight": "Systemische Skalierbarkeit",
+    "description": "Konsolidierung solider Kennzahlen, die unsere globale Skalierungsfähigkeit widerspiegeln. ASPPIBRA-DAO bietet die Infrastruktur zur Verwaltung hochwertiger Vermögenswerte mit absoluter rechtlicher Sicherheit und dezentraler Liquidität.",
+    "stats": {
+      "members": "Netzwerk-Stewards",
+      "members_value": "+500",
+      "area": "Verwaltete Hektar",
+      "area_value": "+10k",
+      "aum": "Vermögen unter Souveränität",
+      "aum_value": "€7M"
+    },
+    "card": {
+      "title": "Netzwerksynergie",
+      "content": "Unsere dezentrale Governance integriert Unternehmen und Genossenschaften in ein globales Liquiditätsökosystem und überwindet technologische Barrieren durch prüffähiges Management."
+    },
+    "buttons": {
+      "join": "Zugang zur Governance",
+      "data": "On-Chain-Daten"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title_1": "Wo finden",
+      "title_2": "Sie uns?",
+      "locations": {
+        "bali": "Bali, Indonesien",
+        "london": "London, Vereinigtes Königreich",
+        "prague": "Prag, Tschechien",
+        "moscow": "Moskau, Russland"
+      },
+      "addresses": {
+        "bali": "Adresse in Bali",
+        "london": "Adresse in London",
+        "prague": "Adresse in Prag",
+        "moscow": "Adresse in Moskau"
+      }
+    },
+    "form": {
+      "title": "Institutionelle Konnektivität",
+      "subtitle": "Wir stehen für strategische Dialoge und Governance-Anfragen zur Verfügung.",
+      "fields": {
+        "name": "Vollständiger Name",
+        "email": "Institutionelle E-Mail",
+        "subject": "Betreff / Art der Anfrage",
+        "message": "Geben Sie hier Ihre Nachricht ein...",
+        "submit": "Anfrage absenden",
+        "address": "Adresse"
+      }
+    },
+    "map": {
+      "title": "Unsere Adresse"
+    }
   }
 }

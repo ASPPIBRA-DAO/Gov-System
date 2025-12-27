@@ -62,5 +62,38 @@
       "join": "Accéder à la Gouvernance",
       "data": "Données On-chain"
     }
+  },
+  "contact": {
+    "hero": {
+      "title_1": "Où nous",
+      "title_2": "trouver?",
+      "locations": {
+        "bali": "Bali, Indonésie",
+        "london": "Londres, Royaume-Uni",
+        "prague": "Prague, Tchéquie",
+        "moscow": "Moscou, Russie"
+      },
+      "addresses": {
+        "bali": "Adresse à Bali",
+        "london": "Adresse à Londres",
+        "prague": "Adresse à Prague",
+        "moscow": "Adresse à Moscou"
+      }
+    },
+    "form": {
+      "title": "Connectivité Institutionnelle",
+      "subtitle": "Nous sommes à votre disposition para des dialogues stratégiques.",
+      "fields": {
+        "name": "Nom Complet",
+        "email": "E-mail Institutionnel",
+        "subject": "Objet / Nature de la Demande",
+        "message": "Votre message...",
+        "submit": "Transmettre le Message",
+        "address": "Adresse"
+      }
+    },
+    "map": {
+      "title": "Notre Adresse"
+    }
   }
 }
