@@ -22,8 +22,6 @@ type ContactMapProps = {
   contacts: {
     label: string;
     latlng: number[];
-    address: string;
-    phoneNumber: string;
   }[];
 };
 
@@ -74,7 +72,7 @@ export function ContactMap({ contacts, sx }: ContactMapProps) {
             sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
           >
             <Iconify icon="solar:phone-bold" width={14} sx={{ mr: 0.5 }} />
-            {selectedItem.phoneNumber}
+            {t(`contact.hero.phoneNumbers.${selectedItem.label}`)}
           </Typography>
         </MapPopup>
       )}

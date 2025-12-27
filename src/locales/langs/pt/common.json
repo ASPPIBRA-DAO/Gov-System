@@ -78,6 +78,12 @@
         "london": "Endereço em Londres",
         "prague": "Endereço em Praga",
         "moscow": "Endereço em Moscou"
+      },
+      "phoneNumbers": {
+        "bali": "+62 123 456 789",
+        "london": "+44 20 7123 4567",
+        "prague": "+420 123 456 789",
+        "moscow": "+7 495 123-45-67"
       }
     },
     "form": {

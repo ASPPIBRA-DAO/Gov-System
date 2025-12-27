@@ -105,26 +105,18 @@ export const _mapContact = [
   {
     label: 'moscow',
     latlng: [55.7558, 37.6173],
-    address: _mock.fullAddress(1),
-    phoneNumber: _mock.phoneNumber(1),
   },
   {
     label: 'prague',
     latlng: [50.0755, 14.4378],
-    address: _mock.fullAddress(2),
-    phoneNumber: _mock.phoneNumber(2),
   },
   {
     label: 'london',
     latlng: [51.5072, 0.1276],
-    address: _mock.fullAddress(3),
-    phoneNumber: _mock.phoneNumber(3),
   },
   {
     label: 'bali',
     latlng: [-8.3405, 115.092],
-    address: _mock.fullAddress(4),
-    phoneNumber: _mock.phoneNumber(4),
   },
 ];
 
