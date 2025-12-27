@@ -1,5 +1,6 @@
 import type { BoxProps } from '@mui/material/Box';
 
+import { useMemo } from 'react';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -14,6 +15,7 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import { alpha, useTheme } from '@mui/material/styles';
 
 import { _mock } from 'src/_mock';
+import { useTranslate } from 'src/locales';
 
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
@@ -22,13 +24,6 @@ import { SectionTitle } from './components/section-title';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
-
-// Métricas focadas em Valuation e AUM (Assets Under Management)
-const METRICS = [
-  { label: 'Membros da Rede', value: '+500', icon: 'solar:users-group-rounded-bold-duotone' },
-  { label: 'Área sob Gestão', value: '+10k', icon: 'solar:map-arrow-square-bold-duotone' },
-  { label: 'Ativos Geridos (AUM)', value: 'R$ 42M', icon: 'solar:wad-of-money-bold-duotone' },
-];
 
 const SOCIAL_CHANNELS = [
   { name: 'Discord', icon: 'bi:discord', color: '#5865F2' },
@@ -67,13 +62,27 @@ const renderLines = () => (
 
 export function HomeCommunity({ sx, ...other }: BoxProps) {
   const theme = useTheme();
+  const { t } = useTranslate();
+
+  const METRICS = useMemo(
+    () => [
+      {
+        id: 'members',
+        label: t('traction.stats.members'),
+        value: t('traction.stats.members_value'),
+      },
+      { id: 'area', label: t('traction.stats.area'), value: t('traction.stats.area_value') },
+      { id: 'aum', label: t('traction.stats.aum'), value: t('traction.stats.aum_value') },
+    ],
+    [t]
+  );
 
   const renderDescription = () => (
     <SectionTitle
-      caption="Market Traction"
-      title="Potencial de Mercado &"
-      txtGradient="Tração Institucional"
-      description="Consolidamos métricas sólidas que refletem nossa capacidade de escala. A ASPPIBRA-DAO provê a infraestrutura necessária para gerir ativos de alto valor com transparência, segurança jurídica e liquidez global."
+      caption={t('traction.caption')}
+      title={t('traction.title')}
+      txtGradient={t('traction.title_highlight')}
+      description={t('traction.description')}
       sx={{ textAlign: { xs: 'center', md: 'left' } }}
     />
   );
@@ -81,17 +90,23 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
   const renderStats = () => (
     <Grid container spacing={3} sx={{ mt: 5 }}>
       {METRICS.map((stat) => (
-        <Grid key={stat.label} size={{ xs: 6, sm: 4 }}>
-          <m.div variants={varFade('inUp')}>
-            <Stack spacing={0.5} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-              <Typography variant="h3" sx={{ fontWeight: 800, color: 'primary.main' }}>
-                {stat.value}
-              </Typography>
-              <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                {stat.label}
-              </Typography>
-            </Stack>
-          </m.div>
+        <Grid
+          key={stat.id}
+          component={m.div}
+          variants={varFade('inUp')}
+          size={{ xs: 12, sm: 4 }}
+        >
+          <Stack spacing={0.5} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+            <Typography variant="h3" sx={{ fontWeight: 800, color: 'primary.main' }}>
+              {stat.value}
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+            >
+              {stat.label}
+            </Typography>
+          </Stack>
         </Grid>
       ))}
     </Grid>
@@ -111,9 +126,12 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
       >
         <Stack spacing={4}>
           <Stack spacing={2}>
-            <Typography variant="h4">Sinergia em Rede</Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-              Nossa governança descentralizada integra empresas, cooperativas e organizações a um mercado de liquidez global, superando barreiras tecnológicas para escala imediata e gestão auditável.
+            <Typography variant="h4">{t('traction.card.title')}</Typography>
+            <Typography
+              variant="body2"
+              sx={{ color: 'text.secondary', lineHeight: 1.7, textAlign: 'justify' }}
+            >
+              {t('traction.card.content')}
             </Typography>
           </Stack>
 
@@ -124,7 +142,7 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
               ))}
             </AvatarGroup>
             <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-              +500 parceiros institucionais
+              {t('traction.stats.members')}
             </Typography>
           </Stack>
 
@@ -144,7 +162,7 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
         </Stack>
 
         <Iconify
-          icon={"solar:chart-square-bold-duotone" as any}
+          icon={'solar:chart-square-bold-duotone' as any}
           sx={{
             position: 'absolute',
             bottom: -40,
@@ -161,13 +179,7 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
 
   return (
     <Box
-      sx={[
-        { 
-          position: 'relative',
-          overflow: 'hidden'
-        }, 
-        ...(Array.isArray(sx) ? sx : [sx])
-      ]}
+      sx={[{ position: 'relative', overflow: 'hidden', py: { xs: 10, md: 15 } }, ...(Array.isArray(sx) ? sx : [sx])]}
       {...other}
     >
       <MotionViewport>
@@ -175,21 +187,24 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
 
         <Container sx={{ position: 'relative', zIndex: 9 }}>
           <Grid container spacing={{ xs: 8, md: 10 }} alignItems="center">
-            {/* Esquerda: Tração e Métricas Financeiras */}
             <Grid size={{ xs: 12, md: 6 }}>
               {renderDescription()}
               {renderStats()}
-              
+
               <m.div variants={varFade('inUp')}>
-                <Stack direction="row" spacing={2} sx={{ mt: 5, justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  sx={{ mt: 5, justifyContent: { xs: 'center', md: 'flex-start' } }}
+                >
                   <Button
                     variant="contained"
                     color="primary"
                     size="large"
-                    startIcon={<Iconify icon={"solar:shield-user-bold-duotone" as any} width={24} />}
+                    startIcon={<Iconify icon={'solar:shield-user-bold-duotone' as any} width={24} />}
                     sx={{ height: 56, px: 4, borderRadius: 1.2, boxShadow: theme.customShadows.primary }}
                   >
-                    Filiar-se à Rede
+                    {t('traction.buttons.join')}
                   </Button>
                   <Link
                     href="#"
@@ -197,16 +212,14 @@ export function HomeCommunity({ sx, ...other }: BoxProps) {
                     variant="subtitle2"
                     sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, opacity: 0.7, fontWeight: 700 }}
                   >
-                    Ver dados on-chain <Iconify icon={"solar:external-link-outline" as any} width={18} />
+                    {t('traction.buttons.data')}{' '}
+                    <Iconify icon={'solar:external-link-outline' as any} width={18} />
                   </Link>
                 </Stack>
               </m.div>
             </Grid>
 
-            {/* Direita: Card de Expansão de Rede */}
-            <Grid size={{ xs: 12, md: 6 }}>
-              {renderSocialHub()}
-            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>{renderSocialHub()}</Grid>
           </Grid>
         </Container>
       </MotionViewport>

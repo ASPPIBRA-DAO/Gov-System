@@ -40,5 +40,27 @@
     "title_highlight": "High-Performance Connectivity",
     "description": "Our infrastructure merges next-generation cryptographic security with the agility of Edge Computing. We ensure that sovereign RWA asset custody and CAD Credential integrity remain permanently available, auditable, and resilient.",
     "footer": "* Government-grade encryption and guaranteed on-chain immutability."
+  },
+  "traction": {
+    "caption": "Institutional Traction",
+    "title": "Market Potential &",
+    "title_highlight": "Systemic Scalability",
+    "description": "Consolidating solid metrics that reflect our global scaling capacity. ASPPIBRA-DAO provides the infrastructure to manage high-value assets with absolute legal security and decentralized liquidity.",
+    "stats": {
+      "members": "Network Stewards",
+      "members_value": "+500",
+      "area": "Managed Hectares",
+      "area_value": "+10k",
+      "aum": "Assets Under Sovereignty",
+      "aum_value": "$7.5M"
+    },
+    "card": {
+      "title": "Network Synergy",
+      "content": "Our decentralized governance integrates corporations and cooperatives into a global liquidity ecosystem, overcoming tech barriers through auditable management."
+    },
+    "buttons": {
+      "join": "Access Governance",
+      "data": "On-chain Data"
+    }
   }
 }

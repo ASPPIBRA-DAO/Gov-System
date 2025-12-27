@@ -40,5 +40,27 @@
     "title_highlight": "高性能连接",
     "description": "我们的基础设施将次世代加密安全与边缘计算 (Edge Computing) 的敏捷性深度融合。我们确保现实世界资产 (RWA) 的主权托管与 CAD 凭证的完整性始终可用、可审计且具有强韧性。",
     "footer": "* 政府级加密技术与链上不可篡改性保证。"
+  },
+  "traction": {
+    "caption": "机构牵引力",
+    "title": "市场潜力与",
+    "title_highlight": "系统可扩展性",
+    "description": "巩固反映我们全球规模能力的坚实指标。ASPPIBRA-DAO 提供基础设施，以绝对的法律安全和去中心化流动性管理高价值资产。",
+    "stats": {
+      "members": "网络治理维护者",
+      "members_value": "+500",
+      "area": "管理公顷数",
+      "area_value": "+10k",
+      "aum": "主权资产管理规模",
+      "aum_value": "$7.5M"
+    },
+    "card": {
+      "title": "网络协同",
+      "content": "我们的去中心化治理将公司和合作社整合到全球流动性生态系统中，通过可审计的管理克服技术障碍。"
+    },
+    "buttons": {
+      "join": "进入治理系统",
+      "data": "链上数据"
+    }
   }
 }

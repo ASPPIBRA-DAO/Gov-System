@@ -40,5 +40,27 @@
     "title_highlight": "Conectividade de Alta Performance",
     "description": "Nossa infraestrutura funde a segurança criptográfica de última geração com a agilidade da computação de borda (Edge Computing). Garantimos que a custódia soberana de ativos RWA e a integridade da Credencial CAD estejam permanentemente disponíveis, auditáveis e resilientes.",
     "footer": "* Criptografia de padrão governamental e imutabilidade on-chain assegurada."
+  },
+  "traction": {
+    "caption": "Tração Institucional",
+    "title": "Potencial de Mercado &",
+    "title_highlight": "Escalabilidade Sistémica",
+    "description": "Consolidamos métricas sólidas que refletem a nossa capacidade de escala global. A ASPPIBRA-DAO provê a infraestrutura para gerir ativos de alto valor com absoluta segurança jurídica e liquidez descentralizada.",
+    "stats": {
+      "members": "Stewards na Rede",
+      "members_value": "+500",
+      "area": "Hectares sob Gestão",
+      "area_value": "+10k",
+      "aum": "Ativos sob Soberania (AUM)",
+      "aum_value": "R$ 42M"
+    },
+    "card": {
+      "title": "Sinergia em Rede",
+      "content": "A nossa governança descentralizada integra empresas e cooperativas a um ecossistema de liquidez global, superando barreiras tecnológicas com gestão auditável."
+    },
+    "buttons": {
+      "join": "Acessar Governança",
+      "data": "Dados On-chain"
+    }
   }
 }

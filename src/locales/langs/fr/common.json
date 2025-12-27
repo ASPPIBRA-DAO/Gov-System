@@ -13,7 +13,7 @@
     "caption": "Infrastructure de Haut Niveau",
     "title": "Ingénierie d'Infrastructure pour",
     "title_highlight": "Échelle Mondiale des Actifs Réels (RWA)",
-    "description": "ASPPIBRA-DAO agit comme un accélérateur institutionnel de haute performance, intégrant des actifs à valeur stratégique dans l'écosystème mondial des RWA. Nous fournissons l'architecture juridique et la robustez technologique nécessaires pour sophistiquer, valider et étendre l'économie réelle sous garde décentralisée.",
+    "description": "ASPPIBRA-DAO agit comme un accélérateur institutionnel de haute performance, intégrant des actifs à valeur stratégique dans l'écosystème mondial des RWA. Nous fournissons l'architecture juridique et la robustesse technologique nécessaires pour sophistiquer, valider et étendre l'économie réelle sous garde décentralisée.",
     "cta": "Découvrir les Actifs",
     "items": {
       "reurb": {
@@ -40,5 +40,27 @@
     "title_highlight": "Connectivité Haute Performance",
     "description": "Notre infrastructure fusionne la sécurité cryptographique de nouvelle génération avec l'agilité de l'informatique de bord (Edge Computing). Nous garantissons que la garde souveraine des actifs RWA et l'intégrité de la lettre de créance CAD restent en permanence disponibles, auditables et résilientes.",
     "footer": "* Cryptage de niveau gouvernemental et immutabilité on-chain garantie."
+  },
+  "traction": {
+    "caption": "Traction Institutionnelle",
+    "title": "Potentiel de Marché &",
+    "title_highlight": "Scalabilité Systémique",
+    "description": "Consolider des mesures solides qui reflètent notre capacité de mise à l'échelle mondiale. ASPPIBRA-DAO fournit l'infrastructure pour gérer des actifs de haute valeur avec une sécurité juridique absolue et une liquidité décentralisée.",
+    "stats": {
+      "members": "Stewards du Réseau",
+      "members_value": "+500",
+      "area": "Hectares sous Gestion",
+      "area_value": "+10k",
+      "aum": "Actifs sous Souveraineté",
+      "aum_value": "€ 7M"
+    },
+    "card": {
+      "title": "Synergie de Réseau",
+      "content": "Notre gouvernance décentralisée intègre les entreprises et les coopératives dans un écosystème de liquidité mondiale, surmontant les barrières technologiques grâce à une gestion auditable."
+    },
+    "buttons": {
+      "join": "Accéder à la Gouvernance",
+      "data": "Données On-chain"
+    }
   }
 }
