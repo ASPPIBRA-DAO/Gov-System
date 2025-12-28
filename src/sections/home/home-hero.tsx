@@ -86,7 +86,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           fontSize: { xs: 17, md: 20 },
           lineHeight: 1.6,
           mt: 3,
-          '& strong': { color: 'text.primary', fontWeight: 700 }
+          '& strong': { color: 'text.primary', fontWeight: 700 },
         }}
       >
         {/* Usamos o texto traduzido aprovado para evitar riscos jurídicos */}
@@ -115,7 +115,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
             px: 4,
             fontSize: 18,
             borderRadius: 1.5,
-            boxShadow: (theme) => theme.customShadows.primary
+            boxShadow: (theme) => theme.customShadows.primary,
           }}
         >
           {t('hero.buttons.whitepaper')}
@@ -125,21 +125,28 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       <m.div {...motionProps}>
         <Button
           component={RouterLink}
-          href={paths.pricing}
+          // Alterado para o novo caminho de "Em Construção"
+          href="/coming-soon"
           color="inherit"
           size="large"
           variant="outlined"
-          startIcon={<Iconify width={24} icon={"solar:shield-user-bold-duotone" as any} />}
+          // Sugestão: Alterar o ícone para algo que remeta a "Ecossistema" ou "Construção"
+          startIcon={<Iconify width={24} icon="solar:notes-bold-duotone" />}
           sx={{
             height: 60,
             px: 4,
             fontSize: 18,
             borderRadius: 1.5,
             backdropFilter: 'blur(8px)',
-            borderColor: 'text.primary'
+            borderColor: 'text.primary',
+            '&:hover': {
+              borderColor: 'primary.main',
+              color: 'primary.main',
+            },
           }}
         >
-          {t('hero.buttons.access')}
+          {/* Verifique se esta chave existe no seu arquivo de tradução */}
+          {t('hero.buttons.ecosystem')}
         </Button>
       </m.div>
     </Stack>
@@ -158,7 +165,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           overflow: 'hidden', // Proteção contra scroll horizontal das animações
           background: `radial-gradient(circle at 50% -10%, ${theme.vars.palette.primary.lighter} 0%, transparent 60%)`,
           [theme.breakpoints.up(mdKey)]: {
-            mt: 'calc(var(--layout-header-desktop-height) * -1)',
+            mt: `calc(var(--layout-header-desktop-height) * -1)`,
           },
         }),
         ...(Array.isArray(sx) ? sx : [sx]),

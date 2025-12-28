@@ -9,6 +9,9 @@ import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
+import { paths } from 'src/routes/paths';
+import { RouterLink } from 'src/routes/components';
+
 import { _socials, _carouselsMembers } from 'src/_mock';
 
 import { Image } from 'src/components/image';
@@ -74,6 +77,8 @@ export function AboutTeam({ sx, ...other }: BoxProps) {
         </Box>
 
         <Button
+          component={RouterLink}
+          href={paths.about}  
           size="large"
           color="inherit"
           variant="outlined"

@@ -15,7 +15,7 @@ export function AboutView() {
 
       <AboutVision />
 
-      <AboutTeam />
+      <AboutTeam sx={{ display: 'none' }} />
 
       <AboutTestimonials />
     </>
