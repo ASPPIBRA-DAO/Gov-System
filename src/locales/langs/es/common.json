@@ -95,5 +95,26 @@
     "map": {
       "title": "Nuestra Dirección"
     }
+  },
+  "faq": {
+    "items": {
+      "q1": { "question": "¿Qué define a ASPPIBRA-DAO y cuál es su base legal?", "answer": "Es una asociación civil de derecho privado sin fines de lucro bajo el Art. 44 del Código Civil[cite: 6]. Usamos el nombre ASPPIBRA-DAO para gobernanza digital y tecnología blockchain[cite: 6]." },
+      "q2": { "question": "¿Cómo viabiliza la Regularización de Tierras (REURB)?", "answer": "Actuamos bajo la Ley nº 13.465/2017, promoviendo la legitimación de propiedades para garantizar la soberanía jurídica de la posesión." },
+      "q3": { "question": "¿Es la Credencial CAD una inversión o activo financiero?", "answer": "No. Según el Art. 6º-A, las CAD son registros criptográficos de afiliación intransferibles[cite: 11]. No son valores mobiliarios ni activos financieros." },
+      "q4": { "question": "¿Cómo se garantiza la integridad de la información?", "answer": "Usamos blockchain como prueba criptográfica, junto con protocolos LGPD, garantizando registros inmutables y auditables[cite: 11, 15]." },
+      "q5": { "question": "¿Cómo se alinea el proyecto con la sostenibilidad (ODS 2030)?", "answer": "Nuestra actuación sigue el desarrollo sostenible y la conservación ambiental, alineada con los ODS de la ONU[cite: 9, 10]." },
+      "q6": { "question": "¿Cuáles son los mecanismos de control de la DAO?", "answer": "Contamos con un Programa de Cumplimiento continuo y un Consejo Fiscal autónomo con rendición de cuentas anual[cite: 27, 30]." },
+      "q7": { "question": "¿Cómo integra tecnologías en los servicios públicos?", "answer": "Seguimos la Ley de Gobierno Digital para digitalizar servicios y aplicar IA y blockchain en procesos públicos[cite: 10]." }
+    },
+    "form": {
+      "title": "¿No encontraste la ayuda adecuada?",
+      "fields": {
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "subject": "Asunto",
+        "message": "Escribe tu mensaje aquí.",
+        "submit": "Enviar"
+      }
+    }
   }
 }

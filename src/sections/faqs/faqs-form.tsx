@@ -5,12 +5,17 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
+import { useTranslate } from 'src/locales';
+
 // ----------------------------------------------------------------------
 
 export function FaqsForm({ sx, ...other }: BoxProps) {
+  const { t } = useTranslate();
+
   return (
     <Box sx={sx} {...other}>
-      <Typography variant="h4">{`Haven't found the right help?`}</Typography>
+      <Typography variant="h4">{t('faq.form.title', { ns: 'common' })}</Typography>
+
       <Box
         sx={{
           my: 5,
@@ -19,14 +24,19 @@ export function FaqsForm({ sx, ...other }: BoxProps) {
           flexDirection: 'column',
         }}
       >
-        <TextField fullWidth label="Name" />
-        <TextField fullWidth label="Email" />
-        <TextField fullWidth label="Subject" />
-        <TextField fullWidth label="Enter your message here." multiline rows={4} />
+        <TextField fullWidth label={t('faq.form.fields.name', { ns: 'common' })} />
+        <TextField fullWidth label={t('faq.form.fields.email', { ns: 'common' })} />
+        <TextField fullWidth label={t('faq.form.fields.subject', { ns: 'common' })} />
+        <TextField
+          fullWidth
+          multiline
+          rows={4}
+          label={t('faq.form.fields.message', { ns: 'common' })}
+        />
       </Box>
 
       <Button size="large" variant="contained">
-        Submit
+        {t('faq.form.fields.submit', { ns: 'common' })}
       </Button>
     </Box>
   );

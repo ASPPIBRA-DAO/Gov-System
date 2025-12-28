@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
 import { paths } from 'src/routes/paths';
+import { RouterLink } from 'src/routes/components';
 
 import { CONFIG } from 'src/global-config';
 
@@ -84,8 +85,8 @@ const renderDescription = () => (
         typography: { xs: 'h2', md: 'h1' },
       }}
     >
-      Get started with
-      <br /> Minimal kit
+      Comece a usar o
+      <br /> Minimal Kit{' '}
       <Box
         component="span"
         sx={(theme) => ({
@@ -95,47 +96,25 @@ const renderDescription = () => (
           ml: 1,
         })}
       >
-        today
+        hoje
       </Box>
     </Box>
 
     <Box
       sx={{
-        gap: 2,
         display: 'flex',
-        flexWrap: 'wrap',
         justifyContent: { xs: 'center', md: 'flex-start' },
       }}
     >
       <m.div variants={varFade('inRight', { distance: 24 })}>
         <Button
+          component={RouterLink}
+          href={paths.pricing}
           color="primary"
           size="large"
           variant="contained"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={paths.minimalStore}
         >
-          Purchase now
-        </Button>
-      </m.div>
-
-      <m.div variants={varFade('inRight', { distance: 24 })}>
-        <Button
-          color="inherit"
-          size="large"
-          variant="outlined"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={paths.freeUI}
-          startIcon={<Iconify width={16} icon="eva:external-link-fill" sx={{ mr: 0.5 }} />}
-          sx={{
-            color: 'common.white',
-            borderColor: 'common.white',
-            '&:hover': { borderColor: 'currentColor' },
-          }}
-        >
-          Get 
+          Ver Planos
         </Button>
       </m.div>
     </Box>

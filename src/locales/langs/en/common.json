@@ -86,5 +86,47 @@
         "address": "Address"
       }
     }
+  },
+  "faq": {
+    "items": {
+      "q1": {
+        "question": "What defines ASPPIBRA-DAO and what is its legal basis?",
+        "answer": "ASPPIBRA is a non-profit private law civil association, established under Art. 44 of the Civil Code[cite: 6]. We adopt the name ASPPIBRA-DAO for digital governance and blockchain technology operations[cite: 6]."
+      },
+      "q2": {
+        "question": "How does the association facilitate Land Regularization (REURB)?",
+        "answer": "We act as a specialized technical arm under Law 13,465/2017, promoting the legitimation of complex properties to ensure legal sovereignty and social function."
+      },
+      "q3": {
+        "question": "Is the CAD Credential an investment or a financial crypto-asset?",
+        "answer": "No. Per Art. 6-A, CADs are non-transferable cryptographic membership records[cite: 11]. They are not securities or financial assets and do not offer profit expectations."
+      },
+      "q4": {
+        "question": "How does the ecosystem ensure the integrity of asset information?",
+        "answer": "We use blockchain as cryptographic proof of participation, combined with data protection protocols (LGPD), ensuring records are immutable and auditable[cite: 11, 15]."
+      },
+      "q5": {
+        "question": "How is the project aligned with sustainability (SDG 2030)?",
+        "answer": "Our actions are guided by sustainable development and environmental conservation (Art. 225 CF), aligning territorial management with UN Sustainable Development Goals[cite: 9, 10]."
+      },
+      "q6": {
+        "question": "What are the DAO's control and oversight mechanisms?",
+        "answer": "We maintain a continuous Compliance Program and oversight by an autonomous Fiscal Council, with annual accountability approved by the General Assembly[cite: 27, 30]."
+      },
+      "q7": {
+        "question": "How does the association integrate emerging technologies into public services?",
+        "answer": "We follow the Digital Government Law (Law 14,129/2021) to digitize services and apply AI and blockchain to streamline public interest processes[cite: 10]."
+      }
+    },
+    "form": {
+      "title": "Didn't find the right help?",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Enter your message here.",
+        "submit": "Submit Now"
+      }
+    }
   }
 }

@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { useTranslate } from 'src/locales'; // Importação do Hook de tradução
@@ -123,6 +124,8 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
       <m.div {...motionProps}>
         <Button
+          component={RouterLink}
+          href={paths.pricing}
           color="inherit"
           size="large"
           variant="outlined"

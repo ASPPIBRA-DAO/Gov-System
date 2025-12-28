@@ -95,5 +95,27 @@
     "map": {
       "title": "Notre Adresse"
     }
+  },
+  "faq": {
+    "items": {
+      "q1": { "question": "Qu'est-ce qu'ASPPIBRA-DAO et sa base légale ?", "answer": "C'est une association civile à but non lucratif sous l'Art. 44 du Code Civil[cite: 6]. Le nom ASPPIBRA-DAO est utilisé pour la gouvernance numérique blockchain[cite: 6]." },
+      "q2": { "question": "Comment l'association facilite-t-elle la REURB ?", "answer": "Nous agissons selon la Loi nº 13.465/2017 pour garantir la souveraineté juridique de la possession et la fonction sociale de la propriété." },
+      "q3": { "question": "La créance CAD est-elle un investissement ?", "answer": "Non. Selon l'Art. 6-A, les CAD sont des registres d'adhésion cryptographiques intransférables[cite: 11]. Elles ne sont pas des actifs financiers."
+      },
+      "q4": { "question": "Comment garantir l'intégrité des données ?", "answer": "Nous utilisons la blockchain comme preuve cryptographique, alliée aux protocoles LGPD, assurant des registres immuables et auditables[cite: 11, 15]." },
+      "q5": { "question": "Comment le projet s'aligne-t-il sur les ODD 2030 ?", "answer": "Nos actions suivent le développement durable et la conservation (Art. 225 CF), alignées sur les Objectifs de l'ONU[cite: 9, 10]." },
+      "q6": { "question": "Quels sont les mécanismes de contrôle de la DAO ?", "answer": "Nous maintenons un programme de conformité continu et un Conseil Fiscal autonome avec reddition de comptes annuelle[cite: 27, 30]." },
+      "q7": { "question": "Comment intégrer les technologies aux services publics ?", "answer": "Nous suivons la Loi sur le Gouvernement Numérique pour appliquer l'IA et la blockchain aux processus d'intérêt public[cite: 10]." }
+    },
+    "form": {
+      "title": "Vous n'avez pas trouvé la bonne aide ?",
+      "fields": {
+        "name": "Nom",
+        "email": "E-mail",
+        "subject": "Sujet",
+        "message": "Entrez votre message ici.",
+        "submit": "Soumettre"
+      }
+    }
   }
 }

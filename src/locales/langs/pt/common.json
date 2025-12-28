@@ -41,6 +41,66 @@
     "description": "Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua Credencial CAD estejam sempre disponíveis e auditáveis.",
     "footnote": "* Criptografia de nível governamental e imutabilidade on-chain garantida."
   },
+    "pricing_page": {
+    "title": "Participação Sistêmica &",
+    "title_highlight": "Aquisição de Governança",
+    "description": "Selecione o seu nível de influência. 100% da contribuição é convertida em Tokens CAD ($1.00/un) para uso em serviços RWA e exercício de poder decisório .",
+    "plans": {
+      "free": {
+        "title": "Free",
+        "price": "0",
+        "token": "0",
+        "caption": "Perfil Básico de Usuário",
+        "features": [
+          "Visualização de Projetos e Dados On-chain",
+          "Acesso Público à Plataforma",
+          "Governança Observacional",
+          "Sandbox de API e IA"
+        ],
+        "button": "Acessar Plataforma"
+      },
+      "basic": {
+        "title": "Basic",
+        "price": "100",
+        "token": "100",
+        "caption": "Membro Institucional Básico",
+        "features": [
+          "Voz Consultiva em Governança [cite: 190]",
+          "Acesso Completo a Dados On-chain",
+          "Curadoria Comunitária de Ativos",
+          "50 GB de Armazenamento Seguro"
+        ],
+        "button": "Iniciar Participação"
+      },
+      "starter": {
+        "title": "Starter",
+        "price": "1.000",
+        "token": "1.000",
+        "caption": "Steward Administrativo",
+        "features": [
+          "Voto Deliberativo (1 CAD = 1 Voto) [cite: 137]",
+          "Elegibilidade: Cargos Administrativos [cite: 423]",
+          "Prioridade em Serviços RWA (REURB) ",
+          "500 GB de Armazenamento Governamental"
+        ],
+        "button": "Adquirir Governança"
+      },
+      "premium": {
+        "title": "Premium",
+        "price": "10.000",
+        "token": "10.000",
+        "caption": "Conselheiro Executivo",
+        "features": [
+          "Participação Estratégica na Governança",
+          "Elegibilidade: Diretoria Executiva [cite: 361]",
+          "Curadoria Estratégica de RWA de Alto Valor",
+          "5 TB de Armazenamento Soberano"
+        ],
+        "button": "Liderar Ecossistema"
+      }
+    },
+    "footer_note": "Recursos e direitos sujeitos às regras de governança da ASPPIBRA-DAO estabelecidas em Estatuto[cite: 468]."
+  },
   "traction": {
     "caption": "Tração Institucional",
     "title": "Potencial de Mercado &",
@@ -100,6 +160,48 @@
     },
     "map": {
       "title": "Nosso Endereço"
+    }
+  },
+  "faq": {
+    "items": {
+      "q1": {
+        "question": "O que define a ASPPIBRA-DAO e qual sua base legal de operação?",
+        "answer": "A ASPPIBRA é uma associação civil de direito privado sem fins lucrativos, constituída sob o Art. 44 do Código Civil[cite: 6]. Adotamos a denominação ASPPIBRA-DAO para fins de governança digital e atuação em ecossistemas de tecnologia blockchain[cite: 6]."
+      },
+      "q2": {
+        "question": "Como a associação viabiliza a Regularização Fundiária (REURB)?",
+        "answer": "Atuamos como braço técnico especializado na Lei nº 13.465/2017, promovendo a legitimação de propriedades complexas para garantir a soberania jurídica da posse e a função social da propriedade."
+      },
+      "q3": {
+        "question": "A Credencial CAD é um tipo de investimento ou criptoativo financeiro?",
+        "answer": "Não. Conforme o Art. 6º-A, as CADs são registros criptográficos de filiação intransferíveis[cite: 11]. Elas não configuram valores mobiliários ou ativos financeiros e não conferem expectativas de lucro."
+      },
+      "q4": {
+        "question": "Como o ecossistema garante a integridade das informações patrimoniais?",
+        "answer": "Utilizamos blockchain como prova criptográfica de participação, aliada a protocolos de proteção de dados (LGPD), garantindo que os registros sejam imutáveis e auditáveis[cite: 11, 15]."
+      },
+      "q5": {
+        "question": "De que forma o projeto está alinhado à sustentabilidade (ODS 2030)?",
+        "answer": "Nossa atuação é pautada pelo desenvolvimento sustentável e conservação ambiental (Art. 225 da CF), alinhando a gestão territorial aos Objetivos de Desenvolvimento Sustentável da ONU[cite: 9, 10]."
+      },
+      "q6": {
+        "question": "Quais são os mecanismos de controle e fiscalização da DAO?",
+        "answer": "Mantemos um Programa de Integridade (Compliance) contínuo e fiscalização por um Conselho Fiscal autônomo, com prestação de contas anual aprovada em Assembleia Geral[cite: 27, 30]."
+      },
+      "q7": {
+        "question": "Como a associação integra tecnologias emergentes aos serviços públicos?",
+        "answer": "Seguimos a Lei de Governo Digital (Lei nº 14.129/2021) para digitalizar serviços e aplicar IA e blockchain na desburocratização de processos de interesse público[cite: 10]."
+      }
+    },
+    "form": {
+      "title": "Não encontrou a ajuda certa?",
+      "fields": {
+        "name": "Nome",
+        "email": "E-mail",
+        "subject": "Assunto",
+        "message": "Digite sua mensagem aqui.",
+        "submit": "Enviar"
+      }
     }
   }
 }

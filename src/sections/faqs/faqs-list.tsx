@@ -7,24 +7,31 @@ import Typography from '@mui/material/Typography';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
-import { _faqs } from 'src/_mock';
+import { useTranslate } from 'src/locales';
 
 // ----------------------------------------------------------------------
 
 export function FaqsList({ sx, ...other }: BoxProps) {
+  const { t } = useTranslate();
+
+  const faqs = Object.values(t('faq.items', { returnObjects: true, ns: 'common' })) as {
+    question: string;
+    answer: string;
+  }[];
+
   return (
     <Box sx={sx} {...other}>
-      {_faqs.map((item) => (
-        <Accordion key={item.id} disableGutters>
+      {faqs.map((item, index) => (
+        <Accordion key={index} disableGutters>
           <AccordionSummary
-            id={`faqs-panel${item.id}-header`}
-            aria-controls={`faqs-panel${item.id}-content`}
+            id={`faqs-panel${index}-header`}
+            aria-controls={`faqs-panel${index}-content`}
           >
             <Typography component="span" variant="subtitle1">
-              {item.title}
+              {item.question}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails sx={{ color: 'text.secondary' }}>{item.content}</AccordionDetails>
+          <AccordionDetails sx={{ color: 'text.secondary' }}>{item.answer}</AccordionDetails>
         </Accordion>
       ))}
       <Divider />

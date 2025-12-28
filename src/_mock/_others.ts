@@ -11,15 +11,6 @@ export const _carouselsMembers = Array.from({ length: 6 }, (_, index) => ({
 
 // ----------------------------------------------------------------------
 
-export const _faqs = Array.from({ length: 8 }, (_, index) => ({
-  id: _mock.id(index),
-  value: `panel${index + 1}`,
-  title: `Questions ${index + 1}`,
-  content: _mock.description(index),
-}));
-
-// ----------------------------------------------------------------------
-
 export const _addressBooks = Array.from({ length: 24 }, (_, index) => ({
   id: _mock.id(index),
   primary: index === 0,

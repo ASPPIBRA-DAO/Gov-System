@@ -14,6 +14,9 @@ import {
   DialogContent,
 } from '@mui/material';
 
+import { paths } from 'src/routes/paths';
+import { RouterLink } from 'src/routes/components';
+
 import { Iconify } from 'src/components/iconify';
 import { varTap, varHover } from 'src/components/animate';
 
@@ -77,7 +80,7 @@ export default function HomeCountdownDialog({ targetDate, open, onClose, ...othe
         </Typography>
 
         <Typography sx={{ color: 'grey.500', mb: 5, lineHeight: 1.5 }}>
-          Entre para a whitelist e participe das decisões de governança e 
+          Entre para a whitelist e participe das decisões de governança e
           investimentos RWA antes do lançamento público. Vagas limitadas.
         </Typography>
 
@@ -89,23 +92,24 @@ export default function HomeCountdownDialog({ targetDate, open, onClose, ...othe
           <TimeBlock label="SEG" value={countdown.seconds} />
         </Stack>
 
-        <Button
-          fullWidth
-          size="large"
-          variant="contained"
-          component={m.button}
-          whileTap={varTap(0.95)}
-          whileHover={varHover(1.02)}
-          sx={{
-            py: 1.5,
-            fontSize: '1.1rem',
-            fontWeight: 'bold',
-            background: 'linear-gradient(90deg, #00A76F 0%, #8E33FF 100%)',
-            '&:hover': { opacity: 0.9 },
-          }}
-        >
-          GARANTIR MINHA VAGA
-        </Button>
+        <Box component={m.div} whileTap={varTap(0.95)} whileHover={varHover(1.02)}>
+          <Button
+            fullWidth
+            size="large"
+            variant="contained"
+            component={RouterLink}
+            href={paths.pricing}
+            sx={{
+              py: 1.5,
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              background: 'linear-gradient(90deg, #00A76F 0%, #8E33FF 100%)',
+              '&:hover': { opacity: 0.9 },
+            }}
+          >
+            GARANTIR MINHA VAGA
+          </Button>
+        </Box>
       </DialogContent>
     </Dialog>
   );
