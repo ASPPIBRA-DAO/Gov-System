@@ -61,4 +61,5 @@ export type IPostItem = {
     name: string;
     avatarUrl: string;
   }[];
+  category?: string;
 };

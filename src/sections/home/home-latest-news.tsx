@@ -1,4 +1,5 @@
 import type { BoxProps } from '@mui/material/Box';
+
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -8,21 +9,21 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import { alpha, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { alpha, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
-import { _mock } from 'src/_mock';
 import { fDate } from 'src/utils/format-time';
 
-import { useGetPosts } from 'src/actions/blog';
+import { _mock } from 'src/_mock';
 import { useTranslate } from 'src/locales';
+import { useGetPosts } from 'src/actions/blog';
 
 import { Iconify } from 'src/components/iconify';
-import { varFade, MotionViewport } from 'src/components/animate';
 import { SplashScreen } from 'src/components/loading-screen';
+import { varFade, MotionViewport } from 'src/components/animate';
 
 import { SectionTitle } from './components/section-title';
 import { FloatDotIcon, FloatLine } from './components/svg-elements';
@@ -61,8 +62,8 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
   const { t } = useTranslate();
   const { posts, postsLoading } = useGetPosts();
 
-  // Lógica de Fallback aprimorada
   const hasPosts = posts.length > 0;
+
   const displayPosts = hasPosts
     ? posts.slice(0, 3)
     : Array.from({ length: 3 }).map((_, index) => ({
@@ -70,7 +71,7 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
         title: t('home.latest_news.fallback.title'),
         description: t('home.latest_news.fallback.description'),
         coverUrl: _mock.image.cover(index + 4),
-        createdAt: new Date(),
+        createdAt: new Date().toISOString(),
         category: t('home.latest_news.fallback.category'),
       }));
 
@@ -85,14 +86,7 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
   return (
     <Box
       component="section"
-      sx={[
-        {
-          py: { xs: 10, md: 15 },
-          position: 'relative',
-          bgcolor: 'background.default', // Garante consistência com o tema
-        },
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
+      sx={[{ py: { xs: 10, md: 15 }, position: 'relative' }, ...(Array.isArray(sx) ? sx : [sx])]}
       {...other}
     >
       <MotionViewport>
@@ -100,8 +94,6 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
 
         <Container sx={{ position: 'relative', zIndex: 9 }}>
           <Grid container spacing={{ xs: 5, md: 8 }}>
-            
-            {/* Lado Esquerdo: Descrição e CTA Principal */}
             <Grid size={{ xs: 12, md: 4 }}>
               <SectionTitle
                 caption={t('home.latest_news.caption')}
@@ -119,22 +111,16 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
                   variant="outlined"
                   size="large"
                   endIcon={<Iconify icon="solar:double-alt-arrow-right-bold-duotone" />}
-                  sx={{
-                    borderRadius: 1.2,
-                    height: 52,
-                    px: 3,
-                    display: { xs: 'none', md: 'inline-flex' },
-                  }}
+                  sx={{ borderRadius: 1.2, height: 52, px: 3, display: { xs: 'none', md: 'inline-flex' } }}
                 >
                   {t('home.latest_news.view_all')}
                 </Button>
               </m.div>
             </Grid>
 
-            {/* Lado Direito: Cards de Notícias */}
             <Grid size={{ xs: 12, md: 8 }}>
               <Grid container spacing={3}>
-                {displayPosts.map((post, index) => (
+                {displayPosts.map((post: any, index) => (
                   <Grid key={post.id} size={{ xs: 12, sm: 6, lg: 4 }}>
                     <m.div variants={varFade('inUp')} transition={{ delay: index * 0.1 }}>
                       <Card
@@ -149,15 +135,14 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
                           borderRadius: 2,
                           bgcolor: 'background.paper',
                           border: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
-                          transition: theme.transitions.create(['transform', 'box-shadow', 'background-color']),
+                          transition: theme.transitions.create(['transform', 'box-shadow']),
                           '&:hover': {
                             transform: 'translateY(-12px)',
                             boxShadow: theme.customShadows.z24,
-                            '& .card-image': { transform: 'scale(1.15)' }, // Efeito de Zoom
+                            '& .card-image': { transform: 'scale(1.15)' },
                           },
                         }}
                       >
-                        {/* Imagem com Overlay e Zoom */}
                         <Box sx={{ position: 'relative', pt: '66%', overflow: 'hidden' }}>
                           <Box
                             component="img"
@@ -177,11 +162,10 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
                           />
                         </Box>
 
-                        {/* Conteúdo do Card */}
                         <Stack spacing={2} sx={{ p: 3, flexGrow: 1 }}>
                           <Stack direction="row" alignItems="center" justifyContent="space-between">
                             <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 800 }}>
-                              {post.category}
+                              {post.category || post.tags?.[0] || t('home.latest_news.fallback.category')}
                             </Typography>
                             <Typography variant="caption" sx={{ color: 'text.disabled' }}>
                               {fDate(post.createdAt)}
@@ -193,8 +177,7 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
                             variant="subtitle1"
                             sx={{
                               fontWeight: 700,
-                              lineHeight: 1.4,
-                              height: 44, // Mantém títulos alinhados
+                              height: 44,
                               overflow: 'hidden',
                               display: '-webkit-box',
                               WebkitLineClamp: 2,
@@ -224,7 +207,6 @@ export function HomeLatestNews({ sx, ...other }: BoxProps) {
                 ))}
               </Grid>
             </Grid>
-
           </Grid>
         </Container>
       </MotionViewport>
