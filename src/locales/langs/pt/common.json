@@ -1,4 +1,18 @@
 {
+  "home": {
+    "latest_news": {
+      "caption": "Updates",
+      "title": "Fique por dentro das",
+      "txt_gradient": "últimas notícias",
+      "description": "Acompanhe a evolução da ASPPIBRA-DAO, desde as colheitas em Paraty até os avanços tecnológicos na blockchain global.",
+      "view_all": "Ver todas as notícias",
+      "fallback": {
+        "title": "Novidades em breve",
+        "description": "Estamos preparando conteúdos exclusivos sobre o ecossistema RWA e governança da ASPPIBRA-DAO.",
+        "category": "Inovação"
+      }
+    }
+  },
   "hero": {
     "title": "Governança Global Descentralizada sobre",
     "title_highlight": "Ativos do Mundo Real (RWA)",
@@ -41,10 +55,10 @@
     "description": "Nossa infraestrutura combina as camadas mais seguras da Web3 com o desempenho da computação de borda (Edge Computing). Garantimos que a gestão de ativos RWA e a sua Credencial CAD estejam sempre disponíveis e auditáveis.",
     "footnote": "* Criptografia de nível governamental e imutabilidade on-chain garantida."
   },
-    "pricing_page": {
+  "pricing_page": {
     "title": "Participação Sistêmica &",
     "title_highlight": "Aquisição de Governança",
-    "description": "Selecione o seu nível de influência. 100% da contribuição é convertida em Tokens CAD ($1.00/un) para uso em serviços RWA e exercício de poder decisório .",
+    "description": "Selecione o seu nível de influência. 100% da contribuição é convertida em Tokens CAD ($1.00/un) para uso em serviços RWA e exercício de poder decisório.",
     "plans": {
       "free": {
         "title": "Free",
@@ -65,7 +79,7 @@
         "token": "100",
         "caption": "Membro Institucional Básico",
         "features": [
-          "Voz Consultiva em Governança [cite: 190]",
+          "Voz Consultiva em Governança",
           "Acesso Completo a Dados On-chain",
           "Curadoria Comunitária de Ativos",
           "50 GB de Armazenamento Seguro"
@@ -78,9 +92,9 @@
         "token": "1.000",
         "caption": "Steward Administrativo",
         "features": [
-          "Voto Deliberativo (1 CAD = 1 Voto) [cite: 137]",
-          "Elegibilidade: Cargos Administrativos [cite: 423]",
-          "Prioridade em Serviços RWA (REURB) ",
+          "Voto Deliberativo (1 CAD = 1 Voto)",
+          "Elegibilidade: Cargos Administrativos",
+          "Prioridade em Serviços RWA (REURB)",
           "500 GB de Armazenamento Governamental"
         ],
         "button": "Adquirir Governança"
@@ -92,14 +106,14 @@
         "caption": "Conselheiro Executivo",
         "features": [
           "Participação Estratégica na Governança",
-          "Elegibilidade: Diretoria Executiva [cite: 361]",
+          "Elegibilidade: Diretoria Executiva",
           "Curadoria Estratégica de RWA de Alto Valor",
           "5 TB de Armazenamento Soberano"
         ],
         "button": "Liderar Ecossistema"
       }
     },
-    "footer_note": "Recursos e direitos sujeitos às regras de governança da ASPPIBRA-DAO estabelecidas em Estatuto[cite: 468]."
+    "footer_note": "Recursos e direitos sujeitos às regras de governança da ASPPIBRA-DAO estabelecidas em Estatuto."
   },
   "traction": {
     "caption": "Tração Institucional",
@@ -166,7 +180,7 @@
     "items": {
       "q1": {
         "question": "O que define a ASPPIBRA-DAO e qual sua base legal de operação?",
-        "answer": "A ASPPIBRA é uma associação civil de direito privado sem fins lucrativos, constituída sob o Art. 44 do Código Civil[cite: 6]. Adotamos a denominação ASPPIBRA-DAO para fins de governança digital e atuação em ecossistemas de tecnologia blockchain[cite: 6]."
+        "answer": "A ASPPIBRA é uma associação civil de direito privado sem fins lucrativos, constituída sob o Art. 44 do Código Civil. Adotamos a denominação ASPPIBRA-DAO para fins de governança digital e atuação em ecossistemas de tecnologia blockchain."
       },
       "q2": {
         "question": "Como a associação viabiliza a Regularização Fundiária (REURB)?",
@@ -174,23 +188,23 @@
       },
       "q3": {
         "question": "A Credencial CAD é um tipo de investimento ou criptoativo financeiro?",
-        "answer": "Não. Conforme o Art. 6º-A, as CADs são registros criptográficos de filiação intransferíveis[cite: 11]. Elas não configuram valores mobiliários ou ativos financeiros e não conferem expectativas de lucro."
+        "answer": "Não. Conforme o Art. 6º-A, as CADs são registros criptográficos de filiação intransferíveis. Elas não configuram valores mobiliários ou ativos financeiros e não conferem expectativas de lucro."
       },
       "q4": {
         "question": "Como o ecossistema garante a integridade das informações patrimoniais?",
-        "answer": "Utilizamos blockchain como prova criptográfica de participação, aliada a protocolos de proteção de dados (LGPD), garantindo que os registros sejam imutáveis e auditáveis[cite: 11, 15]."
+        "answer": "Utilizamos blockchain como prova criptográfica de participação, aliada a protocolos de proteção de dados (LGPD), garantindo que os registros sejam imutáveis e auditáveis."
       },
       "q5": {
         "question": "De que forma o projeto está alinhado à sustentabilidade (ODS 2030)?",
-        "answer": "Nossa atuação é pautada pelo desenvolvimento sustentável e conservação ambiental (Art. 225 da CF), alinhando a gestão territorial aos Objetivos de Desenvolvimento Sustentável da ONU[cite: 9, 10]."
+        "answer": "Nossa atuação é pautada pelo desenvolvimento sustentável e conservação ambiental (Art. 225 da CF), alinhando a gestão territorial aos Objetivos de Desenvolvimento Sustentável da ONU."
       },
       "q6": {
         "question": "Quais são os mecanismos de controle e fiscalização da DAO?",
-        "answer": "Mantemos um Programa de Integridade (Compliance) contínuo e fiscalização por um Conselho Fiscal autônomo, com prestação de contas anual aprovada em Assembleia Geral[cite: 27, 30]."
+        "answer": "Mantemos um Programa de Integridade (Compliance) contínuo e fiscalização por um Conselho Fiscal autônomo, com prestação de contas anual aprovada em Assembleia Geral."
       },
       "q7": {
         "question": "Como a associação integra tecnologias emergentes aos serviços públicos?",
-        "answer": "Seguimos a Lei de Governo Digital (Lei nº 14.129/2021) para digitalizar serviços e aplicar IA e blockchain na desburocratização de processos de interesse público[cite: 10]."
+        "answer": "Seguimos a Lei de Governo Digital (Lei nº 14.129/2021) para digitalizar serviços e aplicar IA e blockchain na desburocratização de processos de interesse público."
       }
     },
     "form": {
