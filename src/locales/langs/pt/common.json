@@ -1,5 +1,11 @@
 {
   "home": {
+    "team": {
+      "caption": "Dream Team",
+      "title": "A Força por trás da Governança",
+      "description": "Nossa equipe multidisciplinar une especialistas em Direito Fundiário, Blockchain e Agronegócio para garantir a excelência na gestão de ativos RWA.",
+      "all_members": "Conheça o Time Completo"
+    },
     "latest_news": {
       "caption": "Updates",
       "title": "Fique por dentro das",

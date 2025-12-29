@@ -2,23 +2,29 @@ import type { BoxProps } from '@mui/material/Box';
 
 import { m } from 'framer-motion';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 
+import { fDate } from 'src/utils/format-time';
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
-
 import { useTranslate } from 'src/locales';
+import { useGetPosts } from 'src/actions/blog';
 import { _socials, _carouselsMembers } from 'src/_mock';
 
+import { SplashScreen } from 'src/components/loading-screen';
 import { Image } from 'src/components/image';
 import { Iconify } from 'src/components/iconify';
-import { varFade, MotionViewport } from 'src/components/animate';
 import { Carousel, useCarousel, CarouselArrowFloatButtons } from 'src/components/carousel';
+import { varFade, MotionViewport } from 'src/components/animate';
+
+import { SectionTitle } from './components/section-title';
+import { FloatDotIcon, FloatLine } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
 
@@ -85,8 +91,8 @@ export function HomeTeam({ sx, ...other }: BoxProps) {
             size="large"
             color="inherit"
             variant="outlined"
-            // Cast 'as any' necessário para ignorar a tipagem estrita do Iconify
-            endIcon={<Iconify icon={'solar:alt-arrow-right-outline' as any} width={24} />}
+            // TypeScript: Cast 'as any' para permitir o ícone Solar não mapeado
+            endIcon={<Iconify icon={"solar:alt-arrow-right-outline" as any} width={24} />}
             sx={{ mx: 'auto' }}
           >
             {t('home.team.all_members')}
